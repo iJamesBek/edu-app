@@ -6,6 +6,9 @@ export const SITE_URL = (
 
 export const PHONE = "+998700107676";
 
+/** Demo/preview deployments set NEXT_PUBLIC_NOINDEX=1 so search engines never index them. */
+export const NOINDEX = process.env.NEXT_PUBLIC_NOINDEX === "1";
+
 export const SOCIALS = {
   telegram: "https://t.me/itshaharcha",
   instagram: "https://www.instagram.com/itshaharcha",

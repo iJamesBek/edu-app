@@ -7,7 +7,7 @@ import { routing, type Locale } from "@/i18n/routing";
 import { MotionProvider } from "@/motion/MotionProvider";
 import { ScrollProgress } from "@/motion/ScrollProgress";
 import { Effects } from "@/components/Effects";
-import { OG_LOCALE, SITE_URL, absoluteUrl, languageAlternates, localePath } from "@/lib/site";
+import { NOINDEX, OG_LOCALE, SITE_URL, absoluteUrl, languageAlternates, localePath } from "@/lib/site";
 import "../globals.css";
 
 const display = Unbounded({
@@ -61,7 +61,7 @@ export async function generateMetadata({
       title: t("title"),
       description: t("description"),
     },
-    robots: { index: true, follow: true },
+    robots: NOINDEX ? { index: false, follow: false } : { index: true, follow: true },
     formatDetection: { telephone: false },
   };
 }
