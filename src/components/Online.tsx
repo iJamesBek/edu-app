@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Magnetic } from "@/motion/Magnetic";
 import { Reveal } from "@/motion/Reveal";
 import { RotatingDirection, VelocityRibbons } from "./OnlineMotion";
@@ -23,12 +24,12 @@ export async function Online() {
           <p className="mt-10 font-display text-xl text-amber">{t("question")}</p>
           <div className="mt-6">
             <Magnetic>
-              <a
-                href="#contact"
+              <Link
+                href="/courses#apply"
                 className="inline-flex rounded-full bg-chalk px-7 py-4 font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
                 {t("cta")}
-              </a>
+              </Link>
             </Magnetic>
           </div>
         </Reveal>

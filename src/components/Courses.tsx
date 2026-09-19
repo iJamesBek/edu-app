@@ -9,6 +9,7 @@ import SpotlightCard from "@/components/bits/SpotlightCard";
 import { Reveal } from "@/motion/Reveal";
 import { Tilt } from "@/motion/Tilt";
 import { useTier } from "@/motion/MotionProvider";
+import { Link } from "@/i18n/navigation";
 import { PICK_DIRECTION_EVENT } from "./CityScene";
 
 const DIRECTIONS: Category[] = ["programming", "design", "marketing", "office"];
@@ -20,7 +21,15 @@ const ACCENT: Record<Category, string> = {
   office: "#9fb4ff",
 };
 
-export function Courses({ courses, branches }: { courses: Course[]; branches: Branch[] }) {
+interface CoursesProps {
+  courses: Course[];
+  branches: Branch[];
+  /** 1 on the /courses page, 2 as a home page section. */
+  headingLevel?: 1 | 2;
+}
+
+export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
+  const Heading = headingLevel === 1 ? "h1" : "h2";
   const t = useTranslations("Courses");
   const td = useTranslations("Directions");
   const tier = useTier();
@@ -47,12 +56,12 @@ export function Courses({ courses, branches }: { courses: Course[]; branches: Br
     }`;
 
   return (
-    <section id="courses" aria-labelledby="courses-title" className="relative py-20 sm:py-28">
+    <section id="courses" aria-labelledby="courses-title" className={`relative ${headingLevel === 1 ? "pb-20 pt-6 sm:pb-28" : "py-20 sm:py-28"}`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <Reveal>
-          <h2 id="courses-title" className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <Heading id="courses-title" className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
             {t("title")}
-          </h2>
+          </Heading>
           <p className="mt-4 max-w-xl text-lg text-chalk/70">{t("lead")}</p>
         </Reveal>
 
@@ -126,13 +135,21 @@ export function Courses({ courses, branches }: { courses: Course[]; branches: Br
                         </span>
                         <span className="text-sm text-chalk/60">{t("months", { count: c.durationMonths })}</span>
                       </div>
-                      <h3 className="mt-6 font-display text-2xl font-bold leading-tight">{c.title}</h3>
+                      <h3 className="mt-6 font-display text-2xl font-bold leading-tight">
+                        {/* Stretched link: the whole card opens the course page */}
+                        <Link href={`/courses/${c.slug}`} className="after:absolute after:inset-0 after:content-['']">
+                          {c.title}
+                        </Link>
+                      </h3>
                       <p className="mt-3 flex-1 leading-relaxed text-chalk/70">{c.summary}</p>
                       <div className="mt-7 flex items-center justify-between border-t border-chalk/10 pt-5">
                         <span className="text-sm text-chalk/60">{t(`level.${c.level}`)}</span>
-                        <a href="#contact" className="text-sm font-semibold text-amber hover:underline">
+                        <Link
+                          href={`/courses/${c.slug}#apply`}
+                          className="relative z-10 text-sm font-semibold text-amber hover:underline"
+                        >
                           {t("apply")}
-                        </a>
+                        </Link>
                       </div>
                     </article>
                     </SpotlightCard>

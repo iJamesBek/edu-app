@@ -16,15 +16,23 @@ export interface RawBranch {
   name: Localized;
 }
 
+export type Format = "offline" | "online" | "hybrid";
+
 export interface RawCourse {
   id: string;
+  /** English, URL-safe, stable: used in /courses/<slug> for every locale. */
   slug: string;
   category: Category;
   title: Localized;
   summary: Localized;
+  description: Localized;
   durationMonths: number;
+  lessonsPerWeek: number;
   level: Level;
+  format: Format;
   branchIds: string[];
+  modules: Localized[];
+  outcomes: Localized[];
 }
 
 export interface RawTeamMember {
@@ -65,6 +73,27 @@ export interface Course {
   branchIds: string[];
 }
 
+export interface CourseDetail extends Course {
+  description: string;
+  lessonsPerWeek: number;
+  format: Format;
+  modules: string[];
+  outcomes: string[];
+}
+
+/** What the enrollment form sends. */
+export interface ApplicationInput {
+  name: string;
+  phone: string;
+  courseId: string;
+  branchId?: string;
+  locale: Locale;
+}
+
+export interface ApplicationResult {
+  id: string;
+}
+
 export interface TeamMember {
   id: string;
   name: string;
@@ -88,4 +117,5 @@ export interface DataSource {
   team(): Promise<RawTeamMember[]>;
   testimonials(): Promise<RawTestimonial[]>;
   stats(): Promise<Stats>;
+  submitApplication(input: ApplicationInput): Promise<ApplicationResult>;
 }

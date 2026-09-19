@@ -4,7 +4,12 @@
 
 it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad: juda ko‘p, lekin bezovta qilmaydigan animatsiyalar ("wow" effekti), qurilma imkoniyatiga moslashadigan harakat tizimi va kuchli SEO.
 
-Birinchi bosqich: faqat bosh sahifa. Kurslar, blog, jamoa va boshqa sahifalar keyinroq.
+Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]` (ariza formasi bilan). Keyingi: jamoa, bitiruvchilar, aloqa, blog, online.
+
+## Marshrutlar
+
+- URL segmentlari va sluglar faqat inglizcha, barcha tillarda bir xil: `/courses/frontend-development`, `/ru/courses/frontend-development`. Tarjima qilinmaydi.
+- Yangi sahifa: `src/app/[locale]/<english-path>/page.tsx`, `generateMetadata` ichida `pageMetadata()` (`src/lib/metadata.ts`), sahifada `Breadcrumbs` + `breadcrumbJsonLd()`, va `src/app/sitemap.ts` ga qo‘shing.
 
 ## Stack
 
@@ -44,6 +49,7 @@ messages/             uz.json, ru.json, en.json
 - Hozir ma'lumot `src/lib/mock.ts` dan keladi. Haqiqiy backendga o‘tish: `EDU_API_URL` ni sozlang (`.env.example`ga qarang). Backend JSON'i `Raw*` tiplaridan farq qilsa, faqat `api.ts` ichidagi `httpSource` da moslang.
 - Mock'da faqat `2500` (o‘quvchi) va `350` raqamlari eski saytdan olingan. Filial, kurs, jamoa va fikrlar to‘qilgan placeholder.
 - `api.ts` `server-only`: client komponentga kerakli ma'lumotni props orqali bering.
+- Ariza: `ApplyForm` → Server Action `src/lib/actions.ts` (validatsiya, honeypot, telefonni `+998XXXXXXXXX` ga keltiradi) → `api.submitApplication`. Mock faqat server logiga yozadi (telefon yashirilgan). Real backend: `POST {EDU_API_URL}/applications`.
 
 ## Til (i18n)
 

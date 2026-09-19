@@ -11,10 +11,10 @@ import { PHONE } from "@/lib/site";
 import logo from "../../public/brand/logo-light.png";
 
 const SECTIONS = [
-  { id: "courses", key: "courses" },
-  { id: "team", key: "team" },
-  { id: "reviews", key: "alumni" },
-  { id: "online", key: "online" },
+  { href: "/courses", key: "courses" },
+  { href: "/#team", key: "team" },
+  { href: "/#reviews", key: "alumni" },
+  { href: "/#online", key: "online" },
 ] as const;
 
 export function Header() {
@@ -59,13 +59,16 @@ export function Header() {
 
         <nav aria-label={t("menu")} className="ml-4 hidden items-center gap-1 lg:flex">
           {SECTIONS.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              className="rounded-full px-3.5 py-2 text-sm text-chalk/75 transition-colors hover:bg-chalk/8 hover:text-chalk"
+            <Link
+              key={s.key}
+              href={s.href}
+              aria-current={pathname === s.href ? "page" : undefined}
+              className={`rounded-full px-3.5 py-2 text-sm transition-colors hover:bg-chalk/8 hover:text-chalk ${
+                !s.href.includes("#") && pathname.startsWith(s.href) ? "text-amber" : "text-chalk/75"
+              }`}
             >
               {t(s.key)}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -130,14 +133,14 @@ export function Header() {
             className="border-t border-chalk/10 px-4 pb-6 pt-2 lg:hidden"
           >
             {SECTIONS.map((s) => (
-              <a
-                key={s.id}
-                href={`#${s.id}`}
+              <Link
+                key={s.key}
+                href={s.href}
                 onClick={() => setOpen(false)}
                 className="block border-b border-chalk/8 py-4 font-display text-lg"
               >
                 {t(s.key)}
-              </a>
+              </Link>
             ))}
             <a href={`tel:${PHONE}`} className="mt-5 block text-amber tabular-nums">
               +998 70 010 76 76

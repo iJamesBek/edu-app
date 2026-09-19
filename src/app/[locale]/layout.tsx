@@ -80,6 +80,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     Directions: messages.Directions,
     Hero: messages.Hero,
     Reviews: messages.Reviews,
+    Apply: messages.Apply,
   };
 
   return (

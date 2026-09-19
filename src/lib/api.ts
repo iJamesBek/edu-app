@@ -2,8 +2,11 @@ import "server-only";
 import { cache } from "react";
 import { mockSource } from "./mock";
 import type {
+  ApplicationInput,
+  ApplicationResult,
   Branch,
   Course,
+  CourseDetail,
   DataSource,
   Locale,
   Stats,
@@ -43,6 +46,16 @@ function httpSource(baseUrl: string): DataSource {
     team: () => get("/team", "team"),
     testimonials: () => get("/testimonials", "testimonials"),
     stats: () => get("/stats", "stats"),
+    async submitApplication(input) {
+      const res = await fetch(`${root}/applications`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(input),
+        cache: "no-store",
+      });
+      if (!res.ok) throw new Error(`EDU API /applications responded ${res.status}`);
+      return (await res.json()) as ApplicationResult;
+    },
   };
 }
 
@@ -71,6 +84,29 @@ const courses = cache(async (locale: Locale): Promise<Course[]> =>
   })),
 );
 
+const courseBySlug = cache(async (locale: Locale, slug: string): Promise<CourseDetail | null> => {
+  const c = (await source.courses()).find((x) => x.slug === slug);
+  if (!c) return null;
+  return {
+    id: c.id,
+    slug: c.slug,
+    category: c.category,
+    title: c.title[locale],
+    summary: c.summary[locale],
+    description: c.description[locale],
+    durationMonths: c.durationMonths,
+    lessonsPerWeek: c.lessonsPerWeek,
+    level: c.level,
+    format: c.format,
+    branchIds: c.branchIds,
+    modules: c.modules.map((m) => m[locale]),
+    outcomes: c.outcomes.map((o) => o[locale]),
+  };
+});
+
+/** Locale-independent list of slugs, for generateStaticParams and the sitemap. */
+const courseSlugs = cache(async (): Promise<string[]> => (await source.courses()).map((c) => c.slug));
+
 const team = cache(async (locale: Locale): Promise<TeamMember[]> =>
   (await source.team()).map((m) => ({
     id: m.id,
@@ -90,4 +126,18 @@ const testimonials = cache(async (locale: Locale): Promise<Testimonial[]> =>
 
 const stats = cache(async (): Promise<Stats> => source.stats());
 
-export const api = { branches, courses, team, testimonials, stats };
+/** Not cached: every call is a new submission. */
+function submitApplication(input: ApplicationInput): Promise<ApplicationResult> {
+  return source.submitApplication(input);
+}
+
+export const api = {
+  branches,
+  courses,
+  courseBySlug,
+  courseSlugs,
+  team,
+  testimonials,
+  stats,
+  submitApplication,
+};

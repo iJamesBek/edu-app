@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
 import { Magnetic } from "@/motion/Magnetic";
 import { CityScene } from "./CityScene";
 import { HeroAurora } from "./HeroAurora";
@@ -61,12 +62,12 @@ export async function Hero() {
                 {t("ctaCourses")}
               </a>
             </Magnetic>
-            <a
-              href="#contact"
+            <Link
+              href="/courses#apply"
               className="inline-flex items-center rounded-full border border-chalk/25 px-7 py-4 font-semibold transition-colors hover:border-majolica hover:text-majolica"
             >
               {t("ctaConsult")}
-            </a>
+            </Link>
           </div>
         </div>
 

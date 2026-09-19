@@ -114,5 +114,56 @@
     "contact": "Contact",
     "follow": "Follow us",
     "rights": "All rights reserved."
+  },
+  "CoursesPage": {
+    "title": "Courses",
+    "metaTitle": "Courses — programming, design, marketing and Office",
+    "description": "IT Shaharcha courses: frontend, Python backend, graphic design, SMM and Office. Choose by length, program and branch."
+  },
+  "Breadcrumbs": {
+    "label": "Breadcrumb",
+    "home": "Home",
+    "courses": "Courses"
+  },
+  "CoursePage": {
+    "duration": "Duration",
+    "schedule": "Schedule",
+    "lessonsPerWeek": "{count, plural, one {# lesson a week} other {# lessons a week}}",
+    "level": "Level",
+    "format": "Format",
+    "branches": "Branches",
+    "formats": {
+      "offline": "In person, at a branch",
+      "online": "Online",
+      "hybrid": "Hybrid (in person + online)"
+    },
+    "program": "Curriculum",
+    "outcomes": "By the end of the course",
+    "apply": "Enroll in this course",
+    "related": "Other courses",
+    "allCourses": "All courses"
+  },
+  "Apply": {
+    "title": "Enroll in a course",
+    "lead": "Leave your details — a manager will call you within 1 business day.",
+    "name": "Your name",
+    "namePlaceholder": "For example, Aziz",
+    "phone": "Phone number",
+    "phoneHint": "With +998 or 9 digits",
+    "course": "Course",
+    "branch": "Branch",
+    "branchAny": "Any",
+    "submit": "Send application",
+    "submitting": "Sending…",
+    "successTitle": "Application received",
+    "successText": "Thank you! We will contact you soon. Application number: {id}",
+    "again": "Send another application",
+    "errors": {
+      "name": "Enter your name (at least 2 letters).",
+      "phone": "Enter a valid number, for example +998 90 123 45 67.",
+      "course": "Choose a course.",
+      "server": "The application was not sent. Try again in a moment or call us."
+    },
+    "privacy": "Your details are used only to contact you."
   }
 }

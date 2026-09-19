@@ -29,7 +29,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const jsonLd = [
     organizationJsonLd(locale, { name: t("siteName"), description: t("description") }),
     websiteJsonLd(locale, t("siteName")),
-    courseListJsonLd(courses, t("siteName")),
+    courseListJsonLd(courses, t("siteName"), locale),
   ];
 
   return (

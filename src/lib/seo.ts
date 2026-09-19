@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import type { Course } from "./types";
+import type { Course, CourseDetail } from "./types";
 import { PHONE, SITE_URL, SOCIALS, absoluteUrl, localePath } from "./site";
 
 type JsonLd = Record<string, unknown>;
@@ -40,7 +40,7 @@ export function websiteJsonLd(locale: Locale, name: string): JsonLd {
   };
 }
 
-export function courseListJsonLd(courses: Course[], providerName: string): JsonLd {
+export function courseListJsonLd(courses: Course[], providerName: string, locale?: Locale): JsonLd {
   return {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -51,8 +51,59 @@ export function courseListJsonLd(courses: Course[], providerName: string): JsonL
         "@type": "Course",
         name: course.title,
         description: course.summary,
+        ...(locale ? { url: absoluteUrl(localePath(locale, `/courses/${course.slug}`)) } : {}),
         provider: { "@type": "EducationalOrganization", name: providerName },
       },
     })),
+  };
+}
+
+export function breadcrumbJsonLd(items: { name: string; path: string }[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: item.name,
+      item: absoluteUrl(item.path),
+    })),
+  };
+}
+
+const COURSE_MODE: Record<CourseDetail["format"], string> = {
+  offline: "Onsite",
+  online: "Online",
+  hybrid: "Blended",
+};
+
+export function courseJsonLd(
+  locale: Locale,
+  course: CourseDetail,
+  input: { providerName: string; url: string },
+): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "@id": `${input.url}#course`,
+    name: course.title,
+    description: course.description,
+    url: input.url,
+    inLanguage: locale,
+    educationalLevel: course.level,
+    teaches: course.outcomes,
+    syllabusSections: course.modules.map((name) => ({ "@type": "Syllabus", name })),
+    provider: {
+      "@type": "EducationalOrganization",
+      "@id": `${SITE_URL}/#organization`,
+      name: input.providerName,
+      sameAs: SITE_URL,
+    },
+    hasCourseInstance: {
+      "@type": "CourseInstance",
+      courseMode: COURSE_MODE[course.format],
+      courseWorkload: `P${course.durationMonths}M`,
+      inLanguage: locale,
+    },
   };
 }

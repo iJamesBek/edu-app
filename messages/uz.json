@@ -114,5 +114,56 @@
     "contact": "Aloqa",
     "follow": "Bizni kuzating",
     "rights": "Barcha huquqlar himoyalangan."
+  },
+  "CoursesPage": {
+    "title": "Kurslar",
+    "metaTitle": "Kurslar — dasturlash, dizayn, marketing va Office",
+    "description": "IT Shaharcha kurslari: frontend, Python backend, grafik dizayn, SMM va Office. Davomiylik, dastur va filiallar bo‘yicha tanlang."
+  },
+  "Breadcrumbs": {
+    "label": "Sahifa yo‘li",
+    "home": "Bosh sahifa",
+    "courses": "Kurslar"
+  },
+  "CoursePage": {
+    "duration": "Davomiyligi",
+    "schedule": "Jadval",
+    "lessonsPerWeek": "{count, plural, one {haftasiga # dars} other {haftasiga # dars}}",
+    "level": "Daraja",
+    "format": "Format",
+    "branches": "Filiallar",
+    "formats": {
+      "offline": "Oflayn, filialda",
+      "online": "Online",
+      "hybrid": "Aralash (oflayn + online)"
+    },
+    "program": "O‘quv dasturi",
+    "outcomes": "Kurs oxirida",
+    "apply": "Kursga yozilish",
+    "related": "Boshqa kurslar",
+    "allCourses": "Barcha kurslar"
+  },
+  "Apply": {
+    "title": "Kursga yozilish",
+    "lead": "Ma’lumotlaringizni qoldiring — menejer 1 ish kuni ichida qo‘ng‘iroq qiladi.",
+    "name": "Ismingiz",
+    "namePlaceholder": "Masalan, Aziz",
+    "phone": "Telefon raqam",
+    "phoneHint": "+998 bilan yoki 9 raqam",
+    "course": "Kurs",
+    "branch": "Filial",
+    "branchAny": "Farqi yo‘q",
+    "submit": "Arizani yuborish",
+    "submitting": "Yuborilmoqda…",
+    "successTitle": "Ariza qabul qilindi",
+    "successText": "Rahmat! Tez orada siz bilan bog‘lanamiz. Ariza raqami: {id}",
+    "again": "Yana ariza yuborish",
+    "errors": {
+      "name": "Ismingizni kiriting (kamida 2 ta harf).",
+      "phone": "Telefon raqamni to‘g‘ri kiriting, masalan +998 90 123 45 67.",
+      "course": "Kursni tanlang.",
+      "server": "Ariza yuborilmadi. Birozdan keyin qayta urinib ko‘ring yoki qo‘ng‘iroq qiling."
+    },
+    "privacy": "Ma’lumotlaringiz faqat siz bilan bog‘lanish uchun ishlatiladi."
   }
 }

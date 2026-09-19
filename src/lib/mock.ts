@@ -1,3 +1,4 @@
+import { mockCourses } from "./mock-courses";
 import type { DataSource } from "./types";
 
 /**
@@ -15,98 +16,7 @@ export const mockSource: DataSource = {
   },
 
   async courses() {
-    return [
-      {
-        id: "c-office",
-        slug: "office-it-foundation",
-        category: "office",
-        title: {
-          uz: "Office / IT Foundation",
-          ru: "Office / IT Foundation",
-          en: "Office / IT Foundation",
-        },
-        summary: {
-          uz: "Kompyuter savodxonligi va amaliy dasturlar bilan ishonchli ishlash.",
-          ru: "Компьютерная грамотность и уверенная работа с прикладными программами.",
-          en: "Computer literacy and confident work with everyday productivity tools.",
-        },
-        durationMonths: 2,
-        level: "beginner",
-        branchIds: ["tashkent", "samarkand", "andijan"],
-      },
-      {
-        id: "c-design",
-        slug: "graphic-design",
-        category: "design",
-        title: {
-          uz: "Grafik dizayn",
-          ru: "Графический дизайн",
-          en: "Graphic Design",
-        },
-        summary: {
-          uz: "Ijodiy va texnologik ko‘nikmalarni rivojlantiruvchi dastur.",
-          ru: "Программа, развивающая творческие и технические навыки.",
-          en: "A program that builds creative and technical skills together.",
-        },
-        durationMonths: 5,
-        level: "beginner",
-        branchIds: ["tashkent", "samarkand"],
-      },
-      {
-        id: "c-frontend",
-        slug: "frontend-development",
-        category: "programming",
-        title: {
-          uz: "Frontend dasturlash",
-          ru: "Frontend-разработка",
-          en: "Frontend Development",
-        },
-        summary: {
-          uz: "HTML, CSS, JavaScript va React bilan real loyihalar yaratish.",
-          ru: "Создание реальных проектов на HTML, CSS, JavaScript и React.",
-          en: "Build real projects with HTML, CSS, JavaScript and React.",
-        },
-        durationMonths: 8,
-        level: "intermediate",
-        branchIds: ["tashkent", "andijan"],
-      },
-      {
-        id: "c-python",
-        slug: "python-backend",
-        category: "programming",
-        title: {
-          uz: "Python va backend",
-          ru: "Python и backend",
-          en: "Python & Backend",
-        },
-        summary: {
-          uz: "Python, ma’lumotlar bazasi va API yaratish asoslaridan boshlab.",
-          ru: "От основ Python до баз данных и создания API.",
-          en: "From Python basics to databases and building APIs.",
-        },
-        durationMonths: 8,
-        level: "intermediate",
-        branchIds: ["tashkent"],
-      },
-      {
-        id: "c-smm",
-        slug: "smm-marketing",
-        category: "marketing",
-        title: {
-          uz: "SMM va marketing",
-          ru: "SMM и маркетинг",
-          en: "SMM & Marketing",
-        },
-        summary: {
-          uz: "Kontent, reklama va tahlil: brendni ijtimoiy tarmoqlarda o‘stirish.",
-          ru: "Контент, реклама и аналитика: развитие бренда в соцсетях.",
-          en: "Content, ads and analytics: growing a brand on social media.",
-        },
-        durationMonths: 4,
-        level: "beginner",
-        branchIds: ["samarkand", "andijan"],
-      },
-    ];
+    return mockCourses;
   },
 
   async team() {
@@ -155,5 +65,20 @@ export const mockSource: DataSource = {
 
   async stats() {
     return { students: 2500, mentors: 350, directions: 4, branches: 3 };
+  },
+
+  async submitApplication(input) {
+    // Mock: nothing is stored or sent anywhere. Only the server log shows it,
+    // with the phone masked so personal data does not end up in logs.
+    const id = `mock-${Date.now().toString(36)}`;
+    console.info("[mock] application received", {
+      id,
+      courseId: input.courseId,
+      branchId: input.branchId ?? null,
+      locale: input.locale,
+      phone: input.phone.replace(/\d(?=\d{2})/g, "•"),
+    });
+    await new Promise((r) => setTimeout(r, 600));
+    return { id };
   },
 };
