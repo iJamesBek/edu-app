@@ -1,0 +1,96 @@
+{
+  "Meta": {
+    "title": "IT Shaharcha — dasturlash, dizayn va marketing o‘quv markazi",
+    "description": "IT Shaharcha — dasturlash, dizayn va marketing kabi zamonaviy kasblar o‘rgatiladigan o‘quv markazi. Kurslar, bepul coworking, sertifikat va ish taklifi kafolati.",
+    "siteName": "IT Shaharcha",
+    "ogAlt": "IT Shaharcha — kelajak kasblari shaharchasi"
+  },
+  "Common": {
+    "skip": "Asosiy kontentga o‘tish",
+    "home": "IT Shaharcha bosh sahifa"
+  },
+  "Nav": {
+    "courses": "Kurslar",
+    "team": "Bizning jamoa",
+    "alumni": "Bitiruvchilar",
+    "online": "Online ta'lim",
+    "call": "Qo‘ng‘iroq qilish",
+    "menu": "Menyu",
+    "close": "Yopish",
+    "language": "Til"
+  },
+  "Hero": {
+    "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
+    "lead": "Dasturlash, dizayn va marketing — 2500 dan ortiq o‘quvchi bilan bitta shaharchada.",
+    "ctaCourses": "Kursni tanlash",
+    "ctaConsult": "Bepul maslahat olish",
+    "cityHint": "Binoni bosing va yo‘nalishni tanlang",
+    "cityLabel": "IT Shaharcha: har bir bino bitta yo‘nalish"
+  },
+  "Directions": {
+    "programming": "Dasturlash",
+    "design": "Dizayn",
+    "marketing": "Marketing",
+    "office": "Office"
+  },
+  "Courses": {
+    "title": "Kurslar",
+    "lead": "Yo‘nalish va filialni tanlang — mos kurslar shu yerda.",
+    "filterDirection": "Kurs turlari",
+    "filterBranch": "Filial",
+    "all": "Barchasi",
+    "months": "{count, plural, one {# oy} other {# oy}}",
+    "level": {
+      "beginner": "Boshlang‘ich",
+      "intermediate": "O‘rta"
+    },
+    "apply": "Kursga yozilish",
+    "emptyTitle": "Hozircha kurslar mavjud emas",
+    "emptyText": "Bu filial uchun kurslar tez orada qo‘shiladi. Boshqa filiallarni ko‘rib chiqishingiz mumkin.",
+    "resultCount": "{count, plural, one {# ta kurs topildi} other {# ta kurs topildi}}"
+  },
+  "About": {
+    "title": "“IT Shaharcha” bu —",
+    "text1": "Dasturlash, dizayn va marketing kabi zamonaviy kasblar o‘rgatiladigan markaz.",
+    "text2": "Zamonaviy kasblar yordamida insonlar hayotini yaxshilovchi va kelajakka bo‘lgan ishonchni mustahkamlovchi maskan.",
+    "stats": {
+      "students": "bir vaqtda o‘qiydigan o‘quvchi",
+      "mentors": "ustoz va xodim",
+      "directions": "asosiy yo‘nalish",
+      "branches": "filial"
+    }
+  },
+  "WhyUs": {
+    "title": "Natija beradigan ta’lim — bu bizning ustunligimiz!",
+    "items": {
+      "coworking": { "title": "Bepul coworking", "text": "Dars tugagach ham qulay joyda ishlang, o‘rganing va hamkasblar toping." },
+      "quality": { "title": "Sifatli ta'lim", "text": "Amaliy loyihalar va real mentor tahlili bilan o‘qitiladi." },
+      "contests": { "title": "Doimiy musobaqalar", "text": "Hackathon va tanlovlarda o‘z kuchingizni sinab ko‘ring." },
+      "masterclasses": { "title": "Bepul mahorat darslari", "text": "Soha mutaxassislaridan ochiq darslar va amaliy maslahatlar." },
+      "jobs": { "title": "Ish taklif qilish kafolati", "text": "Kurs yakunida ish topishga yordam beramiz." },
+      "certificate": { "title": "Sertifikat", "text": "Kursni tugatganingizni tasdiqlovchi hujjat oling." }
+    }
+  },
+  "Team": {
+    "title": "Bizning jamoa",
+    "lead": "Har bir yo‘nalishni amaliyotchi mentorlar olib boradi."
+  },
+  "Online": {
+    "title": "Zamonaviy kasb — zamonaviy hayot!",
+    "lead": "Online ta’lim bilan istalgan joydan o‘qing va o‘z tempingizda rivojlaning.",
+    "question": "Xalqaro bozorga chiqishni istaysizmi?",
+    "cta": "Online kursni ko‘rish"
+  },
+  "Reviews": {
+    "title": "Fikrlar",
+    "lead": "Bitiruvchilarimiz o‘z tajribasi haqida.",
+    "prev": "Oldingi fikr",
+    "next": "Keyingi fikr"
+  },
+  "Footer": {
+    "tagline": "Zamonaviy kasblar shaharchasi.",
+    "contact": "Aloqa",
+    "follow": "Bizni kuzating",
+    "rights": "Barcha huquqlar himoyalangan."
+  }
+}

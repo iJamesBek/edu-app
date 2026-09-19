@@ -1,0 +1,96 @@
+{
+  "Meta": {
+    "title": "IT Shaharcha — Coding, Design & Marketing Learning Center",
+    "description": "IT Shaharcha is a learning center for modern professions: programming, design and marketing. Courses, free coworking, certificates and a job-placement guarantee.",
+    "siteName": "IT Shaharcha",
+    "ogAlt": "IT Shaharcha — the little city of future professions"
+  },
+  "Common": {
+    "skip": "Skip to main content",
+    "home": "IT Shaharcha home"
+  },
+  "Nav": {
+    "courses": "Courses",
+    "team": "Our team",
+    "alumni": "Alumni",
+    "online": "Online learning",
+    "call": "Call us",
+    "menu": "Menu",
+    "close": "Close",
+    "language": "Language"
+  },
+  "Hero": {
+    "title": "IT Shaharcha: learn the professions of the future with us",
+    "lead": "Programming, design and marketing — in one small city with over 2,500 students.",
+    "ctaCourses": "Choose a course",
+    "ctaConsult": "Get a free consultation",
+    "cityHint": "Tap a building to pick a direction",
+    "cityLabel": "IT Shaharcha: every building is a direction"
+  },
+  "Directions": {
+    "programming": "Programming",
+    "design": "Design",
+    "marketing": "Marketing",
+    "office": "Office"
+  },
+  "Courses": {
+    "title": "Courses",
+    "lead": "Pick a direction and a branch — matching courses appear here.",
+    "filterDirection": "Course types",
+    "filterBranch": "Branch",
+    "all": "All",
+    "months": "{count, plural, one {# month} other {# months}}",
+    "level": {
+      "beginner": "Beginner",
+      "intermediate": "Intermediate"
+    },
+    "apply": "Enroll in this course",
+    "emptyTitle": "No courses yet",
+    "emptyText": "Courses for this branch are coming soon. Have a look at the other branches.",
+    "resultCount": "{count, plural, one {# course found} other {# courses found}}"
+  },
+  "About": {
+    "title": "“IT Shaharcha” is",
+    "text1": "A center where modern professions such as programming, design and marketing are taught.",
+    "text2": "A place that improves people’s lives through modern professions and builds confidence in the future.",
+    "stats": {
+      "students": "students learning at the same time",
+      "mentors": "mentors and staff",
+      "directions": "core directions",
+      "branches": "branches"
+    }
+  },
+  "WhyUs": {
+    "title": "Education that delivers results is our advantage!",
+    "items": {
+      "coworking": { "title": "Free coworking", "text": "Keep working and learning in a comfortable space after class, and meet peers." },
+      "quality": { "title": "Quality education", "text": "Hands-on projects and real mentor feedback on your work." },
+      "contests": { "title": "Regular contests", "text": "Test your skills at hackathons and competitions." },
+      "masterclasses": { "title": "Free masterclasses", "text": "Open lessons and practical advice from industry specialists." },
+      "jobs": { "title": "Job-placement guarantee", "text": "We help you find a job when the course ends." },
+      "certificate": { "title": "Certificate", "text": "Receive a document confirming you completed the course." }
+    }
+  },
+  "Team": {
+    "title": "Our team",
+    "lead": "Every direction is led by mentors who work in the field."
+  },
+  "Online": {
+    "title": "A modern profession — a modern life!",
+    "lead": "Study online from anywhere and grow at your own pace.",
+    "question": "Want to reach the international market?",
+    "cta": "See online courses"
+  },
+  "Reviews": {
+    "title": "Reviews",
+    "lead": "Our graduates on their experience.",
+    "prev": "Previous review",
+    "next": "Next review"
+  },
+  "Footer": {
+    "tagline": "The little city of modern professions.",
+    "contact": "Contact",
+    "follow": "Follow us",
+    "rights": "All rights reserved."
+  }
+}
