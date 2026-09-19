@@ -3,14 +3,9 @@
 import { animate, useInView } from "framer-motion";
 import { useLocale } from "next-intl";
 import { useEffect, useRef } from "react";
+import { formatNumber } from "@/lib/format";
 import { tierAtLeast } from "./device-tier";
 import { useTier } from "./MotionProvider";
-
-/** Deterministic grouping so server and client text always match. */
-export function formatNumber(value: number, locale: string): string {
-  const separator = locale === "en" ? "," : " ";
-  return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, separator);
-}
 
 interface CountUpProps {
   value: number;

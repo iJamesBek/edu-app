@@ -1,18 +1,56 @@
 import { mockCourses } from "./mock-courses";
 import { mockPosts } from "./mock-posts";
+import { mockTeachers } from "./mock-teachers";
 import type { DataSource } from "./types";
 
 /**
  * MOCK DATA — placeholder content until the real API is connected.
  * Only the 2500 (students) and 350 figures come from the current live site;
- * branches, courses, team and testimonials are invented for development.
+ * the Toshloq branch address and hours are real (old site); everything else is invented.
  */
 export const mockSource: DataSource = {
   async branches() {
     return [
-      { id: "tashkent", name: { uz: "Toshkent", ru: "Ташкент", en: "Tashkent" } },
-      { id: "samarkand", name: { uz: "Samarqand", ru: "Самарканд", en: "Samarkand" } },
-      { id: "andijan", name: { uz: "Andijon", ru: "Андижан", en: "Andijan" } },
+      {
+        // Real: address, hours and phone from it-shaharcha.uz. Classrooms and seats are invented.
+        id: "toshloq",
+        slug: "toshloq",
+        name: { uz: "Toshloq filiali", ru: "Филиал Ташлак", en: "Toshloq branch" },
+        address: {
+          uz: "Toshloq tumani, “Yangi yo‘l” MFY, Alisher Navoiy ko‘chasi, 18-uy",
+          ru: "Ташлакский район, МСГ «Янги йўл», ул. Алишера Навои, 18",
+          en: "18 Alisher Navoiy St, Yangi Yo‘l, Toshloq district",
+        },
+        phone: "+998700107676",
+        openingHours: "Mo-Sa 09:00-18:00",
+        hours: { uz: "Dushanba–shanba, 09:00–18:00", ru: "Пн–Сб, 09:00–18:00", en: "Mon–Sat, 09:00–18:00" },
+        classrooms: 8,
+        seats: 120,
+      },
+      {
+        // MOCK
+        id: "fergana",
+        slug: "fergana",
+        name: { uz: "Farg‘ona filiali", ru: "Филиал Фергана", en: "Fergana branch" },
+        address: { uz: "Farg‘ona shahri (namuna manzil)", ru: "г. Фергана (пример адреса)", en: "Fergana city (sample address)" },
+        phone: "+998700107676",
+        openingHours: "Mo-Sa 09:00-19:00",
+        hours: { uz: "Dushanba–shanba, 09:00–19:00", ru: "Пн–Сб, 09:00–19:00", en: "Mon–Sat, 09:00–19:00" },
+        classrooms: 6,
+        seats: 90,
+      },
+      {
+        // MOCK
+        id: "margilan",
+        slug: "margilan",
+        name: { uz: "Marg‘ilon filiali", ru: "Филиал Маргилан", en: "Margilan branch" },
+        address: { uz: "Marg‘ilon shahri (namuna manzil)", ru: "г. Маргилан (пример адреса)", en: "Margilan city (sample address)" },
+        phone: "+998700107676",
+        openingHours: "Mo-Sa 09:00-18:00",
+        hours: { uz: "Dushanba–shanba, 09:00–18:00", ru: "Пн–Сб, 09:00–18:00", en: "Mon–Sat, 09:00–18:00" },
+        classrooms: 4,
+        seats: 60,
+      },
     ];
   },
 
@@ -20,13 +58,8 @@ export const mockSource: DataSource = {
     return mockCourses;
   },
 
-  async team() {
-    return [
-      { id: "t1", name: "Mentor A.", role: { uz: "Frontend mentori", ru: "Ментор по Frontend", en: "Frontend mentor" } },
-      { id: "t2", name: "Mentor B.", role: { uz: "Dizayn mentori", ru: "Ментор по дизайну", en: "Design mentor" } },
-      { id: "t3", name: "Mentor C.", role: { uz: "Backend mentori", ru: "Ментор по Backend", en: "Backend mentor" } },
-      { id: "t4", name: "Mentor D.", role: { uz: "Marketing mentori", ru: "Ментор по маркетингу", en: "Marketing mentor" } },
-    ];
+  async teachers() {
+    return mockTeachers;
   },
 
   async testimonials() {

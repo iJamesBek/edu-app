@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import type { Course, CourseDetail, Post, PostDetail } from "./types";
+import type { Branch, Course, CourseDetail, Post, PostDetail, Teacher } from "./types";
 import { PHONE, SITE_URL, SOCIALS, absoluteUrl, localePath } from "./site";
 
 type JsonLd = Record<string, unknown>;
@@ -80,7 +80,7 @@ const COURSE_MODE: Record<CourseDetail["format"], string> = {
 export function courseJsonLd(
   locale: Locale,
   course: CourseDetail,
-  input: { providerName: string; url: string },
+  input: { providerName: string; url: string; instructors?: string[] },
 ): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -92,7 +92,18 @@ export function courseJsonLd(
     inLanguage: locale,
     educationalLevel: course.level,
     teaches: course.outcomes,
-    syllabusSections: course.modules.map((name) => ({ "@type": "Syllabus", name })),
+    syllabusSections: course.sections.map((sec) => ({
+      "@type": "Syllabus",
+      name: sec.title,
+      description: sec.topics.join(", "),
+    })),
+    offers: {
+      "@type": "Offer",
+      category: "Paid",
+      price: course.priceMonthly,
+      priceCurrency: "UZS",
+      url: input.url,
+    },
     provider: {
       "@type": "EducationalOrganization",
       "@id": `${SITE_URL}/#organization`,
@@ -102,8 +113,15 @@ export function courseJsonLd(
     hasCourseInstance: {
       "@type": "CourseInstance",
       courseMode: COURSE_MODE[course.format],
-      courseWorkload: `P${course.durationMonths}M`,
+      startDate: course.nextStart,
       inLanguage: locale,
+      courseSchedule: {
+        "@type": "Schedule",
+        repeatFrequency: "P1W",
+        repeatCount: course.durationMonths * 4,
+        duration: `PT${course.hoursPerLesson * 60}M`,
+      },
+      instructor: input.instructors?.map((name) => ({ "@type": "Person", name })),
     },
   };
 }
@@ -145,5 +163,50 @@ export function blogPostingJsonLd(locale: Locale, post: PostDetail, input: { url
     author: { "@type": "Person", name: post.author.name, jobTitle: post.author.role },
     publisher: { "@id": `${SITE_URL}/#organization` },
     isPartOf: { "@id": `${absoluteUrl(localePath(locale, "/blog"))}#blog` },
+  };
+}
+
+export function faqJsonLd(items: { q: string; a: string }[]): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: items.map((i) => ({
+      "@type": "Question",
+      name: i.q,
+      acceptedAnswer: { "@type": "Answer", text: i.a },
+    })),
+  };
+}
+
+export function personJsonLd(teacher: Teacher, input: { url: string; courses: string[] }): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": `${input.url}#person`,
+    name: teacher.name,
+    jobTitle: teacher.role,
+    description: teacher.bio,
+    url: input.url,
+    knowsAbout: teacher.skills,
+    worksFor: { "@id": `${SITE_URL}/#organization` },
+    ...(input.courses.length ? { hasOccupation: { "@type": "Occupation", name: teacher.role } } : {}),
+  };
+}
+
+export function branchJsonLd(branch: Branch, input: { url: string; name: string }): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "@id": `${input.url}#branch`,
+    name: input.name,
+    url: input.url,
+    telephone: branch.phone,
+    openingHours: branch.openingHours,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: branch.address,
+      addressCountry: "UZ",
+    },
+    parentOrganization: { "@id": `${SITE_URL}/#organization` },
   };
 }

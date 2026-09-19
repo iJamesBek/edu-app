@@ -4,7 +4,9 @@
 
 it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad: juda ko‘p, lekin bezovta qilmaydigan animatsiyalar ("wow" effekti), qurilma imkoniyatiga moslashadigan harakat tizimi va kuchli SEO.
 
-Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]` (ariza formasi bilan), `/blog`, `/blog/[slug]`. Keyingi: jamoa, bitiruvchilar, aloqa, online.
+Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/branches`, `/branches/[slug]`, `/blog`, `/blog/[slug]`, 404. Keyingi: bitiruvchilar, online.
+
+Asosiy ta’lim formati — oflayn (filialda). Kurs sahifasida format, filiallar va "Nega oflayn" bo‘limi shuni ko‘rsatadi.
 
 ## Marshrutlar
 
@@ -74,10 +76,18 @@ Animatsiyalar ko‘p bo‘ladi, lekin har biri qurilmaga moslashadi. Bu loyihani
 - O‘z kodimizda kichik bundle uchun `motion` o‘rniga `m` (`framer-motion/m`) ishlating.
 - Sinash uchun darajani URL orqali majburlash mumkin: `/?motion=high`, `mid`, `low`, `none`.
 
+## UI komponentlar
+
+- `src/components/ui/` — o‘zimizning umumiy elementlar (shadcn o‘rniga, loyiha tokenlari bilan): `Accordion` (kurs dasturi, FAQ; yopiq panellar HTML’da qoladi — SEO), `Avatar` (rasm yo‘q odamlar uchun generatsiya).
+- Kartalar: `TeacherCard`, `BranchCard`, `blog/PostCard` — butun karta bosiladi (stretched link), ichki havolalar `relative z-10`.
+- Server komponentdan client komponentga funksiya yoki komponent (`as={Link}`) uzatmang — faqat oddiy qiymatlar.
+
 ## React Bits
 
 - `src/components/bits/` — reactbits.dev dan olingan komponentlar (TS-TW variant, registry: `https://reactbits.dev/r/<Name>-TS-TW.json`).
 - Importlar `motion/react` dan `framer-motion` ga almashtirilgan (bitta kutubxona). Mahalliy o‘zgarishlar `edu:` izohi bilan belgilangan.
+- Ishlatilganlar: Aurora, CardSwap, Stack, RotatingText, ScrollVelocity, SpotlightCard, ClickSpark, StarBorder, ScrollFloat, CircularText, LogoLoop.
+- `src/components/bits/**` uchun ESLint’da `no-explicit-any` va `exhaustive-deps` o‘chirilgan (upstream kod); o‘z kodimiz qat’iy qoladi.
 - Har bir komponent darajaga bo‘ysunadi: `Aurora` (WebGL, `ogl`) faqat `mid`+ va idle'dan keyin yuklanadi; `CardSwap`, `ScrollVelocity`, `ClickSpark` `low`/`none` da to‘xtaydi; ekrandan chiqqanda render/interval to‘xtaydi.
 - Yangi React Bits komponent qo‘shsangiz: `Math.random` render ichida bo‘lmasin (hydration), cheksiz `requestAnimationFrame` ekrandan tashqarida to‘xtasin, `useTier()` bilan cheklansin.
 - Litsenziya: MIT + Commons Clause (komponentlarni loyihada ishlatish mumkin, o‘zini sotish mumkin emas).

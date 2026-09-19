@@ -13,7 +13,18 @@ export type Level = "beginner" | "intermediate";
 
 export interface RawBranch {
   id: string;
+  /** English, URL-safe: /branches/<slug> */
+  slug: string;
   name: Localized;
+  address: Localized;
+  landmark?: Localized;
+  phone: string;
+  /** e.g. "Mo-Sa 09:00-18:00" (schema.org openingHours format) */
+  openingHours: string;
+  /** Human-readable version of openingHours */
+  hours: Localized;
+  classrooms: number;
+  seats: number;
 }
 
 export type Format = "offline" | "online" | "hybrid";
@@ -31,8 +42,17 @@ export interface RawCourse {
   level: Level;
   format: Format;
   branchIds: string[];
-  modules: Localized[];
+  /** Curriculum: sections in order, each with its topics (tech names, not translated) */
+  sections: { title: Localized; topics: string[] }[];
   outcomes: Localized[];
+  tools: string[];
+  teacherIds: string[];
+  hoursPerLesson: number;
+  groupSize: number;
+  /** Monthly price in so‘m */
+  priceMonthly: number;
+  /** ISO date of the next group start */
+  nextStart: string;
 }
 
 export type BlogCategory = "guides" | "news" | "stories" | "events";
@@ -60,10 +80,19 @@ export interface RawPost {
   courseSlug?: string;
 }
 
-export interface RawTeamMember {
+export interface RawTeacher {
   id: string;
+  /** English, URL-safe: /teachers/<slug> */
+  slug: string;
   name: string;
   role: Localized;
+  bio: Localized;
+  experienceYears: number;
+  studentsTaught: number;
+  skills: string[];
+  branchIds: string[];
+  /** Short quote shown on the profile */
+  motto: Localized;
 }
 
 export interface RawTestimonial {
@@ -84,7 +113,15 @@ export interface Stats {
 
 export interface Branch {
   id: string;
+  slug: string;
   name: string;
+  address: string;
+  landmark?: string;
+  phone: string;
+  openingHours: string;
+  hours: string;
+  classrooms: number;
+  seats: number;
 }
 
 export interface Course {
@@ -96,14 +133,21 @@ export interface Course {
   durationMonths: number;
   level: Level;
   branchIds: string[];
+  teacherIds: string[];
+  nextStart: string;
 }
 
 export interface CourseDetail extends Course {
   description: string;
   lessonsPerWeek: number;
   format: Format;
-  modules: string[];
+  sections: { title: string; topics: string[] }[];
   outcomes: string[];
+  tools: string[];
+  hoursPerLesson: number;
+  groupSize: number;
+  priceMonthly: number;
+  nextStart: string;
 }
 
 export interface Post {
@@ -136,10 +180,17 @@ export interface ApplicationResult {
   id: string;
 }
 
-export interface TeamMember {
+export interface Teacher {
   id: string;
+  slug: string;
   name: string;
   role: string;
+  bio: string;
+  motto: string;
+  experienceYears: number;
+  studentsTaught: number;
+  skills: string[];
+  branchIds: string[];
 }
 
 export interface Testimonial {
@@ -156,7 +207,7 @@ export interface Testimonial {
 export interface DataSource {
   branches(): Promise<RawBranch[]>;
   courses(): Promise<RawCourse[]>;
-  team(): Promise<RawTeamMember[]>;
+  teachers(): Promise<RawTeacher[]>;
   testimonials(): Promise<RawTestimonial[]>;
   stats(): Promise<Stats>;
   posts(): Promise<RawPost[]>;

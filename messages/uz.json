@@ -12,7 +12,6 @@
   },
   "Nav": {
     "courses": "Kurslar",
-    "team": "Bizning jamoa",
     "alumni": "Bitiruvchilar",
     "online": "Online ta'lim",
     "call": "Qo‘ng‘iroq qilish",
@@ -21,7 +20,9 @@
     "language": "Til",
     "top": "Yuqoriga qaytish",
     "logoAlt": "«IT Shaharcha» — Yoshlar axborot texnologiyalari markazi",
-    "blog": "Blog"
+    "blog": "Blog",
+    "teachers": "Ustozlar",
+    "branches": "Filiallar"
   },
   "Hero": {
     "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
@@ -126,7 +127,9 @@
     "label": "Sahifa yo‘li",
     "home": "Bosh sahifa",
     "courses": "Kurslar",
-    "blog": "Blog"
+    "blog": "Blog",
+    "teachers": "Ustozlar",
+    "branches": "Filiallar"
   },
   "CoursePage": {
     "duration": "Davomiyligi",
@@ -144,7 +147,96 @@
     "outcomes": "Kurs oxirida",
     "apply": "Kursga yozilish",
     "related": "Boshqa kurslar",
-    "allCourses": "Barcha kurslar"
+    "allCourses": "Barcha kurslar",
+    "offline": "Oflayn ta’lim",
+    "nextStart": "Keyingi guruh",
+    "startsOn": "{date} kuni start",
+    "scheduleValue": "Haftasiga {days} kun · {hours} soat",
+    "groupSize": "Guruhda",
+    "groupValue": "{count} kishigacha",
+    "price": "Narx",
+    "perMonth": "/ oyiga",
+    "audienceTitle": "Bu kurs kimlar uchun?",
+    "audience": {
+      "beginners": {
+        "title": "Noldan boshlayotganlar",
+        "text": "Oldingi tajriba shart emas: birinchi darsdan boshlab hammasini tushuntiramiz."
+      },
+      "switchers": {
+        "title": "Kasbini o‘zgartirmoqchi bo‘lganlar",
+        "text": "Hozirgi ishingizdan zamonaviy va talab yuqori sohaga o‘tish uchun aniq yo‘l."
+      },
+      "students": {
+        "title": "Maktab o‘quvchilari va talabalar",
+        "text": "O‘qish bilan birga kelajak kasbiga tayyorgarlik va portfolio."
+      }
+    },
+    "sectionLabel": "{n}-bo‘lim",
+    "topicsCount": "{count, plural, one {# ta mavzu} other {# ta mavzu}}",
+    "expandAll": "Hammasini ochish",
+    "collapseAll": "Yig‘ish",
+    "toolsTitle": "Qaysi vositalarni o‘rganasiz",
+    "teachersTitle": "Ustozlaringiz",
+    "teacherProfile": "Profil",
+    "offlineTitle": "Nega oflayn o‘qish samaraliroq",
+    "offlineItems": {
+      "lab": {
+        "title": "Jihozlangan xonalar",
+        "text": "Har bir o‘quvchiga kompyuter — noutbuk olib kelish shart emas."
+      },
+      "mentor": {
+        "title": "Mentor yoningizda",
+        "text": "Savolga darhol javob, kodingizni jonli tekshiruv."
+      },
+      "group": {
+        "title": "Kichik guruhlar",
+        "text": "Har kimga yetarli e’tibor va jamoaviy loyihalar."
+      },
+      "coworking": {
+        "title": "Bepul coworking",
+        "text": "Darsdan keyin ham markazda qolib, mashq qiling."
+      }
+    },
+    "whereTitle": "Qayerda o‘qiysiz",
+    "branchCta": "Filial haqida",
+    "pricingTitle": "To‘lov variantlari",
+    "plans": {
+      "monthly": "Oyma-oy",
+      "half": "Ikkiga bo‘lib",
+      "full": "Bittada to‘liq"
+    },
+    "popular": "Ko‘p tanlanadi",
+    "total": "Jami {amount}",
+    "save": "{amount} tejaysiz",
+    "twoPayments": "2 marta to‘lov",
+    "onePayment": "Bir martalik to‘lov",
+    "months": "{count, plural, one {# oy davomida} other {# oy davomida}}",
+    "currency": "so‘m",
+    "faqTitle": "Ko‘p so‘raladigan savollar",
+    "faq": {
+      "experience": {
+        "q": "Oldin hech narsa bilmasam ham bo‘ladimi?",
+        "a": "Ha. Kurs noldan boshlanadi, birinchi darslarda asoslarni birga o‘rganamiz."
+      },
+      "laptop": {
+        "q": "O‘z kompyuterim kerakmi?",
+        "a": "Darslar markazdagi jihozlangan xonalarda o‘tadi, kompyuter beriladi. Uyda mashq qilish uchun o‘zingizniki bo‘lsa yaxshi."
+      },
+      "missed": {
+        "q": "Darsni qoldirsam nima bo‘ladi?",
+        "a": "Mentor bilan qo‘shimcha vaqt kelishasiz yoki coworking’da mavzuni qayta ishlaysiz."
+      },
+      "certificate": {
+        "q": "Sertifikat beriladimi?",
+        "a": "Ha, kursni muvaffaqiyatli tugatganlarga IT Shaharcha sertifikati beriladi."
+      },
+      "installments": {
+        "q": "Bo‘lib to‘lash mumkinmi?",
+        "a": "Ha: oyma-oy, ikkiga bo‘lib yoki bittada to‘lashingiz mumkin. Bittada to‘lasangiz chegirma bor."
+      }
+    },
+    "finalTitle": "Birinchi darsga yozilish bir daqiqa oladi",
+    "mobileCta": "Yozilish"
   },
   "Apply": {
     "title": "Kursga yozilish",
@@ -205,5 +297,53 @@
     "courseCtaButton": "Kurs haqida",
     "empty": "Bu mavzuda hozircha maqola yo‘q.",
     "updated": "Yangilangan"
+  },
+  "Teachers": {
+    "title": "Ustozlar",
+    "metaTitle": "Ustozlar — IT Shaharcha mentorlari",
+    "description": "IT Shaharcha ustozlari: tajribasi, ko‘nikmalari, olib boradigan kurslari va dars beradigan filiallari.",
+    "lead": "Har bir yo‘nalishni sohada ishlagan amaliyotchi mentorlar olib boradi.",
+    "all": "Barchasi",
+    "experience": "{count, plural, one {# yillik tajriba} other {# yillik tajriba}}",
+    "students": "{count}+ o‘quvchi",
+    "years": "yil tajriba",
+    "studentsLabel": "o‘quvchi o‘qitgan",
+    "skills": "Ko‘nikmalar",
+    "courses": "Olib boradigan kurslari",
+    "branches": "Qayerda dars beradi",
+    "back": "Barcha ustozlar",
+    "viewProfile": "Profilni ko‘rish",
+    "about": "Ustoz haqida",
+    "others": "Boshqa ustozlar"
+  },
+  "Branches": {
+    "title": "Filiallar",
+    "metaTitle": "Filiallar — manzil, ish vaqti va kurslar",
+    "description": "IT Shaharcha filiallari: manzillar, ish vaqti, telefon, filialdagi kurslar va ustozlar.",
+    "lead": "Asosiy ta’lim oflayn. Uyingizga yaqin filialni tanlang.",
+    "address": "Manzil",
+    "hours": "Ish vaqti",
+    "phone": "Telefon",
+    "rooms": "{count} ta xona",
+    "seats": "{count} o‘rin",
+    "courses": "Bu filialdagi kurslar",
+    "teachers": "Bu filialdagi ustozlar",
+    "openMap": "Xaritada ochish",
+    "loadMap": "Xaritani ko‘rsatish",
+    "mapNote": "Xarita Google Maps’dan yuklanadi.",
+    "call": "Qo‘ng‘iroq qilish",
+    "details": "Batafsil",
+    "back": "Barcha filiallar",
+    "mapTitle": "{name} xaritada",
+    "roomsLabel": "sinfxona",
+    "seatsLabel": "o‘rin"
+  },
+  "NotFound": {
+    "title": "Bu sahifa sayohatga chiqib ketibdi",
+    "text": "Qidirgan sahifangiz topilmadi. Balki manzil o‘zgargandir — bosh sahifaga qayting yoki kurslarni ko‘rib chiqing.",
+    "home": "Bosh sahifaga",
+    "courses": "Kurslarni ko‘rish",
+    "popular": "Balki shular kerakdir",
+    "metaTitle": "Sahifa topilmadi"
   }
 }

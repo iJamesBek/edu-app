@@ -14,7 +14,9 @@ import type {
   PostDetail,
   RawPost,
   Stats,
-  TeamMember,
+  RawBranch,
+  RawTeacher,
+  Teacher,
   Testimonial,
 } from "./types";
 
@@ -47,7 +49,7 @@ function httpSource(baseUrl: string): DataSource {
   return {
     branches: () => get("/branches", "branches"),
     courses: () => get("/courses", "courses"),
-    team: () => get("/team", "team"),
+    teachers: () => get("/teachers", "teachers"),
     testimonials: () => get("/testimonials", "testimonials"),
     stats: () => get("/stats", "stats"),
     posts: () => get("/posts", "posts"),
@@ -72,9 +74,31 @@ export const dataSourceName = process.env.EDU_API_URL ? "http" : "mock";
 
 /* Each call is deduplicated per request via React cache(). */
 
+function toBranch(b: RawBranch, locale: Locale): Branch {
+  return {
+    id: b.id,
+    slug: b.slug,
+    name: b.name[locale],
+    address: b.address[locale],
+    landmark: b.landmark?.[locale],
+    phone: b.phone,
+    openingHours: b.openingHours,
+    hours: b.hours[locale],
+    classrooms: b.classrooms,
+    seats: b.seats,
+  };
+}
+
 const branches = cache(async (locale: Locale): Promise<Branch[]> =>
-  (await source.branches()).map((b) => ({ id: b.id, name: b.name[locale] })),
+  (await source.branches()).map((b) => toBranch(b, locale)),
 );
+
+const branchBySlug = cache(async (locale: Locale, slug: string): Promise<Branch | null> => {
+  const b = (await source.branches()).find((x) => x.slug === slug);
+  return b ? toBranch(b, locale) : null;
+});
+
+const branchSlugs = cache(async () => (await source.branches()).map((b) => b.slug));
 
 const courses = cache(async (locale: Locale): Promise<Course[]> =>
   (await source.courses()).map((c) => ({
@@ -86,6 +110,8 @@ const courses = cache(async (locale: Locale): Promise<Course[]> =>
     durationMonths: c.durationMonths,
     level: c.level,
     branchIds: c.branchIds,
+    teacherIds: c.teacherIds,
+    nextStart: c.nextStart,
   })),
 );
 
@@ -104,20 +130,49 @@ const courseBySlug = cache(async (locale: Locale, slug: string): Promise<CourseD
     level: c.level,
     format: c.format,
     branchIds: c.branchIds,
-    modules: c.modules.map((m) => m[locale]),
+    sections: c.sections.map((sec) => ({ title: sec.title[locale], topics: sec.topics })),
     outcomes: c.outcomes.map((o) => o[locale]),
+    tools: c.tools,
+    teacherIds: c.teacherIds,
+    hoursPerLesson: c.hoursPerLesson,
+    groupSize: c.groupSize,
+    priceMonthly: c.priceMonthly,
+    nextStart: c.nextStart,
   };
 });
 
 /** Locale-independent list of slugs, for generateStaticParams and the sitemap. */
 const courseSlugs = cache(async (): Promise<string[]> => (await source.courses()).map((c) => c.slug));
 
-const team = cache(async (locale: Locale): Promise<TeamMember[]> =>
-  (await source.team()).map((m) => ({
-    id: m.id,
-    name: m.name,
-    role: m.role[locale],
-  })),
+function toTeacher(t: RawTeacher, locale: Locale): Teacher {
+  return {
+    id: t.id,
+    slug: t.slug,
+    name: t.name,
+    role: t.role[locale],
+    bio: t.bio[locale],
+    motto: t.motto[locale],
+    experienceYears: t.experienceYears,
+    studentsTaught: t.studentsTaught,
+    skills: t.skills,
+    branchIds: t.branchIds,
+  };
+}
+
+const teachers = cache(async (locale: Locale): Promise<Teacher[]> =>
+  (await source.teachers()).map((t) => toTeacher(t, locale)),
+);
+
+const teacherBySlug = cache(async (locale: Locale, slug: string): Promise<Teacher | null> => {
+  const t = (await source.teachers()).find((x) => x.slug === slug);
+  return t ? toTeacher(t, locale) : null;
+});
+
+const teacherSlugs = cache(async () => (await source.teachers()).map((t) => t.slug));
+
+/** Courses a teacher leads (courses list their teachers, not the other way round). */
+const coursesByTeacher = cache(async (locale: Locale, teacherId: string): Promise<Course[]> =>
+  (await courses(locale)).filter((c) => c.teacherIds.includes(teacherId)),
 );
 
 const testimonials = cache(async (locale: Locale): Promise<Testimonial[]> =>
@@ -179,10 +234,15 @@ function submitApplication(input: ApplicationInput): Promise<ApplicationResult> 
 
 export const api = {
   branches,
+  branchBySlug,
+  branchSlugs,
+  teachers,
+  teacherBySlug,
+  teacherSlugs,
+  coursesByTeacher,
   courses,
   courseBySlug,
   courseSlugs,
-  team,
   testimonials,
   stats,
   posts,

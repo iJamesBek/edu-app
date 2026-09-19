@@ -12,7 +12,6 @@
   },
   "Nav": {
     "courses": "Courses",
-    "team": "Our team",
     "alumni": "Alumni",
     "online": "Online learning",
     "call": "Call us",
@@ -21,7 +20,9 @@
     "language": "Language",
     "top": "Back to top",
     "logoAlt": "“IT Shaharcha” — Youth Information Technology Center",
-    "blog": "Blog"
+    "blog": "Blog",
+    "teachers": "Teachers",
+    "branches": "Branches"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
@@ -126,7 +127,9 @@
     "label": "Breadcrumb",
     "home": "Home",
     "courses": "Courses",
-    "blog": "Blog"
+    "blog": "Blog",
+    "teachers": "Teachers",
+    "branches": "Branches"
   },
   "CoursePage": {
     "duration": "Duration",
@@ -144,7 +147,96 @@
     "outcomes": "By the end of the course",
     "apply": "Enroll in this course",
     "related": "Other courses",
-    "allCourses": "All courses"
+    "allCourses": "All courses",
+    "offline": "In-person learning",
+    "nextStart": "Next group",
+    "startsOn": "Starts {date}",
+    "scheduleValue": "{days} days a week · {hours} h",
+    "groupSize": "Group size",
+    "groupValue": "up to {count} people",
+    "price": "Price",
+    "perMonth": "/ month",
+    "audienceTitle": "Who is this course for?",
+    "audience": {
+      "beginners": {
+        "title": "Complete beginners",
+        "text": "No experience needed: we explain everything from the first lesson."
+      },
+      "switchers": {
+        "title": "Career changers",
+        "text": "A clear path from your current job into a modern, in-demand field."
+      },
+      "students": {
+        "title": "School and university students",
+        "text": "Prepare for a future career and build a portfolio alongside your studies."
+      }
+    },
+    "sectionLabel": "Part {n}",
+    "topicsCount": "{count, plural, one {# topic} other {# topics}}",
+    "expandAll": "Expand all",
+    "collapseAll": "Collapse",
+    "toolsTitle": "Tools you will learn",
+    "teachersTitle": "Your teachers",
+    "teacherProfile": "Profile",
+    "offlineTitle": "Why learning in person works better",
+    "offlineItems": {
+      "lab": {
+        "title": "Equipped classrooms",
+        "text": "A computer for every student — no need to bring a laptop."
+      },
+      "mentor": {
+        "title": "A mentor beside you",
+        "text": "Instant answers and live review of your code."
+      },
+      "group": {
+        "title": "Small groups",
+        "text": "Enough attention for everyone, plus team projects."
+      },
+      "coworking": {
+        "title": "Free coworking",
+        "text": "Stay at the center after class and keep practicing."
+      }
+    },
+    "whereTitle": "Where you will study",
+    "branchCta": "About the branch",
+    "pricingTitle": "Payment options",
+    "plans": {
+      "monthly": "Monthly",
+      "half": "In two payments",
+      "full": "Pay in full"
+    },
+    "popular": "Most popular",
+    "total": "Total {amount}",
+    "save": "Save {amount}",
+    "twoPayments": "2 payments",
+    "onePayment": "One payment",
+    "months": "{count, plural, one {for # month} other {for # months}}",
+    "currency": "UZS",
+    "faqTitle": "Frequently asked questions",
+    "faq": {
+      "experience": {
+        "q": "Can I join with no experience?",
+        "a": "Yes. The course starts from zero and we cover the basics together in the first lessons."
+      },
+      "laptop": {
+        "q": "Do I need my own computer?",
+        "a": "Classes run in the center’s equipped classrooms, and a computer is provided. Having your own helps for practice at home."
+      },
+      "missed": {
+        "q": "What if I miss a class?",
+        "a": "Arrange extra time with your mentor or work through the topic in the coworking space."
+      },
+      "certificate": {
+        "q": "Is there a certificate?",
+        "a": "Yes, students who complete the course receive an IT Shaharcha certificate."
+      },
+      "installments": {
+        "q": "Can I pay in installments?",
+        "a": "Yes: monthly, in two payments or all at once. Paying in full comes with a discount."
+      }
+    },
+    "finalTitle": "Signing up for a first lesson takes one minute",
+    "mobileCta": "Enroll"
   },
   "Apply": {
     "title": "Enroll in a course",
@@ -205,5 +297,53 @@
     "courseCtaButton": "About the course",
     "empty": "No articles on this topic yet.",
     "updated": "Updated"
+  },
+  "Teachers": {
+    "title": "Teachers",
+    "metaTitle": "Teachers — IT Shaharcha mentors",
+    "description": "IT Shaharcha teachers: experience, skills, the courses they lead and the branches where they teach.",
+    "lead": "Every direction is led by mentors who have worked in the field.",
+    "all": "All",
+    "experience": "{count, plural, one {# year of experience} other {# years of experience}}",
+    "students": "{count}+ students",
+    "years": "years of experience",
+    "studentsLabel": "students taught",
+    "skills": "Skills",
+    "courses": "Courses",
+    "branches": "Teaches at",
+    "back": "All teachers",
+    "viewProfile": "View profile",
+    "about": "About",
+    "others": "Other teachers"
+  },
+  "Branches": {
+    "title": "Branches",
+    "metaTitle": "Branches — addresses, hours and courses",
+    "description": "IT Shaharcha branches: addresses, opening hours, phone, courses and teachers at each branch.",
+    "lead": "Learning happens in person. Pick the branch closest to you.",
+    "address": "Address",
+    "hours": "Opening hours",
+    "phone": "Phone",
+    "rooms": "{count, plural, one {# classroom} other {# classrooms}}",
+    "seats": "{count} seats",
+    "courses": "Courses at this branch",
+    "teachers": "Teachers at this branch",
+    "openMap": "Open in maps",
+    "loadMap": "Show the map",
+    "mapNote": "The map loads from Google Maps.",
+    "call": "Call",
+    "details": "Details",
+    "back": "All branches",
+    "mapTitle": "{name} on the map",
+    "roomsLabel": "classrooms",
+    "seatsLabel": "seats"
+  },
+  "NotFound": {
+    "title": "This page went exploring",
+    "text": "We couldn’t find that page. The address may have changed — head back home or have a look at our courses.",
+    "home": "Back to home",
+    "courses": "See courses",
+    "popular": "Maybe you were looking for",
+    "metaTitle": "Page not found"
   }
 }
