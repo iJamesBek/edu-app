@@ -17,7 +17,9 @@ import type {
   RawBranch,
   RawTeacher,
   Teacher,
-  Testimonial,
+  Review,
+  ReviewPage,
+  ReviewSummary,
 } from "./types";
 
 /**
@@ -50,7 +52,9 @@ function httpSource(baseUrl: string): DataSource {
     branches: () => get("/branches", "branches"),
     courses: () => get("/courses", "courses"),
     teachers: () => get("/teachers", "teachers"),
-    testimonials: () => get("/testimonials", "testimonials"),
+    reviews: ({ courseId, page, perPage }) =>
+      get(`/reviews?page=${page}&per_page=${perPage}${courseId ? `&course=${encodeURIComponent(courseId)}` : ""}`, "reviews"),
+    reviewSummary: (courseId) => get(`/reviews/summary${courseId ? `?course=${encodeURIComponent(courseId)}` : ""}`, "reviews"),
     stats: () => get("/stats", "stats"),
     posts: () => get("/posts", "posts"),
     async submitApplication(input) {
@@ -156,6 +160,7 @@ function toTeacher(t: RawTeacher, locale: Locale): Teacher {
     studentsTaught: t.studentsTaught,
     skills: t.skills,
     branchIds: t.branchIds,
+    photo: t.photo,
   };
 }
 
@@ -175,14 +180,34 @@ const coursesByTeacher = cache(async (locale: Locale, teacherId: string): Promis
   (await courses(locale)).filter((c) => c.teacherIds.includes(teacherId)),
 );
 
-const testimonials = cache(async (locale: Locale): Promise<Testimonial[]> =>
-  (await source.testimonials()).map((t) => ({
-    id: t.id,
-    author: t.author,
-    course: t.course[locale],
-    quote: t.quote[locale],
-  })),
+const reviews = cache(
+  async (locale: Locale, page = 1, perPage = 12, courseId?: string): Promise<ReviewPage> => {
+    const [{ items, total }, raw] = await Promise.all([
+      source.reviews({ courseId, page, perPage }),
+      source.courses(),
+    ]);
+    const byId = new Map(raw.map((c) => [c.id, c]));
+    return {
+      items: items.map((r): Review => {
+        const c = byId.get(r.courseId);
+        return {
+          id: r.id,
+          author: r.author,
+          rating: r.rating,
+          date: r.date,
+          text: r.text,
+          lang: r.lang,
+          course: c ? { id: c.id, slug: c.slug, title: c.title[locale] } : null,
+        };
+      }),
+      total,
+      page,
+      pages: Math.max(1, Math.ceil(total / perPage)),
+    };
+  },
 );
+
+const reviewSummary = cache((courseId?: string): Promise<ReviewSummary> => source.reviewSummary(courseId));
 
 const stats = cache(async (): Promise<Stats> => source.stats());
 
@@ -243,7 +268,8 @@ export const api = {
   courses,
   courseBySlug,
   courseSlugs,
-  testimonials,
+  reviews,
+  reviewSummary,
   stats,
   posts,
   postBySlug,

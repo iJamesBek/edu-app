@@ -13,7 +13,7 @@ import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { TeacherCard } from "@/components/TeacherCard";
 import { TeacherHeroAvatar } from "@/components/TeacherHeroAvatar";
-import { Avatar } from "@/components/ui/Avatar";
+import { TeacherPhoto } from "@/components/ui/TeacherPhoto";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import { CountUp } from "@/motion/CountUp";
 import { Reveal } from "@/motion/Reveal";
@@ -74,7 +74,7 @@ export default async function TeacherPage({ params }: PageProps<"/[locale]/teach
             <div className="mt-10 grid items-center gap-12 lg:grid-cols-[1fr_1.2fr]">
               <div className="rise order-first lg:order-last">
                 <TeacherHeroAvatar ringText={ring}>
-                  <Avatar name={teacher.name} className="size-full" textClassName="text-7xl" />
+                  <TeacherPhoto name={teacher.name} photo={teacher.photo} sizes="300px" priority className="size-full" textClassName="text-7xl" />
                 </TeacherHeroAvatar>
               </div>
               <div>
@@ -189,7 +189,7 @@ export default async function TeacherPage({ params }: PageProps<"/[locale]/teach
               {others.map((x, i) => (
                 <li key={x.id}>
                   <Reveal delay={i * 0.08} className="h-full">
-                    <TeacherCard teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, experienceLabel: t("experience", { count: x.experienceYears }) }} />
+                    <TeacherCard teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, photo: x.photo, experienceLabel: t("experience", { count: x.experienceYears }) }} />
                   </Reveal>
                 </li>
               ))}

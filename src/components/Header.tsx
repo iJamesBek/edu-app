@@ -14,7 +14,7 @@ const SECTIONS = [
   { href: "/courses", key: "courses" },
   { href: "/teachers", key: "teachers" },
   { href: "/branches", key: "branches" },
-  { href: "/#reviews", key: "alumni" },
+  { href: "/reviews", key: "alumni" },
   { href: "/blog", key: "blog" },
 ] as const;
 

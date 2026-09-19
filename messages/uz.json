@@ -12,7 +12,7 @@
   },
   "Nav": {
     "courses": "Kurslar",
-    "alumni": "Bitiruvchilar",
+    "alumni": "Fikrlar",
     "online": "Online ta'lim",
     "call": "Qo‘ng‘iroq qilish",
     "menu": "Menyu",
@@ -101,16 +101,31 @@
     "lead": "Har bir yo‘nalishni amaliyotchi mentorlar olib boradi."
   },
   "Online": {
-    "title": "Zamonaviy kasb — zamonaviy hayot!",
-    "lead": "Online ta’lim bilan istalgan joydan o‘qing va o‘z tempingizda rivojlaning.",
-    "question": "Xalqaro bozorga chiqishni istaysizmi?",
-    "cta": "Online kursni ko‘rish",
-    "rotPrefix": "Online o‘rganing:"
+    "title": "Oflayn ta’lim — jonli, jamoada, shaharchada",
+    "lead": "Darslar filiallarimizdagi jihozlangan xonalarda o‘tadi: mentor yoningizda, guruhdoshlar bilan birga.",
+    "question": "Uyingizga yaqin filial bormi?",
+    "cta": "Filialni tanlash",
+    "rotPrefix": "Filialda o‘rganing:"
   },
   "Reviews": {
     "title": "Fikrlar",
-    "lead": "Bitiruvchilarimiz o‘z tajribasi haqida.",
-    "hint": "Kartani suring yoki bosing — keyingi fikr chiqadi"
+    "lead": "O‘quvchilarimiz o‘z tajribasi haqida.",
+    "metaTitle": "O‘quvchilar fikrlari",
+    "description": "IT Shaharcha o‘quvchilari va bitiruvchilarining kurslar haqidagi fikrlari: reyting, kurs bo‘yicha filtr.",
+    "all": "Barchasi",
+    "allReviews": "Barcha fikrlar ({count})",
+    "average": "O‘rtacha baho",
+    "basedOn": "{count, plural, one {# ta fikr asosida} other {# ta fikr asosida}}",
+    "stars": "5 dan {rating}",
+    "filter": "Kurs bo‘yicha",
+    "prev": "Oldingi",
+    "next": "Keyingi",
+    "pageOf": "{page}-sahifa / {pages}",
+    "pagination": "Sahifalar",
+    "empty": "Bu kurs bo‘yicha hozircha fikr yo‘q.",
+    "courseReviews": "Bu kurs haqida fikrlar",
+    "seeAll": "Hammasini ko‘rish",
+    "original": "Asl tilda"
   },
   "Footer": {
     "tagline": "Zamonaviy kasblar shaharchasi.",
@@ -129,7 +144,8 @@
     "courses": "Kurslar",
     "blog": "Blog",
     "teachers": "Ustozlar",
-    "branches": "Filiallar"
+    "branches": "Filiallar",
+    "reviews": "Fikrlar"
   },
   "CoursePage": {
     "duration": "Davomiyligi",

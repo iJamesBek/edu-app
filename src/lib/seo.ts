@@ -80,7 +80,7 @@ const COURSE_MODE: Record<CourseDetail["format"], string> = {
 export function courseJsonLd(
   locale: Locale,
   course: CourseDetail,
-  input: { providerName: string; url: string; instructors?: string[] },
+  input: { providerName: string; url: string; instructors?: string[]; rating?: { average: number; count: number } },
 ): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -97,6 +97,17 @@ export function courseJsonLd(
       name: sec.title,
       description: sec.topics.join(", "),
     })),
+    ...(input.rating && input.rating.count > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: input.rating.average,
+            reviewCount: input.rating.count,
+            bestRating: 5,
+            worstRating: 1,
+          },
+        }
+      : {}),
     offers: {
       "@type": "Offer",
       category: "Paid",

@@ -8,7 +8,7 @@ export async function Online() {
   const t = await getTranslations("Online");
 
   return (
-    <section id="online" aria-labelledby="online-title" className="relative overflow-hidden py-20 sm:py-28">
+    <section id="campus" aria-labelledby="online-title" className="relative overflow-hidden py-20 sm:py-28">
       <VelocityRibbons />
 
       <div className="mx-auto mt-20 max-w-5xl px-4 text-center sm:px-6">
@@ -25,7 +25,7 @@ export async function Online() {
           <div className="mt-6">
             <Magnetic>
               <Link
-                href="/courses#apply"
+                href="/branches"
                 className="inline-flex rounded-full bg-chalk px-7 py-4 font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
                 {t("cta")}

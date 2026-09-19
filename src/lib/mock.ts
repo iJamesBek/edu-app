@@ -1,5 +1,8 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { mockCourses } from "./mock-courses";
 import { mockPosts } from "./mock-posts";
+import { mockReviews } from "./mock-reviews";
 import { mockTeachers } from "./mock-teachers";
 import type { DataSource } from "./types";
 
@@ -8,6 +11,8 @@ import type { DataSource } from "./types";
  * Only the 2500 (students) and 350 figures come from the current live site;
  * the Toshloq branch address and hours are real (old site); everything else is invented.
  */
+const PHOTO_EXTS = ["webp", "jpg", "jpeg", "png"];
+
 export const mockSource: DataSource = {
   async branches() {
     return [
@@ -59,42 +64,26 @@ export const mockSource: DataSource = {
   },
 
   async teachers() {
-    return mockTeachers;
+    // Drop a photo into public/teachers/<slug>.(jpg|jpeg|png|webp) and it is picked up automatically.
+    return mockTeachers.map((t) => {
+      if (t.photo) return t;
+      const ext = PHOTO_EXTS.find((e) => existsSync(join(process.cwd(), "public", "teachers", `${t.slug}.${e}`)));
+      return ext ? { ...t, photo: `/teachers/${t.slug}.${ext}` } : t;
+    });
   },
 
-  async testimonials() {
-    return [
-      {
-        id: "r1",
-        author: "Bitiruvchi A.",
-        course: { uz: "Web dasturlash (Frontend)", ru: "Веб-разработка (Frontend)", en: "Web Development (Frontend)" },
-        quote: {
-          uz: "Bu yerda nazariya emas, amaliyot ko‘p. Birinchi loyihamni kursning o‘rtasidayoq topshirdim.",
-          ru: "Здесь много практики, а не теории. Первый проект я сдал уже в середине курса.",
-          en: "Lots of practice, not just theory. I shipped my first project halfway through the course.",
-        },
-      },
-      {
-        id: "r2",
-        author: "Bitiruvchi B.",
-        course: { uz: "Grafik dizayn", ru: "Графический дизайн", en: "Graphic Design" },
-        quote: {
-          uz: "Mentorlar har bir ishimni birga tahlil qilishdi. Portfolio tayyor bo‘lgach, birinchi buyurtma keldi.",
-          ru: "Менторы разбирали каждую мою работу. Когда портфолио было готово, пришёл первый заказ.",
-          en: "Mentors reviewed every piece with me. My first client came once the portfolio was ready.",
-        },
-      },
-      {
-        id: "r3",
-        author: "Bitiruvchi C.",
-        course: { uz: "Robototexnika", ru: "Робототехника", en: "Robotics" },
-        quote: {
-          uz: "Birinchi robotimiz chiziq bo‘ylab yurganda butun guruh qarsak chaldi. Endi musobaqaga tayyorlanyapmiz.",
-          ru: "Когда наш первый робот поехал по линии, вся группа аплодировала. Теперь готовимся к соревнованиям.",
-          en: "When our first robot followed the line, the whole group applauded. Now we are preparing for a competition.",
-        },
-      },
-    ];
+  async reviews({ courseId, page, perPage }) {
+    const all = courseId ? mockReviews.filter((r) => r.courseId === courseId) : mockReviews;
+    const from = (page - 1) * perPage;
+    return { items: all.slice(from, from + perPage), total: all.length };
+  },
+
+  async reviewSummary(courseId) {
+    const all = courseId ? mockReviews.filter((r) => r.courseId === courseId) : mockReviews;
+    const byRating: [number, number, number, number, number] = [0, 0, 0, 0, 0];
+    for (const r of all) byRating[r.rating - 1]++;
+    const average = all.length ? all.reduce((n, r) => n + r.rating, 0) / all.length : 0;
+    return { count: all.length, average: Math.round(average * 10) / 10, byRating };
   },
 
   async stats() {

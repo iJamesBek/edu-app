@@ -29,7 +29,7 @@ export async function Team({ teachers }: { teachers: Teacher[] }) {
             <li key={x.id}>
               <Reveal delay={i * 0.08} className="h-full">
                 <TeacherCard
-                  teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, experienceLabel: tt("experience", { count: x.experienceYears }) }}
+                  teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, photo: x.photo, experienceLabel: tt("experience", { count: x.experienceYears }) }}
                 />
               </Reveal>
             </li>

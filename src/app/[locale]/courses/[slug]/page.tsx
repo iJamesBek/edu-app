@@ -19,6 +19,9 @@ import { Accordion } from "@/components/ui/Accordion";
 import { FloatHeading, StickyApply, ToolsLoop } from "@/components/course/CourseMotion";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import StarBorder from "@/components/bits/StarBorder";
+import { RatingSummary } from "@/components/reviews/RatingSummary";
+import { ReviewCard } from "@/components/reviews/ReviewCard";
+import { toReviewCards } from "@/lib/reviews-view";
 import { Reveal } from "@/motion/Reveal";
 import { Magnetic } from "@/motion/Magnetic";
 
@@ -59,7 +62,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
   const course = await api.courseBySlug(locale, slug);
   if (!course) notFound();
 
-  const [t, tc, tb, td, tm, ta, tt, tbr, format, courses, branches, teachers] = await Promise.all([
+  const [t, tc, tb, td, tm, ta, tt, tbr, tr, format, courses, branches, teachers, reviewPage, reviewSummary] = await Promise.all([
     getTranslations({ locale, namespace: "CoursePage" }),
     getTranslations({ locale, namespace: "Courses" }),
     getTranslations({ locale, namespace: "Breadcrumbs" }),
@@ -68,11 +71,15 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
     getTranslations({ locale, namespace: "Apply" }),
     getTranslations({ locale, namespace: "Teachers" }),
     getTranslations({ locale, namespace: "Branches" }),
+    getTranslations({ locale, namespace: "Reviews" }),
     getFormatter({ locale }),
     api.courses(locale),
     api.branches(locale),
     api.teachers(locale),
+    api.reviews(locale, 1, 3, course.id),
+    api.reviewSummary(course.id),
   ]);
+  const reviewCards = await toReviewCards(locale, reviewPage.items);
 
   const path = `/courses/${slug}`;
   const url = absoluteUrl(localePath(locale, path));
@@ -101,6 +108,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
       providerName: tm("siteName"),
       url,
       instructors: courseTeachers.map((x) => x.name),
+      rating: reviewSummary,
     }),
     faqJsonLd(faq),
     breadcrumbJsonLd([
@@ -290,7 +298,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                   <li key={x.id}>
                     <Reveal delay={i * 0.08} className="h-full">
                       <TeacherCard
-                        teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, experienceLabel: tt("experience", { count: x.experienceYears }) }}
+                        teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, photo: x.photo, experienceLabel: tt("experience", { count: x.experienceYears }) }}
                       />
                     </Reveal>
                   </li>
@@ -337,6 +345,32 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
             </ul>
           </div>
         </section>
+
+        {/* ---------- Reviews ---------- */}
+        {reviewSummary.count > 0 && (
+          <section aria-labelledby="course-reviews" className="bg-dusk py-16 sm:py-24">
+            <div className="mx-auto max-w-7xl px-4 sm:px-6">
+              <div className="flex flex-wrap items-end justify-between gap-8">
+                <FloatHeading id="course-reviews" text={tr("courseReviews")} className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl" />
+                <RatingSummary summary={reviewSummary} tone="on-dusk" />
+              </div>
+              <ul className="mt-10 grid gap-5 md:grid-cols-3">
+                {reviewCards.map((r, i) => (
+                  <li key={r.id}>
+                    <Reveal delay={i * 0.08} className="h-full">
+                      <ReviewCard review={r} />
+                    </Reveal>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-10">
+                <Link href={`/reviews?course=${course.slug}`} className="inline-flex rounded-full bg-chalk px-6 py-3.5 font-semibold text-ink transition-transform hover:-translate-y-0.5">
+                  {tr("allReviews", { count: reviewSummary.count })}
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ---------- Pricing ---------- */}
         <section aria-labelledby="pricing-title" className="border-t border-chalk/10 py-16 sm:py-24">

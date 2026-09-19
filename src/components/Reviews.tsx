@@ -1,65 +1,68 @@
-"use client";
-
-import { useTranslations } from "next-intl";
-import { useMemo } from "react";
-import Stack from "@/components/bits/Stack";
-import type { Testimonial } from "@/lib/types";
+import { getLocale, getTranslations } from "next-intl/server";
+import { Link } from "@/i18n/navigation";
+import type { Locale } from "@/i18n/routing";
+import { toReviewCards } from "@/lib/reviews-view";
+import type { Review, ReviewSummary } from "@/lib/types";
 import { Reveal } from "@/motion/Reveal";
+import { RatingSummary } from "./reviews/RatingSummary";
+import { ReviewCard, type ReviewCardData } from "./reviews/ReviewCard";
 
-const TINTS = ["var(--chalk)", "var(--amber)", "var(--majolica)", "#ffd6dc"];
-
-/** Draggable stack of review cards. Never autoplays, so it doesn't move while someone reads. */
-export function Reviews({ items }: { items: Testimonial[] }) {
-  const t = useTranslations("Reviews");
-
-  // Last card renders on top; reverse so the first review is the one people see first.
-  const cards = useMemo(
-    () =>
-      [...items].reverse().map((r, i) => (
-        <figure
-          key={r.id}
-          className="flex h-full flex-col justify-between p-7 text-ink sm:p-9"
-          style={{ background: TINTS[i % TINTS.length] }}
-        >
-          <blockquote className="font-display text-lg font-medium leading-snug sm:text-xl">“{r.quote}”</blockquote>
-          <figcaption className="mt-6">
-            <span className="block font-semibold">{r.author}</span>
-            <span className="block text-sm opacity-70">{r.course}</span>
-          </figcaption>
-        </figure>
-      )),
-    [items],
+/** One endless row. The second copy exists only for the seamless loop, so it is hidden from assistive tech. */
+function Row({ items, reverse }: { items: ReviewCardData[]; reverse?: boolean }) {
+  return (
+    <div className="marquee group/row relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
+      <div className="marquee-track gap-5 py-2" style={{ animationDirection: reverse ? "reverse" : "normal", animationDuration: "80s" }}>
+        {[0, 1].map((copy) => (
+          <ul key={copy} aria-hidden={copy === 1} className="flex shrink-0 gap-5">
+            {items.map((r) => (
+              <li key={`${copy}-${r.id}`} className="shrink-0">
+                <ReviewCard review={r} compact />
+              </li>
+            ))}
+          </ul>
+        ))}
+      </div>
+    </div>
   );
+}
+
+/**
+ * Home page reviews: rating summary, two slow rows of recent reviews moving in
+ * opposite directions (pause on hover, still on weak devices), link to all reviews.
+ * Scales to any number of reviews: only the newest page is loaded here.
+ */
+export async function Reviews({ items, summary }: { items: Review[]; summary: ReviewSummary }) {
+  const locale = (await getLocale()) as Locale;
+  const t = await getTranslations("Reviews");
+  const cards = await toReviewCards(locale, items);
+  const half = Math.ceil(cards.length / 2);
 
   return (
     <section id="reviews" aria-labelledby="reviews-title" className="overflow-hidden bg-dusk py-20 sm:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1fr_1.1fr]">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-end justify-between gap-10 px-4 sm:px-6">
         <Reveal>
           <h2 id="reviews-title" className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl">
             {t("title")}
           </h2>
           <p className="mt-3 text-lg text-chalk/80">{t("lead")}</p>
-          <p className="mt-8 inline-flex items-center gap-3 text-chalk/75">
-            <svg viewBox="0 0 24 24" className="size-5" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden>
-              <path d="M8 13V5.5a1.5 1.5 0 013 0V12m0-1.5v-2a1.5 1.5 0 013 0V12m0-1a1.5 1.5 0 013 0v4.5a5.5 5.5 0 01-5.5 5.5h-1.2a5 5 0 01-4-2l-3-4a1.5 1.5 0 012.3-1.9L8 15" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            {t("hint")}
-          </p>
         </Reveal>
-
         <Reveal delay={0.1}>
-          <div aria-hidden className="mx-auto h-[300px] w-full max-w-[400px] sm:h-[320px]">
-            <Stack key={items.map((r) => r.id).join()} cards={cards} sensitivity={140} sendToBackOnClick mobileClickOnly />
-          </div>
-          {/* The stack is visual only; this list is what crawlers and screen readers read */}
-          <ul className="sr-only">
-            {items.map((r) => (
-              <li key={r.id}>
-                <blockquote>{r.quote}</blockquote> — {r.author}, {r.course}
-              </li>
-            ))}
-          </ul>
+          <RatingSummary summary={summary} tone="on-dusk" />
         </Reveal>
+      </div>
+
+      <div className="mt-14 space-y-5">
+        <Row items={cards.slice(0, half)} />
+        <Row items={cards.slice(half)} reverse />
+      </div>
+
+      <div className="mt-12 text-center">
+        <Link
+          href="/reviews"
+          className="inline-flex rounded-full bg-chalk px-7 py-4 font-semibold text-ink transition-transform hover:-translate-y-0.5"
+        >
+          {t("allReviews", { count: summary.count })}
+        </Link>
       </div>
     </section>
   );

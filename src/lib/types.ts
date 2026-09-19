@@ -93,13 +93,35 @@ export interface RawTeacher {
   branchIds: string[];
   /** Short quote shown on the profile */
   motto: Localized;
+  /** Photo: absolute URL or a path under /public (e.g. /teachers/jasur-karimov.jpg). Falls back to a generated avatar. */
+  photo?: string;
 }
 
-export interface RawTestimonial {
+/** A student review. Written once, in the student's own language (not translated). */
+export interface RawReview {
   id: string;
   author: string;
-  course: Localized;
-  quote: Localized;
+  courseId: string;
+  /** 1–5 */
+  rating: number;
+  /** ISO date */
+  date: string;
+  text: string;
+  lang: Locale;
+}
+
+export interface ReviewQuery {
+  courseId?: string;
+  /** 1-based */
+  page: number;
+  perPage: number;
+}
+
+export interface ReviewSummary {
+  count: number;
+  average: number;
+  /** count per star, index 0 = 1 star */
+  byRating: [number, number, number, number, number];
 }
 
 export interface Stats {
@@ -191,13 +213,24 @@ export interface Teacher {
   studentsTaught: number;
   skills: string[];
   branchIds: string[];
+  photo?: string;
 }
 
-export interface Testimonial {
+export interface Review {
   id: string;
   author: string;
-  course: string;
-  quote: string;
+  rating: number;
+  date: string;
+  text: string;
+  lang: Locale;
+  course: { id: string; slug: string; title: string } | null;
+}
+
+export interface ReviewPage {
+  items: Review[];
+  total: number;
+  page: number;
+  pages: number;
 }
 
 /**
@@ -208,7 +241,9 @@ export interface DataSource {
   branches(): Promise<RawBranch[]>;
   courses(): Promise<RawCourse[]>;
   teachers(): Promise<RawTeacher[]>;
-  testimonials(): Promise<RawTestimonial[]>;
+  /** Newest first. Paginate on the server: there can be thousands. */
+  reviews(query: ReviewQuery): Promise<{ items: RawReview[]; total: number }>;
+  reviewSummary(courseId?: string): Promise<ReviewSummary>;
   stats(): Promise<Stats>;
   posts(): Promise<RawPost[]>;
   submitApplication(input: ApplicationInput): Promise<ApplicationResult>;

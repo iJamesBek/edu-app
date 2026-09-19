@@ -18,13 +18,14 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const locale = raw as Locale;
   setRequestLocale(locale);
 
-  const [t, courses, branches, stats, teachers, testimonials, posts] = await Promise.all([
+  const [t, courses, branches, stats, teachers, reviews, reviewSummary, posts] = await Promise.all([
     getTranslations({ locale, namespace: "Meta" }),
     api.courses(locale),
     api.branches(locale),
     api.stats(),
     api.teachers(locale),
-    api.testimonials(locale),
+    api.reviews(locale, 1, 16),
+    api.reviewSummary(),
     api.posts(locale),
   ]);
 
@@ -48,7 +49,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <WhyUs />
         <Team teachers={teachers} />
         <Online />
-        <Reviews items={testimonials} />
+        <Reviews items={reviews.items} summary={reviewSummary} />
         <LatestPosts posts={posts} />
       </main>
       <Footer />

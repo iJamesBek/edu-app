@@ -155,7 +155,7 @@ export const mockCourses: RawCourse[] = [
     durationMonths: 5,
     lessonsPerWeek: 3,
     level: "beginner",
-    format: "hybrid",
+    format: "offline",
     branchIds: ["toshloq", "fergana"],
     sections: [
       { title: L("Kompozitsiya va rang nazariyasi", "Композиция и теория цвета", "Composition and color theory"), topics: ["Grid", "Balance", "Color wheel"] },
@@ -273,7 +273,7 @@ export const mockCourses: RawCourse[] = [
     durationMonths: 12,
     lessonsPerWeek: 3,
     level: "beginner",
-    format: "hybrid",
+    format: "offline",
     branchIds: ALL,
     sections: [
       { title: L("A1: boshlang‘ich", "A1: начальный", "A1: beginner"), topics: ["Alphabet", "Present Simple", "Everyday words"] },

@@ -174,7 +174,7 @@ export default async function BranchPage({ params }: PageProps<"/[locale]/branch
                 {staff.map((x, i) => (
                   <li key={x.id}>
                     <Reveal delay={(i % 4) * 0.08} className="h-full">
-                      <TeacherCard teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, experienceLabel: tt("experience", { count: x.experienceYears }) }} />
+                      <TeacherCard teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, photo: x.photo, experienceLabel: tt("experience", { count: x.experienceYears }) }} />
                     </Reveal>
                   </li>
                 ))}

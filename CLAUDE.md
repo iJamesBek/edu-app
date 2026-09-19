@@ -4,9 +4,9 @@
 
 it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad: juda ko‘p, lekin bezovta qilmaydigan animatsiyalar ("wow" effekti), qurilma imkoniyatiga moslashadigan harakat tizimi va kuchli SEO.
 
-Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/branches`, `/branches/[slug]`, `/blog`, `/blog/[slug]`, 404. Keyingi: bitiruvchilar, online.
+Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/branches`, `/branches/[slug]`, `/reviews`, `/blog`, `/blog/[slug]`, 404.
 
-Asosiy ta’lim formati — oflayn (filialda). Kurs sahifasida format, filiallar va "Nega oflayn" bo‘limi shuni ko‘rsatadi.
+Barcha kurslar oflayn (filialda). Online kurs yo‘q — matnlarda "online ta’lim" deb yozmang. Kurs sahifasida format, filiallar va "Nega oflayn" bo‘limi shuni ko‘rsatadi.
 
 ## Marshrutlar
 
@@ -53,6 +53,9 @@ messages/             uz.json, ru.json, en.json
 - Yo‘nalishlar bitta joyda: `src/lib/categories.ts` (`programming`, `design`, `robotics`, `languages`, `office`) va ularning rangi. Yangi yo‘nalish qo‘shsangiz: `Category` tipi, `categories.ts`, `Directions`/`DirectionsShort` xabarlari, `CityScene` binolari, `DirectionsSwap` ranglari.
 - Blog matni `Block[]` (p, h2, ul, quote) ko‘rinishida keladi — HTML emas, xavfsiz render. `readingMinutes` so‘z soni bo‘yicha hisoblanadi. Muqova rasmlari `PostCover` da slug bo‘yicha generatsiya qilinadi.
 - `api.ts` `server-only`: client komponentga kerakli ma'lumotni props orqali bering.
+- Fikrlar ko‘p bo‘ladi (minglab): hech qachon hammasini yuklamang. `api.reviews(locale, page, perPage, courseId?)` sahifalab oladi, `api.reviewSummary(courseId?)` o‘rtacha va taqsimotni beradi. `/reviews` server tomonda sahifalanadi (`?course=<slug>&page=N`), bosh sahifa faqat oxirgi 16 tasini oladi. Fikr matni tarjima qilinmaydi (`lang` bilan belgilanadi).
+- Eski backend: `https://itshaharcha.pythonanywhere.com/api/v1/` (branches, branches/{id}/teachers, branches/{id}/courses, courses/{id}, leads/create). Hozir o‘chiq ("Coming Soon").
+- Ustoz rasmi: `photo` maydoni (URL yoki `/teachers/<slug>.jpg`). Mock rejimda `public/teachers/<slug>.(webp|jpg|jpeg|png)` fayli bo‘lsa avtomatik olinadi, bo‘lmasa generatsiya qilingan avatar. Tashqi rasm hostlari `next.config.ts` → `images.remotePatterns` (`EDU_MEDIA_HOST`).
 - Ariza: `ApplyForm` → Server Action `src/lib/actions.ts` (validatsiya, honeypot, telefonni `+998XXXXXXXXX` ga keltiradi) → `api.submitApplication`. Mock faqat server logiga yozadi (telefon yashirilgan). Real backend: `POST {EDU_API_URL}/applications`.
 
 ## Til (i18n)
@@ -86,7 +89,7 @@ Animatsiyalar ko‘p bo‘ladi, lekin har biri qurilmaga moslashadi. Bu loyihani
 
 - `src/components/bits/` — reactbits.dev dan olingan komponentlar (TS-TW variant, registry: `https://reactbits.dev/r/<Name>-TS-TW.json`).
 - Importlar `motion/react` dan `framer-motion` ga almashtirilgan (bitta kutubxona). Mahalliy o‘zgarishlar `edu:` izohi bilan belgilangan.
-- Ishlatilganlar: Aurora, CardSwap, Stack, RotatingText, ScrollVelocity, SpotlightCard, ClickSpark, StarBorder, ScrollFloat, CircularText, LogoLoop.
+- Ishlatilganlar: Aurora, CardSwap, RotatingText, ScrollVelocity, SpotlightCard, ClickSpark, StarBorder, ScrollFloat, CircularText, LogoLoop.
 - `src/components/bits/**` uchun ESLint’da `no-explicit-any` va `exhaustive-deps` o‘chirilgan (upstream kod); o‘z kodimiz qat’iy qoladi.
 - Har bir komponent darajaga bo‘ysunadi: `Aurora` (WebGL, `ogl`) faqat `mid`+ va idle'dan keyin yuklanadi; `CardSwap`, `ScrollVelocity`, `ClickSpark` `low`/`none` da to‘xtaydi; ekrandan chiqqanda render/interval to‘xtaydi.
 - Yangi React Bits komponent qo‘shsangiz: `Math.random` render ichida bo‘lmasin (hydration), cheksiz `requestAnimationFrame` ekrandan tashqarida to‘xtasin, `useTier()` bilan cheklansin.

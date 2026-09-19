@@ -60,7 +60,7 @@ export default async function TeachersPage({ params }: PageProps<"/[locale]/teac
               <li key={x.id}>
                 <Reveal delay={(i % 3) * 0.08} className="h-full">
                   <TeacherCard
-                    teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, experienceLabel: t("experience", { count: x.experienceYears }) }}
+                    teacher={{ slug: x.slug, name: x.name, role: x.role, skills: x.skills, photo: x.photo, experienceLabel: t("experience", { count: x.experienceYears }) }}
                   />
                 </Reveal>
               </li>

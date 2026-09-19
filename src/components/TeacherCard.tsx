@@ -1,7 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import { Tilt } from "@/motion/Tilt";
-import { Avatar } from "./ui/Avatar";
+import { TeacherPhoto } from "./ui/TeacherPhoto";
 
 export interface TeacherCardData {
   slug: string;
@@ -9,6 +9,7 @@ export interface TeacherCardData {
   role: string;
   experienceLabel: string;
   skills: string[];
+  photo?: string;
 }
 
 /** Whole card links to the teacher's profile. */
@@ -17,7 +18,7 @@ export function TeacherCard({ teacher }: { teacher: TeacherCardData }) {
     <Tilt className="h-full rounded-3xl">
       <SpotlightCard className="h-full rounded-3xl border border-chalk/10 bg-ink-2" spotlightColor="rgba(255, 193, 94, 0.18)">
         <article className="relative flex h-full flex-col">
-          <Avatar name={teacher.name} className="aspect-[4/3] w-full" />
+          <TeacherPhoto name={teacher.name} photo={teacher.photo} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" className="aspect-[4/5] w-full" />
           <div className="flex flex-1 flex-col p-6">
             <h3 className="font-display text-xl font-bold">
               <Link href={`/teachers/${teacher.slug}`} className="after:absolute after:inset-0 after:content-['']">

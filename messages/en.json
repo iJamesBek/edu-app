@@ -12,7 +12,7 @@
   },
   "Nav": {
     "courses": "Courses",
-    "alumni": "Alumni",
+    "alumni": "Reviews",
     "online": "Online learning",
     "call": "Call us",
     "menu": "Menu",
@@ -101,16 +101,31 @@
     "lead": "Every direction is led by mentors who work in the field."
   },
   "Online": {
-    "title": "A modern profession — a modern life!",
-    "lead": "Study online from anywhere and grow at your own pace.",
-    "question": "Want to reach the international market?",
-    "cta": "See online courses",
-    "rotPrefix": "Learn online:"
+    "title": "In-person learning — live, together, in our little city",
+    "lead": "Classes run in the equipped classrooms of our branches: a mentor beside you, classmates around you.",
+    "question": "Is there a branch near you?",
+    "cta": "Choose a branch",
+    "rotPrefix": "Learn at a branch:"
   },
   "Reviews": {
     "title": "Reviews",
-    "lead": "Our graduates on their experience.",
-    "hint": "Swipe or tap a card to see the next review"
+    "lead": "Our students on their experience.",
+    "metaTitle": "Student reviews",
+    "description": "Reviews from IT Shaharcha students and graduates: ratings and a filter by course.",
+    "all": "All",
+    "allReviews": "All reviews ({count})",
+    "average": "Average rating",
+    "basedOn": "{count, plural, one {based on # review} other {based on # reviews}}",
+    "stars": "{rating} out of 5",
+    "filter": "By course",
+    "prev": "Previous",
+    "next": "Next",
+    "pageOf": "Page {page} of {pages}",
+    "pagination": "Pages",
+    "empty": "No reviews for this course yet.",
+    "courseReviews": "Reviews of this course",
+    "seeAll": "See all",
+    "original": "In the original language"
   },
   "Footer": {
     "tagline": "The little city of modern professions.",
@@ -129,7 +144,8 @@
     "courses": "Courses",
     "blog": "Blog",
     "teachers": "Teachers",
-    "branches": "Branches"
+    "branches": "Branches",
+    "reviews": "Reviews"
   },
   "CoursePage": {
     "duration": "Duration",
