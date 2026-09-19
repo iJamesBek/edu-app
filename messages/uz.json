@@ -340,8 +340,6 @@
     "courses": "Shu yerda o‘qitiladigan kurslar",
     "teachers": "Ustozlarimiz",
     "openMap": "Xaritada ochish",
-    "loadMap": "Xaritani ko‘rsatish",
-    "mapNote": "Xarita Google Maps’dan yuklanadi.",
     "call": "Qo‘ng‘iroq qilish",
     "details": "Batafsil",
     "mapTitle": "{name} xaritada",
@@ -376,5 +374,16 @@
     "forSchoolAndUnemployed": "Maktab o‘quvchilari va rasman ishlamaydiganlar uchun (istalgan yoshda) bepul",
     "source": "Qaror matni: lex.uz, PQ-178, 15.05.2024. Guruhlar bo‘yicha shartlar — markaz qoidasi.",
     "cta": "Bepul kursga yozilish"
+  },
+  "Map": {
+    "yandex": "Yandex",
+    "google": "Google",
+    "taxi": "Taksi chaqirish (Yandex Go)",
+    "routeYandex": "Yandex’da yo‘l",
+    "routeGoogle": "Google’da yo‘l",
+    "copy": "Manzilni nusxalash",
+    "copied": "Nusxalandi",
+    "sectionTitle": "Bizni topish oson",
+    "sectionLead": "Toshloq tumani markazida. Taksi chaqiring yoki yo‘lni xaritada oching."
   }
 }

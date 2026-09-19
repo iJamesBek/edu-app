@@ -2,12 +2,6 @@ import { Link } from "@/i18n/navigation";
 import SpotlightCard from "@/components/bits/SpotlightCard";
 import type { Branch } from "@/lib/types";
 
-/** Google Maps link: exact point when known, address search otherwise. */
-export function mapsUrl(branch: Pick<Branch, "address" | "geo">) {
-  const q = branch.geo ? `${branch.geo.lat},${branch.geo.lng}` : branch.address;
-  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`;
-}
-
 export function formatPhone(phone: string) {
   const d = phone.replace(/\D/g, "");
   return d.length === 12 ? `+${d.slice(0, 3)} ${d.slice(3, 5)} ${d.slice(5, 8)} ${d.slice(8, 10)} ${d.slice(10)}` : phone;

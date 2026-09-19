@@ -13,6 +13,7 @@ import { Online } from "@/components/Online";
 import { Reviews } from "@/components/Reviews";
 import { Footer } from "@/components/Footer";
 import { LatestPosts } from "@/components/LatestPosts";
+import { Location } from "@/components/Location";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale: raw } = await params;
@@ -53,6 +54,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <Online />
         <Reviews items={reviews.items} summary={reviewSummary} />
         <LatestPosts posts={posts} />
+        {branches[0] && <Location branch={branches[0]} />}
       </main>
       <Footer />
     </>

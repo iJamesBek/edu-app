@@ -1,6 +1,7 @@
 import type { Locale } from "@/i18n/routing";
 import type { Branch, Course, CourseDetail, Post, PostDetail, Teacher } from "./types";
 import { PHONE, SITE_URL, SOCIALS, absoluteUrl, localePath } from "./site";
+import { mapLinks } from "./map-links";
 
 type JsonLd = Record<string, unknown>;
 
@@ -29,7 +30,7 @@ export function organizationJsonLd(
           ...(input.branch.geo
             ? {
                 geo: { "@type": "GeoCoordinates", latitude: input.branch.geo.lat, longitude: input.branch.geo.lng },
-                hasMap: `https://www.google.com/maps?q=${input.branch.geo.lat},${input.branch.geo.lng}`,
+                hasMap: mapLinks(input.branch.geo).googlePlace,
               }
             : {}),
           address: {
@@ -242,7 +243,7 @@ export function branchJsonLd(branch: Branch, input: { url: string; name: string 
     ...(branch.geo
       ? {
           geo: { "@type": "GeoCoordinates", latitude: branch.geo.lat, longitude: branch.geo.lng },
-          hasMap: `https://www.google.com/maps?q=${branch.geo.lat},${branch.geo.lng}`,
+          hasMap: mapLinks(branch.geo).googlePlace,
         }
       : {}),
     parentOrganization: { "@id": `${SITE_URL}/#organization` },

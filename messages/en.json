@@ -340,8 +340,6 @@
     "courses": "Courses taught here",
     "teachers": "Our teachers",
     "openMap": "Open in maps",
-    "loadMap": "Show the map",
-    "mapNote": "The map loads from Google Maps.",
     "call": "Call",
     "details": "Details",
     "mapTitle": "{name} on the map",
@@ -376,5 +374,16 @@
     "forSchoolAndUnemployed": "Free for school students and anyone not officially employed (any age)",
     "source": "Decree text: lex.uz, PQ-178, 15.05.2024. Eligibility by group is the center’s own rule.",
     "cta": "Enroll in a free course"
+  },
+  "Map": {
+    "yandex": "Yandex",
+    "google": "Google",
+    "taxi": "Call a taxi (Yandex Go)",
+    "routeYandex": "Route in Yandex",
+    "routeGoogle": "Route in Google",
+    "copy": "Copy address",
+    "copied": "Copied",
+    "sectionTitle": "Easy to find",
+    "sectionLead": "In the center of Toshloq district. Call a taxi or open the route on the map."
   }
 }

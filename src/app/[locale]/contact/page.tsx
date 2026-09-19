@@ -11,7 +11,7 @@ import { absoluteUrl, localePath } from "@/lib/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { formatPhone, mapsUrl } from "@/components/BranchCard";
+import { formatPhone } from "@/components/BranchCard";
 import { MapEmbed } from "@/components/MapEmbed";
 import { TeacherCard } from "@/components/TeacherCard";
 import { CountUp } from "@/motion/CountUp";
@@ -32,16 +32,26 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
   const [branch] = await api.branches(locale);
   if (!branch) notFound();
 
-  const [t, tb, td, tt, courses, teachers] = await Promise.all([
+  const [t, tb, td, tt, tmap, courses, teachers] = await Promise.all([
     getTranslations({ locale, namespace: "Branches" }),
     getTranslations({ locale, namespace: "Breadcrumbs" }),
     getTranslations({ locale, namespace: "Directions" }),
     getTranslations({ locale, namespace: "Teachers" }),
+    getTranslations({ locale, namespace: "Map" }),
     api.courses(locale),
     api.teachers(locale),
   ]);
 
   const path = "/contact";
+  const mapLabels = {
+    yandex: tmap("yandex"),
+    google: tmap("google"),
+    taxi: tmap("taxi"),
+    routeYandex: tmap("routeYandex"),
+    routeGoogle: tmap("routeGoogle"),
+    copy: tmap("copy"),
+    copied: tmap("copied"),
+  };
   const url = absoluteUrl(localePath(locale, path));
   const here = courses.filter((c) => c.branchIds.includes(branch.id));
   const staff = teachers.filter((x) => x.branchIds.includes(branch.id));
@@ -96,14 +106,6 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
                       {t("call")}
                     </a>
                   </Magnetic>
-                  <a
-                    href={mapsUrl(branch)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex rounded-full border border-chalk/25 px-7 py-4 font-semibold transition-colors hover:border-majolica hover:text-majolica"
-                  >
-                    {t("openMap")}
-                  </a>
                 </div>
                 <dl className="rise mt-10 grid max-w-sm grid-cols-2 gap-6" style={{ "--d": "0.5s" } as React.CSSProperties}>
                   <div className="flex flex-col-reverse border-t-2 border-chalk/20 pt-3">
@@ -117,11 +119,14 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
                 </dl>
               </div>
               <div className="rise" style={{ "--d": "0.2s" } as React.CSSProperties}>
-                <MapEmbed
-                  query={branch.geo ? `${branch.geo.lat},${branch.geo.lng}` : branch.address}
-                  title={t("mapTitle", { name: branch.name })}
-                  labels={{ load: t("loadMap"), note: t("mapNote"), open: t("openMap") }}
-                />
+                {branch.geo && (
+                  <MapEmbed
+                    geo={branch.geo}
+                    address={branch.address}
+                    title={t("mapTitle", { name: branch.name })}
+                    labels={mapLabels}
+                  />
+                )}
               </div>
             </div>
           </div>

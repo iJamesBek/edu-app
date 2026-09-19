@@ -6,6 +6,8 @@ it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad:
 
 Sayt faqat **Toshloq filiali** uchun (Toshloq tumani, “Yangi yo‘l” MFY, Alisher Navoiy ko‘chasi, 18-uy). Boshqa filial yo‘q — "filiallar" deb yozmang. `/branches` → `/contact` ga 308 redirect.
 
+Xarita: nuqta `40.499324, 71.826982` (markaz bergan). Barcha xarita/taksi URL’lari `src/lib/map-links.ts` da (Yandex va Google iframe, Yandex Go taksi deep link, Yandex/Google yo‘l). `MapEmbed` — Yandex/Google almashtirgich + taksi, yo‘l, manzilni nusxalash; `/contact` va bosh sahifadagi `Location` bo‘limida.
+
 Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/contact`, `/reviews`, `/blog`, `/blog/[slug]`, 404.
 
 ## Markaz haqida faktlar (tasdiqlangan)
