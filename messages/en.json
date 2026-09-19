@@ -17,7 +17,8 @@
     "call": "Call us",
     "menu": "Menu",
     "close": "Close",
-    "language": "Language"
+    "language": "Language",
+    "top": "Back to top"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
@@ -58,17 +59,36 @@
       "mentors": "mentors and staff",
       "directions": "core directions",
       "branches": "branches"
-    }
+    },
+    "directionsLabel": "Directions and their courses"
   },
   "WhyUs": {
     "title": "Education that delivers results is our advantage!",
     "items": {
-      "coworking": { "title": "Free coworking", "text": "Keep working and learning in a comfortable space after class, and meet peers." },
-      "quality": { "title": "Quality education", "text": "Hands-on projects and real mentor feedback on your work." },
-      "contests": { "title": "Regular contests", "text": "Test your skills at hackathons and competitions." },
-      "masterclasses": { "title": "Free masterclasses", "text": "Open lessons and practical advice from industry specialists." },
-      "jobs": { "title": "Job-placement guarantee", "text": "We help you find a job when the course ends." },
-      "certificate": { "title": "Certificate", "text": "Receive a document confirming you completed the course." }
+      "coworking": {
+        "title": "Free coworking",
+        "text": "Keep working and learning in a comfortable space after class, and meet peers."
+      },
+      "quality": {
+        "title": "Quality education",
+        "text": "Hands-on projects and real mentor feedback on your work."
+      },
+      "contests": {
+        "title": "Regular contests",
+        "text": "Test your skills at hackathons and competitions."
+      },
+      "masterclasses": {
+        "title": "Free masterclasses",
+        "text": "Open lessons and practical advice from industry specialists."
+      },
+      "jobs": {
+        "title": "Job-placement guarantee",
+        "text": "We help you find a job when the course ends."
+      },
+      "certificate": {
+        "title": "Certificate",
+        "text": "Receive a document confirming you completed the course."
+      }
     }
   },
   "Team": {
@@ -79,13 +99,13 @@
     "title": "A modern profession — a modern life!",
     "lead": "Study online from anywhere and grow at your own pace.",
     "question": "Want to reach the international market?",
-    "cta": "See online courses"
+    "cta": "See online courses",
+    "rotPrefix": "Learn online:"
   },
   "Reviews": {
     "title": "Reviews",
     "lead": "Our graduates on their experience.",
-    "prev": "Previous review",
-    "next": "Next review"
+    "hint": "Swipe or tap a card to see the next review"
   },
   "Footer": {
     "tagline": "The little city of modern professions.",

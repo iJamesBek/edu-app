@@ -17,7 +17,8 @@
     "call": "Qo‘ng‘iroq qilish",
     "menu": "Menyu",
     "close": "Yopish",
-    "language": "Til"
+    "language": "Til",
+    "top": "Yuqoriga qaytish"
   },
   "Hero": {
     "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
@@ -58,17 +59,36 @@
       "mentors": "ustoz va xodim",
       "directions": "asosiy yo‘nalish",
       "branches": "filial"
-    }
+    },
+    "directionsLabel": "Yo‘nalishlar va ulardagi kurslar"
   },
   "WhyUs": {
     "title": "Natija beradigan ta’lim — bu bizning ustunligimiz!",
     "items": {
-      "coworking": { "title": "Bepul coworking", "text": "Dars tugagach ham qulay joyda ishlang, o‘rganing va hamkasblar toping." },
-      "quality": { "title": "Sifatli ta'lim", "text": "Amaliy loyihalar va real mentor tahlili bilan o‘qitiladi." },
-      "contests": { "title": "Doimiy musobaqalar", "text": "Hackathon va tanlovlarda o‘z kuchingizni sinab ko‘ring." },
-      "masterclasses": { "title": "Bepul mahorat darslari", "text": "Soha mutaxassislaridan ochiq darslar va amaliy maslahatlar." },
-      "jobs": { "title": "Ish taklif qilish kafolati", "text": "Kurs yakunida ish topishga yordam beramiz." },
-      "certificate": { "title": "Sertifikat", "text": "Kursni tugatganingizni tasdiqlovchi hujjat oling." }
+      "coworking": {
+        "title": "Bepul coworking",
+        "text": "Dars tugagach ham qulay joyda ishlang, o‘rganing va hamkasblar toping."
+      },
+      "quality": {
+        "title": "Sifatli ta'lim",
+        "text": "Amaliy loyihalar va real mentor tahlili bilan o‘qitiladi."
+      },
+      "contests": {
+        "title": "Doimiy musobaqalar",
+        "text": "Hackathon va tanlovlarda o‘z kuchingizni sinab ko‘ring."
+      },
+      "masterclasses": {
+        "title": "Bepul mahorat darslari",
+        "text": "Soha mutaxassislaridan ochiq darslar va amaliy maslahatlar."
+      },
+      "jobs": {
+        "title": "Ish taklif qilish kafolati",
+        "text": "Kurs yakunida ish topishga yordam beramiz."
+      },
+      "certificate": {
+        "title": "Sertifikat",
+        "text": "Kursni tugatganingizni tasdiqlovchi hujjat oling."
+      }
     }
   },
   "Team": {
@@ -79,13 +99,13 @@
     "title": "Zamonaviy kasb — zamonaviy hayot!",
     "lead": "Online ta’lim bilan istalgan joydan o‘qing va o‘z tempingizda rivojlaning.",
     "question": "Xalqaro bozorga chiqishni istaysizmi?",
-    "cta": "Online kursni ko‘rish"
+    "cta": "Online kursni ko‘rish",
+    "rotPrefix": "Online o‘rganing:"
   },
   "Reviews": {
     "title": "Fikrlar",
     "lead": "Bitiruvchilarimiz o‘z tajribasi haqida.",
-    "prev": "Oldingi fikr",
-    "next": "Keyingi fikr"
+    "hint": "Kartani suring yoki bosing — keyingi fikr chiqadi"
   },
   "Footer": {
     "tagline": "Zamonaviy kasblar shaharchasi.",

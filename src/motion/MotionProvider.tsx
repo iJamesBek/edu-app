@@ -26,6 +26,13 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
       setTier(next);
     };
 
+    // Manual override for testing, e.g. /?motion=high or /?motion=low
+    const forced = new URLSearchParams(window.location.search).get("motion");
+    if (forced === "high" || forced === "mid" || forced === "low" || forced === "none") {
+      apply(forced);
+      return;
+    }
+
     const initial = detectInitialTier();
     apply(initial);
 
@@ -57,8 +64,8 @@ export function MotionProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <TierContext.Provider value={tier}>
-      {/* strict: using `motion.*` instead of the lighter `m.*` throws in development */}
-      <LazyMotion features={domAnimation} strict>
+      {/* Our code uses the lighter `m.*`; vendored React Bits components use `motion.*`. */}
+      <LazyMotion features={domAnimation}>
         <MotionConfig reducedMotion="user">{children}</MotionConfig>
       </LazyMotion>
     </TierContext.Provider>

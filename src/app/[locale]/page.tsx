@@ -42,7 +42,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <main id="main">
         <Hero />
         <Courses courses={courses} branches={branches} />
-        <About stats={stats} />
+        <About stats={stats} courses={courses} />
         <WhyUs />
         <Team members={team} />
         <Online />

@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import SpotlightCard from "@/components/bits/SpotlightCard";
 import { Reveal } from "@/motion/Reveal";
 import { Tilt } from "@/motion/Tilt";
 
@@ -30,7 +31,8 @@ export async function WhyUs() {
             <li key={key} className="bg-ink">
               <Reveal delay={(i % 3) * 0.08} className="h-full">
                 <Tilt max={4} className="h-full">
-                  <div className="h-full p-8 sm:p-10">
+                  <SpotlightCard className="h-full" spotlightColor="rgba(255, 193, 94, 0.16)">
+                  <div className="relative h-full p-8 sm:p-10">
                     <svg
                       viewBox="0 0 24 24"
                       className="size-10 text-majolica"
@@ -46,6 +48,7 @@ export async function WhyUs() {
                     <h3 className="mt-6 font-display text-xl font-bold">{t(`items.${key}.title`)}</h3>
                     <p className="mt-3 leading-relaxed text-chalk/65">{t(`items.${key}.text`)}</p>
                   </div>
+                  </SpotlightCard>
                 </Tilt>
               </Reveal>
             </li>

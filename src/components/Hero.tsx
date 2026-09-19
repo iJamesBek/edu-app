@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import { Magnetic } from "@/motion/Magnetic";
 import { CityScene } from "./CityScene";
+import { HeroAurora } from "./HeroAurora";
 
 export async function Hero() {
   const t = await getTranslations("Hero");
@@ -20,23 +21,37 @@ export async function Hero() {
         }}
       />
 
+      <HeroAurora />
+
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 pb-16 pt-10 sm:px-6 lg:grid-cols-[1.05fr_1fr] lg:gap-6 lg:pb-24 lg:pt-16">
         <div className="relative z-10">
+          {/* Words blur in via CSS: the full sentence is plain text in the server HTML */}
           <h1
             id="hero-title"
-            className="rise font-display text-[clamp(2.1rem,5.4vw,4.4rem)] font-extrabold leading-[1.04] tracking-[-0.02em] text-balance"
+            className="font-display text-[clamp(2.1rem,5.4vw,4.4rem)] font-extrabold leading-[1.04] tracking-[-0.02em] text-balance"
           >
-            {t("title")}
+            {t("title")
+              .split(" ")
+              .map((word, i, all) => (
+                <span
+                  key={i}
+                  className="word-in inline-block"
+                  style={{ "--d": `${0.08 + i * 0.07}s` } as React.CSSProperties}
+                >
+                  {word}
+                  {i < all.length - 1 ? "\u00a0" : ""}
+                </span>
+              ))}
           </h1>
           <p
             className="rise mt-6 max-w-xl text-lg leading-relaxed text-chalk/75 sm:text-xl"
-            style={{ "--d": "0.15s" } as React.CSSProperties}
+            style={{ "--d": "0.55s" } as React.CSSProperties}
           >
             {t("lead")}
           </p>
           <div
             className="rise mt-9 flex flex-wrap items-center gap-3"
-            style={{ "--d": "0.3s" } as React.CSSProperties}
+            style={{ "--d": "0.7s" } as React.CSSProperties}
           >
             <Magnetic>
               <a

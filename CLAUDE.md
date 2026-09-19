@@ -59,11 +59,20 @@ Animatsiyalar ko‘p bo‘ladi, lekin har biri qurilmaga moslashadi. Bu loyihani
 
 - Qurilma darajasi (`tier`): `high | mid | low | none`. `navigator.deviceMemory`, `hardwareConcurrency`, `saveData`, sensorli ekran va qisqa FPS o‘lchovi asosida aniqlanadi. `prefers-reduced-motion` doim `none` beradi.
 - Har bir animatsiya o‘z darajasini tekshiradi. `high` — 3D tilt, pointer parallax, spotlight, yorug‘ oynalar miltillashi. `mid` — scroll reveal va scroll parallax. `low` — faqat qisqa opacity. `none` — harakat yo‘q.
-- Bezovta qilmaslik: reveal faqat bir marta ishlaydi, davomiyligi 0.4–0.9 s, scroll o‘g‘irlanmaydi, avtomatik karusel yo‘q.
+- Bezovta qilmaslik: reveal faqat bir marta ishlaydi, davomiyligi 0.4–0.9 s, scroll o‘g‘irlanmaydi. O‘qiladigan kontent (fikrlar) o‘zi aylanmaydi; faqat dekorativ elementlar (CardSwap, RotatingText) o‘zi aylanadi, ekranda bo‘lganda va hover’da to‘xtab.
 - Faqat `transform` va `opacity` ni animatsiya qiling. `width`, `height`, `top`, `left` ni emas.
 - Cheksiz (loop) animatsiyalar ekrandan chiqqanda va `low`/`none` da to‘xtaydi.
 - Kontent SEO uchun serverda to‘liq ko‘rinishi kerak. Server HTML'da hech narsa `opacity: 0` bilan yashirinmaydi. Reveal mount'dan keyingina ishga tushadi, birinchi ekrandagi elementlar CSS keyframe bilan chiqadi.
-- Kichik bundle uchun `motion` o‘rniga `m` (`framer-motion/m`) ishlating.
+- O‘z kodimizda kichik bundle uchun `motion` o‘rniga `m` (`framer-motion/m`) ishlating.
+- Sinash uchun darajani URL orqali majburlash mumkin: `/?motion=high`, `mid`, `low`, `none`.
+
+## React Bits
+
+- `src/components/bits/` — reactbits.dev dan olingan komponentlar (TS-TW variant, registry: `https://reactbits.dev/r/<Name>-TS-TW.json`).
+- Importlar `motion/react` dan `framer-motion` ga almashtirilgan (bitta kutubxona). Mahalliy o‘zgarishlar `edu:` izohi bilan belgilangan.
+- Har bir komponent darajaga bo‘ysunadi: `Aurora` (WebGL, `ogl`) faqat `mid`+ va idle'dan keyin yuklanadi; `CardSwap`, `ScrollVelocity`, `ClickSpark` `low`/`none` da to‘xtaydi; ekrandan chiqqanda render/interval to‘xtaydi.
+- Yangi React Bits komponent qo‘shsangiz: `Math.random` render ichida bo‘lmasin (hydration), cheksiz `requestAnimationFrame` ekrandan tashqarida to‘xtasin, `useTier()` bilan cheklansin.
+- Litsenziya: MIT + Commons Clause (komponentlarni loyihada ishlatish mumkin, o‘zini sotish mumkin emas).
 
 ## SEO qoidalari
 

@@ -6,6 +6,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { routing, type Locale } from "@/i18n/routing";
 import { MotionProvider } from "@/motion/MotionProvider";
 import { ScrollProgress } from "@/motion/ScrollProgress";
+import { Effects } from "@/components/Effects";
 import { OG_LOCALE, SITE_URL, absoluteUrl, languageAlternates, localePath } from "@/lib/site";
 import "../globals.css";
 
@@ -91,6 +92,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
           <MotionProvider>
             <ScrollProgress />
             {children}
+            <Effects />
           </MotionProvider>
         </NextIntlClientProvider>
       </body>

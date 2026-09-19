@@ -5,6 +5,7 @@ import * as m from "framer-motion/m";
 import { useTranslations } from "next-intl";
 import { useEffect, useMemo, useState } from "react";
 import type { Branch, Category, Course } from "@/lib/types";
+import SpotlightCard from "@/components/bits/SpotlightCard";
 import { Reveal } from "@/motion/Reveal";
 import { Tilt } from "@/motion/Tilt";
 import { useTier } from "@/motion/MotionProvider";
@@ -111,7 +112,11 @@ export function Courses({ courses, branches }: { courses: Course[]; branches: Br
               >
                 <Reveal delay={i * 0.07} className="h-full">
                   <Tilt className="h-full rounded-3xl">
-                    <article className="flex h-full flex-col rounded-3xl border border-chalk/10 bg-ink-2 p-7">
+                    <SpotlightCard
+                      className="h-full rounded-3xl border border-chalk/10 bg-ink-2"
+                      spotlightColor="rgba(34, 199, 214, 0.22)"
+                    >
+                    <article className="relative flex h-full flex-col p-7">
                       <div className="flex items-center justify-between">
                         <span
                           className="rounded-full px-3 py-1 text-xs font-semibold text-ink"
@@ -130,6 +135,7 @@ export function Courses({ courses, branches }: { courses: Course[]; branches: Br
                         </a>
                       </div>
                     </article>
+                    </SpotlightCard>
                   </Tilt>
                 </Reveal>
               </m.li>

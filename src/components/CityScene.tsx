@@ -284,7 +284,8 @@ export function CityScene() {
                     y={GROUND + 30}
                     textAnchor="middle"
                     className="font-display"
-                    fontSize="15"
+                    // Shrink long labels (e.g. ru "Программирование") to the building width
+                    fontSize={Math.min(15, (b.w + 12) / (label.length * 0.74))}
                     fontWeight="700"
                     fill={isActive ? "#ffc15e" : "rgba(238,242,250,0.7)"}
                   >
