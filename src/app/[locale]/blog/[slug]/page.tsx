@@ -5,7 +5,7 @@ import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { headingId, toCardData } from "@/lib/blog-view";
-import { pageMetadata } from "@/lib/metadata";
+import { ogImagePath, pageMetadata } from "@/lib/metadata";
 import { blogPostingJsonLd, breadcrumbJsonLd, jsonLdString } from "@/lib/seo";
 import { absoluteUrl, localePath } from "@/lib/site";
 import { Header } from "@/components/Header";
@@ -68,7 +68,7 @@ export default async function PostPage({ params }: PageProps<"/[locale]/blog/[sl
   const toc: TocItem[] = post.body.flatMap((b) => (b.type === "h2" ? [{ id: headingId(b.text, h++), text: b.text }] : []));
 
   const jsonLd = [
-    blogPostingJsonLd(locale, post, { url, image: absoluteUrl(`/${locale}/opengraph-image`) }),
+    blogPostingJsonLd(locale, post, { url, image: absoluteUrl(ogImagePath(locale)) }),
     breadcrumbJsonLd([
       { name: tb("home"), path: localePath(locale, "/") },
       { name: tb("blog"), path: localePath(locale, "/blog") },
