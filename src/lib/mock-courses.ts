@@ -12,7 +12,7 @@ import type { Localized, RawCourse } from "./types";
 
 const L = (uz: string, ru: string, en: string): Localized => ({ uz, ru, en });
 
-const ALL = ["toshloq", "fergana", "margilan"];
+const ALL = ["toshloq"];
 
 export const mockCourses: RawCourse[] = [
   {
@@ -78,7 +78,7 @@ export const mockCourses: RawCourse[] = [
     lessonsPerWeek: 3,
     level: "beginner",
     format: "offline",
-    branchIds: ["toshloq", "margilan"],
+    branchIds: ALL,
     sections: [
       { title: L("HTML va semantik belgilash", "HTML и семантическая разметка", "HTML and semantic markup"), topics: ["Semantics", "Forms", "SEO basics"] },
       { title: L("CSS, Flexbox, Grid va moslashuvchan dizayn", "CSS, Flexbox, Grid и адаптивная вёрстка", "CSS, Flexbox, Grid and responsive layout"), topics: ["Flexbox", "Grid", "Responsive", "Animations"] },
@@ -119,7 +119,7 @@ export const mockCourses: RawCourse[] = [
     lessonsPerWeek: 3,
     level: "intermediate",
     format: "offline",
-    branchIds: ["toshloq"],
+    branchIds: ALL,
     sections: [
       { title: L("Dart asoslari", "Основы Dart", "Dart fundamentals"), topics: ["Syntax", "Null safety", "OOP", "Async"] },
       { title: L("Flutter vidjetlari va maketlar", "Виджеты и макеты Flutter", "Flutter widgets and layouts"), topics: ["Widgets", "Layouts", "Theming"] },
@@ -158,7 +158,7 @@ export const mockCourses: RawCourse[] = [
     lessonsPerWeek: 3,
     level: "beginner",
     format: "offline",
-    branchIds: ["toshloq", "fergana"],
+    branchIds: ALL,
     sections: [
       { title: L("Kompozitsiya va rang nazariyasi", "Композиция и теория цвета", "Composition and color theory"), topics: ["Grid", "Balance", "Color wheel"] },
       { title: L("Tipografiya", "Типографика", "Typography"), topics: ["Typefaces", "Hierarchy", "Kerning"] },
@@ -198,7 +198,7 @@ export const mockCourses: RawCourse[] = [
     lessonsPerWeek: 2,
     level: "beginner",
     format: "offline",
-    branchIds: ["toshloq", "fergana"],
+    branchIds: ALL,
     sections: [
       { title: L("Elektronika asoslari", "Основы электроники", "Electronics basics"), topics: ["Ohm's law", "Breadboard", "LED"] },
       { title: L("Arduino'ni dasturlash", "Программирование Arduino", "Programming Arduino"), topics: ["Arduino IDE", "C++ basics", "PWM"] },
@@ -237,7 +237,7 @@ export const mockCourses: RawCourse[] = [
     lessonsPerWeek: 2,
     level: "beginner",
     format: "offline",
-    branchIds: ["toshloq"],
+    branchIds: ALL,
     sections: [
       { title: L("3D printer qanday ishlaydi", "Как работает 3D-принтер", "How a 3D printer works"), topics: ["FDM", "Filaments", "Safety"] },
       { title: L("Tinkercad'da modellashtirish", "Моделирование в Tinkercad", "Modeling in Tinkercad"), topics: ["Shapes", "Grouping", "Holes"] },

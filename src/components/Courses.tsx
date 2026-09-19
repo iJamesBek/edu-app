@@ -81,6 +81,7 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
             ))}
           </div>
 
+          {branches.length > 1 && (
           <label className="flex items-center gap-3 text-sm text-chalk/70">
             {t("filterBranch")}
             <select
@@ -96,6 +97,7 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
               ))}
             </select>
           </label>
+          )}
         </Reveal>
 
         <p className="sr-only" aria-live="polite">

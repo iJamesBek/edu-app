@@ -1,6 +1,6 @@
 {
   "Meta": {
-    "title": "IT Shaharcha — Youth Information Technology Center",
+    "title": "IT Shaharcha Toshloq — Youth Information Technology Center",
     "description": "IT Shaharcha is a free state IT center for young people (PQ-178): programming, mobile and web development, graphic design, robotics, 3D printing, English and computer literacy. In-person classes, 24/7 coworking, certificates.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — the little city of future professions"
@@ -22,7 +22,7 @@
     "logoAlt": "“IT Shaharcha” — Youth Information Technology Center",
     "blog": "Blog",
     "teachers": "Teachers",
-    "branches": "Branches"
+    "contact": "Contact"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
@@ -41,7 +41,7 @@
   },
   "Courses": {
     "title": "Courses",
-    "lead": "Pick a direction and a branch — matching courses appear here.",
+    "lead": "Pick a direction — matching courses appear here.",
     "filterDirection": "Course types",
     "filterBranch": "Branch",
     "all": "All",
@@ -52,7 +52,7 @@
     },
     "apply": "Enroll in this course",
     "emptyTitle": "No courses yet",
-    "emptyText": "Courses for this branch are coming soon. Have a look at the other branches.",
+    "emptyText": "Courses in this direction are coming soon. Have a look at the others.",
     "resultCount": "{count, plural, one {# course found} other {# courses found}}"
   },
   "About": {
@@ -63,7 +63,7 @@
       "students": "students learning at the same time",
       "mentors": "mentors and staff",
       "directions": "core directions",
-      "branches": "branches"
+      "courses": "courses"
     },
     "directionsLabel": "Directions and their courses"
   },
@@ -102,10 +102,10 @@
   },
   "Online": {
     "title": "In-person learning — live, together, in our little city",
-    "lead": "Classes run in the equipped classrooms of our branches: a mentor beside you, classmates around you.",
-    "question": "Is there a branch near you?",
-    "cta": "Choose a branch",
-    "rotPrefix": "Learn at a branch:"
+    "lead": "Classes run in the equipped classrooms of our campus in Toshloq district: a mentor beside you, classmates around you.",
+    "question": "Come to our campus in Toshloq district",
+    "cta": "See the address",
+    "rotPrefix": "Learn at our campus:"
   },
   "Reviews": {
     "title": "Reviews",
@@ -131,7 +131,8 @@
     "tagline": "The little city of modern professions.",
     "contact": "Contact",
     "follow": "Follow us",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "address": "Address"
   },
   "CoursesPage": {
     "title": "Courses",
@@ -144,8 +145,8 @@
     "courses": "Courses",
     "blog": "Blog",
     "teachers": "Teachers",
-    "branches": "Branches",
-    "reviews": "Reviews"
+    "reviews": "Reviews",
+    "contact": "Address & contact"
   },
   "CoursePage": {
     "duration": "Duration",
@@ -153,9 +154,8 @@
     "lessonsPerWeek": "{count, plural, one {# lesson a week} other {# lessons a week}}",
     "level": "Level",
     "format": "Format",
-    "branches": "Branches",
     "formats": {
-      "offline": "In person, at a branch",
+      "offline": "In person, at our campus",
       "online": "Online",
       "hybrid": "Hybrid (in person + online)"
     },
@@ -212,7 +212,7 @@
       }
     },
     "whereTitle": "Where you will study",
-    "branchCta": "About the branch",
+    "branchCta": "Address and map",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "experience": {
@@ -238,7 +238,9 @@
     },
     "finalTitle": "Signing up for a first lesson takes one minute",
     "mobileCta": "Enroll",
-    "mobileFree": "Free"
+    "mobileFree": "Free",
+    "address": "Address",
+    "whereLead": "Every class happens here, in person."
   },
   "Apply": {
     "title": "Enroll in a course",
@@ -311,7 +313,7 @@
   "Teachers": {
     "title": "Teachers",
     "metaTitle": "Teachers — IT Shaharcha mentors",
-    "description": "IT Shaharcha teachers: experience, skills, the courses they lead and the branches where they teach.",
+    "description": "IT Shaharcha Toshloq teachers: experience, skills and the courses they lead.",
     "lead": "Every direction is led by mentors who have worked in the field.",
     "all": "All",
     "experience": "{count, plural, one {# year of experience} other {# years of experience}}",
@@ -320,30 +322,28 @@
     "studentsLabel": "students taught",
     "skills": "Skills",
     "courses": "Courses",
-    "branches": "Teaches at",
     "back": "All teachers",
     "viewProfile": "View profile",
     "about": "About",
     "others": "Other teachers"
   },
   "Branches": {
-    "title": "Branches",
-    "metaTitle": "Branches — addresses, hours and courses",
-    "description": "IT Shaharcha branches: addresses, opening hours, phone, courses and teachers at each branch.",
-    "lead": "Learning happens in person. Pick the branch closest to you.",
+    "title": "Address & contact",
+    "metaTitle": "Address: Toshloq district — hours and phone",
+    "description": "IT Shaharcha Toshloq: 18 Alisher Navoiy St, Yangi Yo‘l, Toshloq district. Opening hours, phone, map, courses and teachers.",
+    "lead": "Classes run at the IT-shaharcha in Toshloq district, in equipped classrooms. Come and see for yourself.",
     "address": "Address",
     "hours": "Opening hours",
     "phone": "Phone",
     "rooms": "{count, plural, one {# classroom} other {# classrooms}}",
     "seats": "{count} seats",
-    "courses": "Courses at this branch",
-    "teachers": "Teachers at this branch",
+    "courses": "Courses taught here",
+    "teachers": "Our teachers",
     "openMap": "Open in maps",
     "loadMap": "Show the map",
     "mapNote": "The map loads from Google Maps.",
     "call": "Call",
     "details": "Details",
-    "back": "All branches",
     "mapTitle": "{name} on the map",
     "roomsLabel": "classrooms",
     "seatsLabel": "seats"

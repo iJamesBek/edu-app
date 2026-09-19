@@ -17,7 +17,8 @@ export const mockSource: DataSource = {
   async branches() {
     return [
       {
-        // Real: address, hours and phone from it-shaharcha.uz. Classrooms and seats are invented.
+        // The site is for this branch only. Real: address, hours and phone from the old
+        // site; Toshloq district ("Yangiyo‘l" MFY) is listed in Decree PQ-178. Classrooms and seats are invented.
         id: "toshloq",
         slug: "toshloq",
         name: { uz: "Toshloq filiali", ru: "Филиал Ташлак", en: "Toshloq branch" },
@@ -31,30 +32,6 @@ export const mockSource: DataSource = {
         hours: { uz: "Dushanba–shanba, 09:00–18:00", ru: "Пн–Сб, 09:00–18:00", en: "Mon–Sat, 09:00–18:00" },
         classrooms: 8,
         seats: 120,
-      },
-      {
-        // MOCK
-        id: "fergana",
-        slug: "fergana",
-        name: { uz: "Farg‘ona filiali", ru: "Филиал Фергана", en: "Fergana branch" },
-        address: { uz: "Farg‘ona shahri (namuna manzil)", ru: "г. Фергана (пример адреса)", en: "Fergana city (sample address)" },
-        phone: "+998700107676",
-        openingHours: "Mo-Sa 09:00-19:00",
-        hours: { uz: "Dushanba–shanba, 09:00–19:00", ru: "Пн–Сб, 09:00–19:00", en: "Mon–Sat, 09:00–19:00" },
-        classrooms: 6,
-        seats: 90,
-      },
-      {
-        // MOCK
-        id: "margilan",
-        slug: "margilan",
-        name: { uz: "Marg‘ilon filiali", ru: "Филиал Маргилан", en: "Margilan branch" },
-        address: { uz: "Marg‘ilon shahri (namuna manzil)", ru: "г. Маргилан (пример адреса)", en: "Margilan city (sample address)" },
-        phone: "+998700107676",
-        openingHours: "Mo-Sa 09:00-18:00",
-        hours: { uz: "Dushanba–shanba, 09:00–18:00", ru: "Пн–Сб, 09:00–18:00", en: "Mon–Sat, 09:00–18:00" },
-        classrooms: 4,
-        seats: 60,
       },
     ];
   },

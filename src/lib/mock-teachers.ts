@@ -19,7 +19,7 @@ export const mockTeachers: RawTeacher[] = [
     experienceYears: 6,
     studentsTaught: 340,
     skills: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Git"],
-    branchIds: ["toshloq", "margilan"],
+    branchIds: ["toshloq"],
   },
   {
     id: "t-aziz",
@@ -51,7 +51,7 @@ export const mockTeachers: RawTeacher[] = [
     experienceYears: 5,
     studentsTaught: 260,
     skills: ["Figma", "Photoshop", "Illustrator", "Branding", "Typography"],
-    branchIds: ["toshloq", "fergana"],
+    branchIds: ["toshloq"],
   },
   {
     id: "t-bekzod",
@@ -67,7 +67,7 @@ export const mockTeachers: RawTeacher[] = [
     experienceYears: 8,
     studentsTaught: 380,
     skills: ["Arduino", "C++", "Electronics", "Fusion 360", "3D printing"],
-    branchIds: ["toshloq", "fergana"],
+    branchIds: ["toshloq"],
   },
   {
     id: "t-nigora",
@@ -83,7 +83,7 @@ export const mockTeachers: RawTeacher[] = [
     experienceYears: 9,
     studentsTaught: 620,
     skills: ["IELTS", "Speaking", "Grammar", "English for IT"],
-    branchIds: ["toshloq", "fergana", "margilan"],
+    branchIds: ["toshloq"],
   },
   {
     id: "t-dilnoza",
@@ -99,6 +99,6 @@ export const mockTeachers: RawTeacher[] = [
     experienceYears: 4,
     studentsTaught: 520,
     skills: ["Windows", "Word", "Excel", "PowerPoint", "Scratch"],
-    branchIds: ["toshloq", "margilan"],
+    branchIds: ["toshloq"],
   },
 ];

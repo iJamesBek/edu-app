@@ -38,18 +38,16 @@ export default async function TeacherPage({ params }: PageProps<"/[locale]/teach
   const teacher = await api.teacherBySlug(locale, slug);
   if (!teacher) notFound();
 
-  const [t, tb, td, courses, branches, all] = await Promise.all([
+  const [t, tb, td, courses, all] = await Promise.all([
     getTranslations({ locale, namespace: "Teachers" }),
     getTranslations({ locale, namespace: "Breadcrumbs" }),
     getTranslations({ locale, namespace: "Directions" }),
     api.coursesByTeacher(locale, teacher.id),
-    api.branches(locale),
     api.teachers(locale),
   ]);
 
   const path = `/teachers/${slug}`;
   const url = absoluteUrl(localePath(locale, path));
-  const teacherBranches = branches.filter((b) => teacher.branchIds.includes(b.id));
   const others = all.filter((x) => x.id !== teacher.id).slice(0, 3);
   const ring = `${teacher.name} • ${teacher.role} • `.toUpperCase();
 
@@ -126,20 +124,6 @@ export default async function TeacherPage({ params }: PageProps<"/[locale]/teach
                   </li>
                 ))}
               </ul>
-              {teacherBranches.length > 0 && (
-                <>
-                  <h2 className="mt-10 font-display text-xl font-bold">{t("branches")}</h2>
-                  <ul className="mt-5 flex flex-wrap gap-2">
-                    {teacherBranches.map((b) => (
-                      <li key={b.id}>
-                        <Link href={`/branches/${b.slug}`} className="inline-block rounded-full border-2 border-ink/15 px-4 py-2 font-medium transition-colors hover:border-ink">
-                          {b.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
             </Reveal>
           </div>
         </section>

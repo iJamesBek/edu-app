@@ -13,7 +13,7 @@ import logo from "../../public/brand/logo-light.png";
 const SECTIONS = [
   { href: "/courses", key: "courses" },
   { href: "/teachers", key: "teachers" },
-  { href: "/branches", key: "branches" },
+  { href: "/contact", key: "contact" },
   { href: "/reviews", key: "alumni" },
   { href: "/blog", key: "blog" },
 ] as const;

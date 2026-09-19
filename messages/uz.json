@@ -1,6 +1,6 @@
 {
   "Meta": {
-    "title": "IT Shaharcha — Yoshlar axborot texnologiyalari markazi",
+    "title": "IT Shaharcha Toshloq — Yoshlar axborot texnologiyalari markazi",
     "description": "IT Shaharcha — yoshlar uchun bepul davlat IT markazi (PQ-178): dasturlash, mobil va web, grafik dizayn, robototexnika, 3D printer, ingliz tili va kompyuter savodxonligi. Oflayn darslar, 24/7 coworking, sertifikat.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — kelajak kasblari shaharchasi"
@@ -22,7 +22,7 @@
     "logoAlt": "«IT Shaharcha» — Yoshlar axborot texnologiyalari markazi",
     "blog": "Blog",
     "teachers": "Ustozlar",
-    "branches": "Filiallar"
+    "contact": "Manzil"
   },
   "Hero": {
     "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
@@ -41,7 +41,7 @@
   },
   "Courses": {
     "title": "Kurslar",
-    "lead": "Yo‘nalish va filialni tanlang — mos kurslar shu yerda.",
+    "lead": "Yo‘nalishni tanlang — mos kurslar shu yerda.",
     "filterDirection": "Kurs turlari",
     "filterBranch": "Filial",
     "all": "Barchasi",
@@ -52,7 +52,7 @@
     },
     "apply": "Kursga yozilish",
     "emptyTitle": "Hozircha kurslar mavjud emas",
-    "emptyText": "Bu filial uchun kurslar tez orada qo‘shiladi. Boshqa filiallarni ko‘rib chiqishingiz mumkin.",
+    "emptyText": "Bu yo‘nalish bo‘yicha kurslar tez orada qo‘shiladi. Boshqa yo‘nalishlarni ko‘rib chiqing.",
     "resultCount": "{count, plural, one {# ta kurs topildi} other {# ta kurs topildi}}"
   },
   "About": {
@@ -63,7 +63,7 @@
       "students": "bir vaqtda o‘qiydigan o‘quvchi",
       "mentors": "ustoz va xodim",
       "directions": "asosiy yo‘nalish",
-      "branches": "filial"
+      "courses": "ta kurs"
     },
     "directionsLabel": "Yo‘nalishlar va ulardagi kurslar"
   },
@@ -102,10 +102,10 @@
   },
   "Online": {
     "title": "Oflayn ta’lim — jonli, jamoada, shaharchada",
-    "lead": "Darslar filiallarimizdagi jihozlangan xonalarda o‘tadi: mentor yoningizda, guruhdoshlar bilan birga.",
-    "question": "Uyingizga yaqin filial bormi?",
-    "cta": "Filialni tanlash",
-    "rotPrefix": "Filialda o‘rganing:"
+    "lead": "Darslar Toshloq tumanidagi shaharchamizning jihozlangan xonalarida o‘tadi: mentor yoningizda, guruhdoshlar bilan birga.",
+    "question": "Toshloq tumanidagi shaharchamizga keling",
+    "cta": "Manzilni ko‘rish",
+    "rotPrefix": "Shaharchada o‘rganing:"
   },
   "Reviews": {
     "title": "Fikrlar",
@@ -131,7 +131,8 @@
     "tagline": "Zamonaviy kasblar shaharchasi.",
     "contact": "Aloqa",
     "follow": "Bizni kuzating",
-    "rights": "Barcha huquqlar himoyalangan."
+    "rights": "Barcha huquqlar himoyalangan.",
+    "address": "Manzil"
   },
   "CoursesPage": {
     "title": "Kurslar",
@@ -144,8 +145,8 @@
     "courses": "Kurslar",
     "blog": "Blog",
     "teachers": "Ustozlar",
-    "branches": "Filiallar",
-    "reviews": "Fikrlar"
+    "reviews": "Fikrlar",
+    "contact": "Manzil va aloqa"
   },
   "CoursePage": {
     "duration": "Davomiyligi",
@@ -153,9 +154,8 @@
     "lessonsPerWeek": "{count, plural, one {haftasiga # dars} other {haftasiga # dars}}",
     "level": "Daraja",
     "format": "Format",
-    "branches": "Filiallar",
     "formats": {
-      "offline": "Oflayn, filialda",
+      "offline": "Oflayn, shaharchada",
       "online": "Online",
       "hybrid": "Aralash (oflayn + online)"
     },
@@ -212,7 +212,7 @@
       }
     },
     "whereTitle": "Qayerda o‘qiysiz",
-    "branchCta": "Filial haqida",
+    "branchCta": "Manzil va xarita",
     "faqTitle": "Ko‘p so‘raladigan savollar",
     "faq": {
       "experience": {
@@ -238,7 +238,9 @@
     },
     "finalTitle": "Birinchi darsga yozilish bir daqiqa oladi",
     "mobileCta": "Yozilish",
-    "mobileFree": "Bepul"
+    "mobileFree": "Bepul",
+    "address": "Manzil",
+    "whereLead": "Barcha darslar shu yerda, oflayn o‘tadi."
   },
   "Apply": {
     "title": "Kursga yozilish",
@@ -311,7 +313,7 @@
   "Teachers": {
     "title": "Ustozlar",
     "metaTitle": "Ustozlar — IT Shaharcha mentorlari",
-    "description": "IT Shaharcha ustozlari: tajribasi, ko‘nikmalari, olib boradigan kurslari va dars beradigan filiallari.",
+    "description": "IT Shaharcha Toshloq ustozlari: tajribasi, ko‘nikmalari va olib boradigan kurslari.",
     "lead": "Har bir yo‘nalishni sohada ishlagan amaliyotchi mentorlar olib boradi.",
     "all": "Barchasi",
     "experience": "{count, plural, one {# yillik tajriba} other {# yillik tajriba}}",
@@ -320,30 +322,28 @@
     "studentsLabel": "o‘quvchi o‘qitgan",
     "skills": "Ko‘nikmalar",
     "courses": "Olib boradigan kurslari",
-    "branches": "Qayerda dars beradi",
     "back": "Barcha ustozlar",
     "viewProfile": "Profilni ko‘rish",
     "about": "Ustoz haqida",
     "others": "Boshqa ustozlar"
   },
   "Branches": {
-    "title": "Filiallar",
-    "metaTitle": "Filiallar — manzil, ish vaqti va kurslar",
-    "description": "IT Shaharcha filiallari: manzillar, ish vaqti, telefon, filialdagi kurslar va ustozlar.",
-    "lead": "Asosiy ta’lim oflayn. Uyingizga yaqin filialni tanlang.",
+    "title": "Manzil va aloqa",
+    "metaTitle": "Manzil: Toshloq tumani — ish vaqti va telefon",
+    "description": "IT Shaharcha Toshloq: Toshloq tumani, “Yangi yo‘l” MFY, Alisher Navoiy ko‘chasi, 18-uy. Ish vaqti, telefon, xarita, kurslar va ustozlar.",
+    "lead": "Darslar Toshloq tumanidagi IT-shaharchada, jihozlangan xonalarda o‘tadi. Keling, o‘zingiz ko‘ring.",
     "address": "Manzil",
     "hours": "Ish vaqti",
     "phone": "Telefon",
     "rooms": "{count} ta xona",
     "seats": "{count} o‘rin",
-    "courses": "Bu filialdagi kurslar",
-    "teachers": "Bu filialdagi ustozlar",
+    "courses": "Shu yerda o‘qitiladigan kurslar",
+    "teachers": "Ustozlarimiz",
     "openMap": "Xaritada ochish",
     "loadMap": "Xaritani ko‘rsatish",
     "mapNote": "Xarita Google Maps’dan yuklanadi.",
     "call": "Qo‘ng‘iroq qilish",
     "details": "Batafsil",
-    "back": "Barcha filiallar",
     "mapTitle": "{name} xaritada",
     "roomsLabel": "sinfxona",
     "seatsLabel": "o‘rin"

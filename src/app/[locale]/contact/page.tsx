@@ -18,24 +18,18 @@ import { CountUp } from "@/motion/CountUp";
 import { Reveal } from "@/motion/Reveal";
 import { Magnetic } from "@/motion/Magnetic";
 
-export async function generateStaticParams() {
-  return (await api.branchSlugs()).map((slug) => ({ slug }));
+export async function generateMetadata({ params }: PageProps<"/[locale]/contact">): Promise<Metadata> {
+  const locale = (await params).locale as Locale;
+  const t = await getTranslations({ locale, namespace: "Branches" });
+  return pageMetadata({ locale, path: "/contact", title: t("metaTitle"), description: t("description") });
 }
 
-export async function generateMetadata({ params }: PageProps<"/[locale]/branches/[slug]">): Promise<Metadata> {
-  const { locale: raw, slug } = await params;
-  const locale = raw as Locale;
-  const branch = await api.branchBySlug(locale, slug);
-  if (!branch) return {};
-  return pageMetadata({ locale, path: `/branches/${slug}`, title: branch.name, description: `${branch.address}. ${branch.hours}.` });
-}
-
-export default async function BranchPage({ params }: PageProps<"/[locale]/branches/[slug]">) {
-  const { locale: raw, slug } = await params;
-  const locale = raw as Locale;
+/** The site serves one location (Toshloq): this page is its address, hours, map, courses and teachers. */
+export default async function ContactPage({ params }: PageProps<"/[locale]/contact">) {
+  const locale = (await params).locale as Locale;
   setRequestLocale(locale);
 
-  const branch = await api.branchBySlug(locale, slug);
+  const [branch] = await api.branches(locale);
   if (!branch) notFound();
 
   const [t, tb, td, tt, courses, teachers] = await Promise.all([
@@ -47,7 +41,7 @@ export default async function BranchPage({ params }: PageProps<"/[locale]/branch
     api.teachers(locale),
   ]);
 
-  const path = `/branches/${slug}`;
+  const path = "/contact";
   const url = absoluteUrl(localePath(locale, path));
   const here = courses.filter((c) => c.branchIds.includes(branch.id));
   const staff = teachers.filter((x) => x.branchIds.includes(branch.id));
@@ -56,8 +50,7 @@ export default async function BranchPage({ params }: PageProps<"/[locale]/branch
     branchJsonLd(branch, { url, name: `IT Shaharcha — ${branch.name}` }),
     breadcrumbJsonLd([
       { name: tb("home"), path: localePath(locale, "/") },
-      { name: tb("branches"), path: localePath(locale, "/branches") },
-      { name: branch.name, path: localePath(locale, path) },
+      { name: tb("contact"), path: localePath(locale, path) },
     ]),
   ];
 
@@ -69,17 +62,20 @@ export default async function BranchPage({ params }: PageProps<"/[locale]/branch
         <section aria-labelledby="branch-title" className="relative isolate overflow-hidden pb-16 pt-10 sm:pb-24">
           <div aria-hidden className="drift absolute -right-32 top-0 -z-10 size-[480px] rounded-full bg-majolica opacity-20 blur-3xl" />
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <Breadcrumbs items={[{ label: tb("home"), href: "/" }, { label: tb("branches"), href: "/branches" }, { label: branch.name }]} />
+            <Breadcrumbs items={[{ label: tb("home"), href: "/" }, { label: tb("contact") }]} />
             <div className="mt-10 grid gap-12 lg:grid-cols-[1fr_1.15fr] lg:items-center">
               <div>
                 <h1 id="branch-title" className="font-display text-[clamp(2.4rem,6vw,4.6rem)] font-extrabold leading-[1.02] tracking-[-0.02em]">
-                  {branch.name.split(" ").map((word, i, arr) => (
+                  {t("title").split(" ").map((word, i, arr) => (
                     <span key={i} className="word-in inline-block" style={{ "--d": `${0.05 + i * 0.1}s` } as React.CSSProperties}>
                       {word}
                       {i < arr.length - 1 ? " " : ""}
                     </span>
                   ))}
                 </h1>
+                <p className="rise mt-5 max-w-lg text-lg text-chalk/70" style={{ "--d": "0.15s" } as React.CSSProperties}>
+                  {t("lead")}
+                </p>
                 <dl className="rise mt-8 space-y-5" style={{ "--d": "0.25s" } as React.CSSProperties}>
                   <div>
                     <dt className="text-sm text-chalk/55">{t("address")}</dt>
@@ -183,13 +179,6 @@ export default async function BranchPage({ params }: PageProps<"/[locale]/branch
           </section>
         )}
 
-        <div className="border-t border-chalk/10 py-10">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <Link href="/branches" className="font-semibold text-amber hover:underline">
-              {t("back")}
-            </Link>
-          </div>
-        </div>
       </main>
       <Footer />
     </>

@@ -175,11 +175,11 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                   </div>
                 ))}
                 <div className="col-span-2 bg-ink-2 p-5 sm:p-6">
-                  <dt className="text-sm text-chalk/55">{t("branches")}</dt>
-                  <dd className="mt-2 flex flex-wrap gap-2">
+                  <dt className="text-sm text-chalk/55">{t("address")}</dt>
+                  <dd className="mt-2">
                     {courseBranches.map((b) => (
-                      <Link key={b.id} href={`/branches/${b.slug}`} className="rounded-full border border-chalk/15 px-3 py-1 text-sm transition-colors hover:border-amber hover:text-amber">
-                        {b.name}
+                      <Link key={b.id} href="/contact" className="leading-snug transition-colors hover:text-amber">
+                        {b.address}
                       </Link>
                     ))}
                   </dd>
@@ -328,6 +328,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
         <section aria-labelledby="where-title" className="py-16 sm:py-24">
           <div className="mx-auto max-w-7xl px-4 sm:px-6">
             <FloatHeading id="where-title" text={t("whereTitle")} className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl" />
+            <p className="mt-3 text-lg text-chalk/65">{t("whereLead")}</p>
             <ul className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
               {courseBranches.map((b, i) => (
                 <li key={b.id}>

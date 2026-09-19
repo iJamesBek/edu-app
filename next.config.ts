@@ -5,6 +5,13 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  // The site serves one location; old branch URLs point to the contact page
+  async redirects() {
+    return [
+      { source: "/branches/:path*", destination: "/contact", permanent: true },
+      { source: "/:locale(ru|en)/branches/:path*", destination: "/:locale/contact", permanent: true },
+    ];
+  },
   images: {
     formats: ["image/avif", "image/webp"],
     // Teacher photos and other media from the backend

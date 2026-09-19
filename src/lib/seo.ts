@@ -11,7 +11,7 @@ export function jsonLdString(data: JsonLd | JsonLd[]): string {
 
 export function organizationJsonLd(
   locale: Locale,
-  input: { name: string; description: string },
+  input: { name: string; description: string; branch?: Branch },
 ): JsonLd {
   return {
     "@context": "https://schema.org",
@@ -22,7 +22,19 @@ export function organizationJsonLd(
     url: absoluteUrl(localePath(locale, "/")),
     logo: absoluteUrl("/brand/logo-light.png"),
     telephone: PHONE,
-    areaServed: { "@type": "Country", name: "Uzbekistan" },
+    areaServed: { "@type": "AdministrativeArea", name: "Toshloq tumani, Farg‘ona viloyati" },
+    ...(input.branch
+      ? {
+          openingHours: input.branch.openingHours,
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: input.branch.address,
+            addressLocality: "Toshloq",
+            addressRegion: "Farg‘ona viloyati",
+            addressCountry: "UZ",
+          },
+        }
+      : {}),
     availableLanguage: ["uz", "ru", "en"],
     sameAs: Object.values(SOCIALS),
   };
@@ -217,6 +229,8 @@ export function branchJsonLd(branch: Branch, input: { url: string; name: string 
     address: {
       "@type": "PostalAddress",
       streetAddress: branch.address,
+      addressLocality: "Toshloq",
+      addressRegion: "Farg‘ona viloyati",
       addressCountry: "UZ",
     },
     parentOrganization: { "@id": `${SITE_URL}/#organization` },

@@ -15,7 +15,7 @@ export async function About({ stats, courses }: { stats: Stats; courses: Course[
     { value: stats.students, suffix: "+", label: t("stats.students") },
     { value: stats.mentors, suffix: "+", label: t("stats.mentors") },
     { value: stats.directions, suffix: "", label: t("stats.directions") },
-    { value: stats.branches, suffix: "", label: t("stats.branches") },
+    { value: courses.length, suffix: "", label: t("stats.courses") },
   ];
 
   const cards: DirectionCard[] = ORDER.map((dir) => ({

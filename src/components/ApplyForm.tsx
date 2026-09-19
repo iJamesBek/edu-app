@@ -158,7 +158,7 @@ export function ApplyForm({ courses, branches, defaultCourseId }: ApplyFormProps
               {errors.includes("status") && <span className="mt-2 block text-sm text-[#ff8a9a]">{t("errors.status")}</span>}
             </fieldset>
 
-            <div className="grid gap-5 sm:grid-cols-2">
+            <div className={`grid gap-5 ${branches.length > 1 ? "sm:grid-cols-2" : ""}`}>
               <label className="block text-sm font-medium text-chalk/80">
                 {t("course")}
                 <select
@@ -179,17 +179,21 @@ export function ApplyForm({ courses, branches, defaultCourseId }: ApplyFormProps
                 )}
               </label>
 
+              {branches.length > 1 ? (
               <label className="block text-sm font-medium text-chalk/80">
-                {t("branch")}
-                <select name="branchId" defaultValue="" className={`${field} ${border(false)}`}>
-                  <option value="">{t("branchAny")}</option>
-                  {courseBranches.map((b) => (
-                    <option key={b.id} value={b.id}>
-                      {b.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  {t("branch")}
+                  <select name="branchId" defaultValue="" className={`${field} ${border(false)}`}>
+                    <option value="">{t("branchAny")}</option>
+                    {courseBranches.map((b) => (
+                      <option key={b.id} value={b.id}>
+                        {b.name}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              ) : (
+                <input type="hidden" name="branchId" value={branches[0]?.id ?? ""} />
+              )}
             </div>
 
             {state.status === "error" && state.server && (

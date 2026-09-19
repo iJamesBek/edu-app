@@ -4,7 +4,9 @@
 
 it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad: juda ko‘p, lekin bezovta qilmaydigan animatsiyalar ("wow" effekti), qurilma imkoniyatiga moslashadigan harakat tizimi va kuchli SEO.
 
-Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/branches`, `/branches/[slug]`, `/reviews`, `/blog`, `/blog/[slug]`, 404.
+Sayt faqat **Toshloq filiali** uchun (Toshloq tumani, “Yangi yo‘l” MFY, Alisher Navoiy ko‘chasi, 18-uy). Boshqa filial yo‘q — "filiallar" deb yozmang. `/branches` → `/contact` ga 308 redirect.
+
+Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/contact`, `/reviews`, `/blog`, `/blog/[slug]`, 404.
 
 ## Markaz haqida faktlar (tasdiqlangan)
 

@@ -25,7 +25,7 @@ export async function Online() {
           <div className="mt-6">
             <Magnetic>
               <Link
-                href="/branches"
+                href="/contact"
                 className="inline-flex rounded-full bg-chalk px-7 py-4 font-semibold text-ink transition-transform hover:-translate-y-0.5"
               >
                 {t("cta")}

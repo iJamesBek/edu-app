@@ -26,7 +26,7 @@ export function BranchCard({
       <article className="relative flex h-full flex-col">
         <div className="flex items-start justify-between gap-4">
           <h3 className="font-display text-2xl font-bold">
-            <Link href={`/branches/${branch.slug}`} className="after:absolute after:inset-0 after:content-['']">
+            <Link href="/contact" className="after:absolute after:inset-0 after:content-['']">
               {branch.name}
             </Link>
           </h3>
