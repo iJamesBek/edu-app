@@ -26,6 +26,12 @@ export function organizationJsonLd(
     ...(input.branch
       ? {
           openingHours: input.branch.openingHours,
+          ...(input.branch.geo
+            ? {
+                geo: { "@type": "GeoCoordinates", latitude: input.branch.geo.lat, longitude: input.branch.geo.lng },
+                hasMap: `https://www.google.com/maps?q=${input.branch.geo.lat},${input.branch.geo.lng}`,
+              }
+            : {}),
           address: {
             "@type": "PostalAddress",
             streetAddress: input.branch.address,
@@ -233,6 +239,12 @@ export function branchJsonLd(branch: Branch, input: { url: string; name: string 
       addressRegion: "Farg‘ona viloyati",
       addressCountry: "UZ",
     },
+    ...(branch.geo
+      ? {
+          geo: { "@type": "GeoCoordinates", latitude: branch.geo.lat, longitude: branch.geo.lng },
+          hasMap: `https://www.google.com/maps?q=${branch.geo.lat},${branch.geo.lng}`,
+        }
+      : {}),
     parentOrganization: { "@id": `${SITE_URL}/#organization` },
   };
 }

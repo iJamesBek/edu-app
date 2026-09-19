@@ -32,6 +32,8 @@ export const mockSource: DataSource = {
         hours: { uz: "Dushanba–shanba, 09:00–18:00", ru: "Пн–Сб, 09:00–18:00", en: "Mon–Sat, 09:00–18:00" },
         classrooms: 8,
         seats: 120,
+        // Real: map point provided by the center
+        geo: { lat: 40.499324, lng: 71.826982 },
       },
     ];
   },

@@ -25,6 +25,8 @@ export interface RawBranch {
   hours: Localized;
   classrooms: number;
   seats: number;
+  /** Exact map point */
+  geo?: { lat: number; lng: number };
 }
 
 export type Format = "offline" | "online" | "hybrid";
@@ -150,6 +152,7 @@ export interface Branch {
   hours: string;
   classrooms: number;
   seats: number;
+  geo?: { lat: number; lng: number };
 }
 
 export interface Course {

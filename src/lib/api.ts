@@ -90,6 +90,7 @@ function toBranch(b: RawBranch, locale: Locale): Branch {
     hours: b.hours[locale],
     classrooms: b.classrooms,
     seats: b.seats,
+    geo: b.geo,
   };
 }
 

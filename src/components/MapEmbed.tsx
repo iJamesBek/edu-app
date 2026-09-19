@@ -15,7 +15,7 @@ export function MapEmbed({ query, title, labels }: { query: string; title: strin
       {on ? (
         <iframe
           title={title}
-          src={`https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`}
+          src={`https://www.google.com/maps?q=${encodeURIComponent(query)}&z=16&output=embed`}
           className="absolute inset-0 size-full border-0"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

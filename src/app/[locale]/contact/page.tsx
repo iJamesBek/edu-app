@@ -11,7 +11,7 @@ import { absoluteUrl, localePath } from "@/lib/site";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
-import { formatPhone } from "@/components/BranchCard";
+import { formatPhone, mapsUrl } from "@/components/BranchCard";
 import { MapEmbed } from "@/components/MapEmbed";
 import { TeacherCard } from "@/components/TeacherCard";
 import { CountUp } from "@/motion/CountUp";
@@ -97,7 +97,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
                     </a>
                   </Magnetic>
                   <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(branch.address)}`}
+                    href={mapsUrl(branch)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex rounded-full border border-chalk/25 px-7 py-4 font-semibold transition-colors hover:border-majolica hover:text-majolica"
@@ -118,7 +118,7 @@ export default async function ContactPage({ params }: PageProps<"/[locale]/conta
               </div>
               <div className="rise" style={{ "--d": "0.2s" } as React.CSSProperties}>
                 <MapEmbed
-                  query={branch.address}
+                  query={branch.geo ? `${branch.geo.lat},${branch.geo.lng}` : branch.address}
                   title={t("mapTitle", { name: branch.name })}
                   labels={{ load: t("loadMap"), note: t("mapNote"), open: t("openMap") }}
                 />
