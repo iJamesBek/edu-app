@@ -26,26 +26,27 @@ export function DirectionsSwap({ cards, label }: { cards: DirectionCard[]; label
     <div
       role="group"
       aria-label={label}
-      className="relative mx-auto h-[340px] w-full max-w-[420px] sm:h-[380px]"
+      className="relative mx-auto h-[380px] w-full max-w-[440px] sm:h-[460px]"
     >
-      <div className="absolute left-1/2 top-[58%] -translate-x-1/2 -translate-y-1/2 scale-[0.78] sm:scale-100">
+      <div className="absolute left-1/2 top-[62%] -translate-x-1/2 -translate-y-1/2 scale-[0.78] sm:scale-100">
         <CardSwap
           width={360}
           height={260}
-          cardDistance={42}
-          verticalDistance={48}
+          cardDistance={50}
+          verticalDistance={64}
           delay={4200}
           pauseOnHover
           skewAmount={4}
+          easing="linear"
           animate={tierAtLeast(tier, "mid")}
         >
           {cards.map((c) => (
             <Card
               key={c.dir}
-              className="flex flex-col p-7 shadow-[0_30px_60px_-20px_rgba(10,15,44,0.55)]"
+              className="flex flex-col p-6 shadow-[0_30px_60px_-20px_rgba(10,15,44,0.55)]"
               style={{ background: STYLE[c.dir].bg, color: STYLE[c.dir].fg }}
             >
-              <span className="font-display text-3xl font-extrabold leading-none">{c.label}</span>
+              <span className="font-display text-2xl font-extrabold leading-none">{c.label}</span>
               <ul className="mt-auto space-y-1.5 text-[15px] font-medium opacity-85">
                 {c.courses.map((course) => (
                   <li key={course}>{course}</li>

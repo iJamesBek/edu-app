@@ -21,8 +21,9 @@ export function VelocityRibbons() {
         velocity={tier === "high" ? 60 : 40}
         numCopies={4}
         animate={tierAtLeast(tier, "mid")}
-        className="px-3 font-display text-2xl font-extrabold sm:text-4xl"
+        className="px-3 font-display text-2xl font-extrabold leading-tight sm:text-4xl"
         velocityMapping={{ input: [0, 1000], output: [0, 3] }}
+        parallaxClassName="py-1"
       />
     </div>
   );

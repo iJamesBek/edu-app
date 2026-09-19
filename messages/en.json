@@ -1,14 +1,14 @@
 {
   "Meta": {
-    "title": "IT Shaharcha — Coding, Design & Marketing Learning Center",
+    "title": "IT Shaharcha — Coding, Design & Marketing Learning Center",
     "description": "IT Shaharcha is a learning center for modern professions: programming, design and marketing. Courses, free coworking, certificates and a job-placement guarantee.",
     "siteName": "IT Shaharcha",
-    "ogAlt": "IT Shaharcha — the little city of future professions"
+    "ogAlt": "IT Shaharcha — the little city of future professions"
   },
   "Common": {
     "skip": "Skip to main content",
     "home": "IT Shaharcha home",
-    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
+    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
   },
   "Nav": {
     "courses": "Courses",
@@ -20,11 +20,11 @@
     "close": "Close",
     "language": "Language",
     "top": "Back to top",
-    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
+    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
-    "lead": "Programming, design and marketing — in one small city with over 2,500 students.",
+    "lead": "Programming, design and marketing — in one small city with over 2,500 students.",
     "ctaCourses": "Choose a course",
     "ctaConsult": "Get a free consultation",
     "cityHint": "Tap a building to pick a direction",
@@ -38,7 +38,7 @@
   },
   "Courses": {
     "title": "Courses",
-    "lead": "Pick a direction and a branch — matching courses appear here.",
+    "lead": "Pick a direction and a branch — matching courses appear here.",
     "filterDirection": "Course types",
     "filterBranch": "Branch",
     "all": "All",
@@ -98,7 +98,7 @@
     "lead": "Every direction is led by mentors who work in the field."
   },
   "Online": {
-    "title": "A modern profession — a modern life!",
+    "title": "A modern profession — a modern life!",
     "lead": "Study online from anywhere and grow at your own pace.",
     "question": "Want to reach the international market?",
     "cta": "See online courses",

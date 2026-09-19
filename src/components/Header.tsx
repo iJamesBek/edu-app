@@ -52,8 +52,8 @@ export function Header() {
             src={logo}
             alt={t("logoAlt")}
             priority
-            sizes="120px"
-            className="h-11 w-auto sm:h-12"
+            sizes="160px"
+            className="h-12 w-auto sm:h-14"
           />
         </Link>
 
