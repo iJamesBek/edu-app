@@ -29,6 +29,9 @@ export interface RawBranch {
 
 export type Format = "offline" | "online" | "hybrid";
 
+/** Eligibility for free study */
+export type FreeGroup = "school" | "unemployed";
+
 export interface RawCourse {
   id: string;
   /** English, URL-safe, stable: used in /courses/<slug> for every locale. */
@@ -49,8 +52,11 @@ export interface RawCourse {
   teacherIds: string[];
   hoursPerLesson: number;
   groupSize: number;
-  /** Monthly price in so‘m */
-  priceMonthly: number;
+  /**
+   * Who studies this course for free. All courses are free for school students;
+   * computer literacy is also free for any age if not officially employed.
+   */
+  freeFor: FreeGroup[];
   /** ISO date of the next group start */
   nextStart: string;
 }
@@ -168,7 +174,7 @@ export interface CourseDetail extends Course {
   tools: string[];
   hoursPerLesson: number;
   groupSize: number;
-  priceMonthly: number;
+  freeFor: FreeGroup[];
   nextStart: string;
 }
 
@@ -195,8 +201,12 @@ export interface ApplicationInput {
   phone: string;
   courseId: string;
   branchId?: string;
+  /** Eligibility for free study, as stated by the applicant */
+  status: ApplicantStatus;
   locale: Locale;
 }
+
+export type ApplicantStatus = "school" | "unemployed" | "other";
 
 export interface ApplicationResult {
   id: string;

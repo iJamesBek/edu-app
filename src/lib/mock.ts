@@ -102,6 +102,7 @@ export const mockSource: DataSource = {
       id,
       courseId: input.courseId,
       branchId: input.branchId ?? null,
+      status: input.status,
       locale: input.locale,
       phone: input.phone.replace(/\d(?=\d{2})/g, "•"),
     });

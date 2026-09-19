@@ -1,7 +1,7 @@
 {
   "Meta": {
     "title": "IT Shaharcha — Yoshlar axborot texnologiyalari markazi",
-    "description": "IT Shaharcha — dasturlash, mobil va web, grafik dizayn, robototexnika, 3D printer, ingliz tili va kompyuter savodxonligi kurslari. Bepul coworking, sertifikat va ish taklifi kafolati.",
+    "description": "IT Shaharcha — yoshlar uchun bepul davlat IT markazi (PQ-178): dasturlash, mobil va web, grafik dizayn, robototexnika, 3D printer, ingliz tili va kompyuter savodxonligi. Oflayn darslar, 24/7 coworking, sertifikat.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — kelajak kasblari shaharchasi"
   },
@@ -26,9 +26,9 @@
   },
   "Hero": {
     "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
-    "lead": "Dasturlash, dizayn, robototexnika va ingliz tili — 2500 dan ortiq o‘quvchi bilan bitta shaharchada.",
+    "lead": "Dasturlash, dizayn, robototexnika va ingliz tili — bepul, 2500 dan ortiq o‘quvchi bilan bitta shaharchada.",
     "ctaCourses": "Kursni tanlash",
-    "ctaConsult": "Bepul maslahat olish",
+    "ctaConsult": "Bepul konsultatsiya",
     "cityHint": "Binoni bosing va yo‘nalishni tanlang",
     "cityLabel": "IT Shaharcha: har bir bino bitta yo‘nalish"
   },
@@ -72,7 +72,7 @@
     "items": {
       "coworking": {
         "title": "Bepul coworking",
-        "text": "Dars tugagach ham qulay joyda ishlang, o‘rganing va hamkasblar toping."
+        "text": "24/7 ishlaydigan bepul coworking va wifi."
       },
       "quality": {
         "title": "Sifatli ta'lim",
@@ -80,7 +80,7 @@
       },
       "contests": {
         "title": "Doimiy musobaqalar",
-        "text": "Hackathon va tanlovlarda o‘z kuchingizni sinab ko‘ring."
+        "text": "Dasturlash va dizayn bo‘yicha haftalik sovrinli musobaqalar."
       },
       "masterclasses": {
         "title": "Bepul mahorat darslari",
@@ -88,11 +88,11 @@
       },
       "jobs": {
         "title": "Ish taklif qilish kafolati",
-        "text": "Kurs yakunida ish topishga yordam beramiz."
+        "text": "Intensiv kurslarni muvaffaqiyatli tugatganlarga ish taklif qilish kafolati."
       },
       "certificate": {
         "title": "Sertifikat",
-        "text": "Kursni tugatganingizni tasdiqlovchi hujjat oling."
+        "text": "Kursni tugatganlar “IT Shaharcha” diplomi va sertifikatini oladi."
       }
     }
   },
@@ -170,8 +170,6 @@
     "scheduleValue": "Haftasiga {days} kun · {hours} soat",
     "groupSize": "Guruhda",
     "groupValue": "{count} kishigacha",
-    "price": "Narx",
-    "perMonth": "/ oyiga",
     "audienceTitle": "Bu kurs kimlar uchun?",
     "audience": {
       "beginners": {
@@ -215,19 +213,6 @@
     },
     "whereTitle": "Qayerda o‘qiysiz",
     "branchCta": "Filial haqida",
-    "pricingTitle": "To‘lov variantlari",
-    "plans": {
-      "monthly": "Oyma-oy",
-      "half": "Ikkiga bo‘lib",
-      "full": "Bittada to‘liq"
-    },
-    "popular": "Ko‘p tanlanadi",
-    "total": "Jami {amount}",
-    "save": "{amount} tejaysiz",
-    "twoPayments": "2 marta to‘lov",
-    "onePayment": "Bir martalik to‘lov",
-    "months": "{count, plural, one {# oy davomida} other {# oy davomida}}",
-    "currency": "so‘m",
     "faqTitle": "Ko‘p so‘raladigan savollar",
     "faq": {
       "experience": {
@@ -246,13 +231,14 @@
         "q": "Sertifikat beriladimi?",
         "a": "Ha, kursni muvaffaqiyatli tugatganlarga IT Shaharcha sertifikati beriladi."
       },
-      "installments": {
-        "q": "Bo‘lib to‘lash mumkinmi?",
-        "a": "Ha: oyma-oy, ikkiga bo‘lib yoki bittada to‘lashingiz mumkin. Bittada to‘lasangiz chegirma bor."
+      "free": {
+        "q": "Kurs pullikmi?",
+        "a": "Yo‘q. Maktab o‘quvchilari uchun barcha kurslar bepul, kompyuter savodxonligi esa rasman ishlamaydiganlar uchun istalgan yoshda bepul. Boshqa hollarda ariza qoldiring — menejer imkoniyatni aniqlab beradi."
       }
     },
     "finalTitle": "Birinchi darsga yozilish bir daqiqa oladi",
-    "mobileCta": "Yozilish"
+    "mobileCta": "Yozilish",
+    "mobileFree": "Bepul"
   },
   "Apply": {
     "title": "Kursga yozilish",
@@ -273,9 +259,17 @@
       "name": "Ismingizni kiriting (kamida 2 ta harf).",
       "phone": "Telefon raqamni to‘g‘ri kiriting, masalan +998 90 123 45 67.",
       "course": "Kursni tanlang.",
-      "server": "Ariza yuborilmadi. Birozdan keyin qayta urinib ko‘ring yoki qo‘ng‘iroq qiling."
+      "server": "Ariza yuborilmadi. Birozdan keyin qayta urinib ko‘ring yoki qo‘ng‘iroq qiling.",
+      "status": "Kim ekaningizni tanlang — bepul o‘qish shartlari shunga bog‘liq."
     },
-    "privacy": "Ma’lumotlaringiz faqat siz bilan bog‘lanish uchun ishlatiladi."
+    "privacy": "Ma’lumotlaringiz faqat siz bilan bog‘lanish uchun ishlatiladi.",
+    "status": "Siz kimsiz?",
+    "statusChoose": "Tanlang",
+    "statuses": {
+      "school": "Maktab o‘quvchisiman",
+      "unemployed": "Rasman ishlamayman",
+      "other": "Boshqa"
+    }
   },
   "DirectionsShort": {
     "programming": "Dasturlash",
@@ -361,5 +355,26 @@
     "courses": "Kurslarni ko‘rish",
     "popular": "Balki shular kerakdir",
     "metaTitle": "Sahifa topilmadi"
+  },
+  "Free": {
+    "badge": "100% bepul",
+    "title": "Kim bepul o‘qiydi?",
+    "lead": "2024-yil 15-maydagi PQ-178-sonli Prezident qaroriga muvofiq “IT-shaharcha” — yoshlarni raqamli texnologiyalar va xorijiy tillarga bepul o‘qitadigan davlat loyihasi. 13 ta hududda 15 ta IT-shaharcha ishlaydi.",
+    "school": {
+      "title": "Maktab o‘quvchilari",
+      "text": "Barcha kurslar to‘liq bepul."
+    },
+    "unemployed": {
+      "title": "Rasman ishlamaydiganlar",
+      "text": "Kompyuter savodxonligi kursi istalgan yoshda bepul."
+    },
+    "other": {
+      "title": "Boshqa hollarda",
+      "text": "Ariza qoldiring — menejer siz uchun mavjud imkoniyatni aniqlab beradi."
+    },
+    "forSchool": "Maktab o‘quvchilari uchun bepul",
+    "forSchoolAndUnemployed": "Maktab o‘quvchilari va rasman ishlamaydiganlar uchun (istalgan yoshda) bepul",
+    "source": "Asos: PQ-178-sonli qaror, 2024-yil 15-may",
+    "cta": "Bepul kursga yozilish"
   }
 }

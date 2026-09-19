@@ -1,7 +1,7 @@
 {
   "Meta": {
     "title": "IT Shaharcha — Youth Information Technology Center",
-    "description": "IT Shaharcha offers courses in programming, mobile and web development, graphic design, robotics, 3D printing, English and computer literacy. Free coworking, certificates and a job-placement guarantee.",
+    "description": "IT Shaharcha is a free state IT center for young people (PQ-178): programming, mobile and web development, graphic design, robotics, 3D printing, English and computer literacy. In-person classes, 24/7 coworking, certificates.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — the little city of future professions"
   },
@@ -26,9 +26,9 @@
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
-    "lead": "Programming, design, robotics and English — in one small city with over 2,500 students.",
+    "lead": "Programming, design, robotics and English — free, in one small city with over 2,500 students.",
     "ctaCourses": "Choose a course",
-    "ctaConsult": "Get a free consultation",
+    "ctaConsult": "Free consultation",
     "cityHint": "Tap a building to pick a direction",
     "cityLabel": "IT Shaharcha: every building is a direction"
   },
@@ -72,7 +72,7 @@
     "items": {
       "coworking": {
         "title": "Free coworking",
-        "text": "Keep working and learning in a comfortable space after class, and meet peers."
+        "text": "Free coworking and Wi-Fi, open 24/7."
       },
       "quality": {
         "title": "Quality education",
@@ -80,7 +80,7 @@
       },
       "contests": {
         "title": "Regular contests",
-        "text": "Test your skills at hackathons and competitions."
+        "text": "Weekly prize contests in programming and design."
       },
       "masterclasses": {
         "title": "Free masterclasses",
@@ -88,11 +88,11 @@
       },
       "jobs": {
         "title": "Job-placement guarantee",
-        "text": "We help you find a job when the course ends."
+        "text": "A job-offer guarantee for graduates of intensive courses."
       },
       "certificate": {
         "title": "Certificate",
-        "text": "Receive a document confirming you completed the course."
+        "text": "Graduates receive an IT Shaharcha diploma and certificate."
       }
     }
   },
@@ -170,8 +170,6 @@
     "scheduleValue": "{days} days a week · {hours} h",
     "groupSize": "Group size",
     "groupValue": "up to {count} people",
-    "price": "Price",
-    "perMonth": "/ month",
     "audienceTitle": "Who is this course for?",
     "audience": {
       "beginners": {
@@ -215,19 +213,6 @@
     },
     "whereTitle": "Where you will study",
     "branchCta": "About the branch",
-    "pricingTitle": "Payment options",
-    "plans": {
-      "monthly": "Monthly",
-      "half": "In two payments",
-      "full": "Pay in full"
-    },
-    "popular": "Most popular",
-    "total": "Total {amount}",
-    "save": "Save {amount}",
-    "twoPayments": "2 payments",
-    "onePayment": "One payment",
-    "months": "{count, plural, one {for # month} other {for # months}}",
-    "currency": "UZS",
     "faqTitle": "Frequently asked questions",
     "faq": {
       "experience": {
@@ -246,13 +231,14 @@
         "q": "Is there a certificate?",
         "a": "Yes, students who complete the course receive an IT Shaharcha certificate."
       },
-      "installments": {
-        "q": "Can I pay in installments?",
-        "a": "Yes: monthly, in two payments or all at once. Paying in full comes with a discount."
+      "free": {
+        "q": "Is the course paid?",
+        "a": "No. Every course is free for school students, and computer literacy is free at any age for people who are not officially employed. Otherwise, leave an application and a manager will check the options."
       }
     },
     "finalTitle": "Signing up for a first lesson takes one minute",
-    "mobileCta": "Enroll"
+    "mobileCta": "Enroll",
+    "mobileFree": "Free"
   },
   "Apply": {
     "title": "Enroll in a course",
@@ -273,9 +259,17 @@
       "name": "Enter your name (at least 2 letters).",
       "phone": "Enter a valid number, for example +998 90 123 45 67.",
       "course": "Choose a course.",
-      "server": "The application was not sent. Try again in a moment or call us."
+      "server": "The application was not sent. Try again in a moment or call us.",
+      "status": "Choose one — free-study conditions depend on it."
     },
-    "privacy": "Your details are used only to contact you."
+    "privacy": "Your details are used only to contact you.",
+    "status": "Which describes you?",
+    "statusChoose": "Choose",
+    "statuses": {
+      "school": "School student",
+      "unemployed": "Not officially employed",
+      "other": "Other"
+    }
   },
   "DirectionsShort": {
     "programming": "Programming",
@@ -361,5 +355,26 @@
     "courses": "See courses",
     "popular": "Maybe you were looking for",
     "metaTitle": "Page not found"
+  },
+  "Free": {
+    "badge": "100% free",
+    "title": "Who studies for free?",
+    "lead": "Under Presidential Decree PQ-178 of 15 May 2024, “IT-shaharcha” is a state project that teaches young people digital technologies and foreign languages for free. There are 15 IT-shaharchas in 13 regions.",
+    "school": {
+      "title": "School students",
+      "text": "Every course is completely free."
+    },
+    "unemployed": {
+      "title": "Not officially employed",
+      "text": "The computer literacy course is free at any age."
+    },
+    "other": {
+      "title": "Everyone else",
+      "text": "Leave an application and a manager will check what’s available for you."
+    },
+    "forSchool": "Free for school students",
+    "forSchoolAndUnemployed": "Free for school students and anyone not officially employed (any age)",
+    "source": "Basis: Decree PQ-178, 15 May 2024",
+    "cta": "Enroll in a free course"
   }
 }

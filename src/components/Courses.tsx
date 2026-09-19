@@ -25,6 +25,7 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
   const Heading = headingLevel === 1 ? "h1" : "h2";
   const t = useTranslations("Courses");
   const td = useTranslations("Directions");
+  const tf = useTranslations("Free");
   const tier = useTier();
   const [dir, setDir] = useState<Category | "all">("all");
   const [branch, setBranch] = useState<string>("all");
@@ -126,7 +127,10 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
                         >
                           {td(c.category)}
                         </span>
-                        <span className="text-sm text-chalk/60">{t("months", { count: c.durationMonths })}</span>
+                        <span className="flex items-center gap-2 text-sm text-chalk/60">
+                          <span className="rounded-full bg-amber/15 px-2.5 py-0.5 text-xs font-semibold text-amber">{tf("badge")}</span>
+                          {t("months", { count: c.durationMonths })}
+                        </span>
                       </div>
                       <h3 className="mt-6 font-display text-2xl font-bold leading-tight">
                         {/* Stretched link: the whole card opens the course page */}

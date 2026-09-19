@@ -83,6 +83,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
     Reviews: messages.Reviews,
     Apply: messages.Apply,
     Blog: messages.Blog,
+    Free: messages.Free,
   };
 
   return (

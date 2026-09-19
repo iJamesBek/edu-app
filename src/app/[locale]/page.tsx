@@ -5,6 +5,7 @@ import { courseListJsonLd, jsonLdString, organizationJsonLd, websiteJsonLd } fro
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { Courses } from "@/components/Courses";
+import { FreeEligibility } from "@/components/FreeEligibility";
 import { About } from "@/components/About";
 import { WhyUs } from "@/components/WhyUs";
 import { Team } from "@/components/Team";
@@ -45,6 +46,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
       <main id="main">
         <Hero />
         <Courses courses={courses} branches={branches} />
+        <FreeEligibility />
         <About stats={stats} courses={courses} />
         <WhyUs />
         <Team teachers={teachers} />

@@ -6,6 +6,15 @@ it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad:
 
 Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/teachers/[slug]`, `/branches`, `/branches/[slug]`, `/reviews`, `/blog`, `/blog/[slug]`, 404.
 
+## Markaz haqida faktlar (tasdiqlangan)
+
+- “IT-shaharcha” — davlat loyihasi, PQ-178-sonli Prezident qarori (2024-yil 15-may): yoshlarni raqamli texnologiyalar va xorijiy tillarga bepul o‘qitish; 13 ta hududda 15 ta IT-shaharcha (eski sayt matnidan).
+- Ta’lim bepul: maktab o‘quvchilari uchun barcha kurslar bepul; kompyuter savodxonligi rasman ishlamaydiganlar uchun istalgan yoshda bepul (markaz tasdiqlagan). Boshqa hollar — "menejer aniqlaydi" deb yoziladi, taxmin qilinmaydi.
+- Saytda narx, to‘lov rejasi, "so‘m" ko‘rsatilmaydi. Kurs modelida narx yo‘q, `freeFor: ("school" | "unemployed")[]` bor. JSON-LD: `isAccessibleForFree`, `Offer.price: 0`.
+- 24/7 bepul coworking va wifi, haftalik sovrinli musobaqalar, bepul mahorat darslari, intensiv kurs bitiruvchilariga ish taklifi kafolati, diplom va sertifikat (eski sayt).
+- Tasdiqlanmagan (ishlatmang): yosh chegarasi (14–35), kerakli hujjatlar ro‘yxati, edu.digital.uz orqali ro‘yxatdan o‘tish.
+- Ariza formasida `status` (maktab o‘quvchisi / rasman ishlamayman / boshqa) majburiy — bepul o‘qish sharti shunga bog‘liq.
+
 Barcha kurslar oflayn (filialda). Online kurs yo‘q — matnlarda "online ta’lim" deb yozmang. Kurs sahifasida format, filiallar va "Nega oflayn" bo‘limi shuni ko‘rsatadi.
 
 ## Marshrutlar

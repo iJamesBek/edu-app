@@ -108,10 +108,11 @@ export function courseJsonLd(
           },
         }
       : {}),
+    isAccessibleForFree: true,
     offers: {
       "@type": "Offer",
-      category: "Paid",
-      price: course.priceMonthly,
+      category: "Free",
+      price: 0,
       priceCurrency: "UZS",
       url: input.url,
     },

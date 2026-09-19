@@ -140,7 +140,7 @@ const courseBySlug = cache(async (locale: Locale, slug: string): Promise<CourseD
     teacherIds: c.teacherIds,
     hoursPerLesson: c.hoursPerLesson,
     groupSize: c.groupSize,
-    priceMonthly: c.priceMonthly,
+    freeFor: c.freeFor,
     nextStart: c.nextStart,
   };
 });

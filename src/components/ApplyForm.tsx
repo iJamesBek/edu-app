@@ -31,7 +31,7 @@ export function ApplyForm({ courses, branches, defaultCourseId }: ApplyFormProps
   const course = courses.find((c) => c.id === courseId);
   const courseBranches = branches.filter((b) => course?.branchIds.includes(b.id));
   const errors = state.status === "error" ? state.fields : [];
-  const values = state.status === "error" ? state.values : { name: "", phone: "" };
+  const values = state.status === "error" ? state.values : { name: "", phone: "", status: "" };
 
   const field =
     "mt-2 w-full rounded-2xl border bg-ink px-4 py-3.5 text-chalk placeholder:text-chalk/35 transition-colors focus:border-majolica focus:outline-none";
@@ -139,6 +139,24 @@ export function ApplyForm({ courses, branches, defaultCourseId }: ApplyFormProps
                 </span>
               )}
             </label>
+
+            <fieldset>
+              <legend className="text-sm font-medium text-chalk/80">{t("status")}</legend>
+              <div className="mt-2 grid gap-2 sm:grid-cols-3">
+                {(["school", "unemployed", "other"] as const).map((st) => (
+                  <label
+                    key={st}
+                    className={`flex cursor-pointer items-center gap-3 rounded-2xl border px-4 py-3.5 text-sm transition-colors has-[:checked]:border-amber has-[:checked]:bg-amber/10 ${
+                      errors.includes("status") ? "border-[#ff8a9a]" : "border-chalk/15 hover:border-chalk/35"
+                    }`}
+                  >
+                    <input type="radio" name="status" value={st} defaultChecked={values.status === st} className="size-4 accent-[var(--amber)]" />
+                    {t(`statuses.${st}`)}
+                  </label>
+                ))}
+              </div>
+              {errors.includes("status") && <span className="mt-2 block text-sm text-[#ff8a9a]">{t("errors.status")}</span>}
+            </fieldset>
 
             <div className="grid gap-5 sm:grid-cols-2">
               <label className="block text-sm font-medium text-chalk/80">

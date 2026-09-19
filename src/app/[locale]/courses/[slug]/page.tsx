@@ -5,11 +5,11 @@ import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
 import { CATEGORY_ACCENT } from "@/lib/categories";
-import { formatNumber } from "@/lib/format";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, courseJsonLd, faqJsonLd, jsonLdString } from "@/lib/seo";
 import { absoluteUrl, localePath } from "@/lib/site";
 import { Header } from "@/components/Header";
+import { FreeEligibility } from "@/components/FreeEligibility";
 import { Footer } from "@/components/Footer";
 import { Breadcrumbs } from "@/components/Breadcrumbs";
 import { ApplyForm } from "@/components/ApplyForm";
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/courses/
 
 const AUDIENCE = ["beginners", "switchers", "students"] as const;
 const OFFLINE = ["lab", "mentor", "group", "coworking"] as const;
-const FAQ = ["experience", "laptop", "missed", "certificate", "installments"] as const;
+const FAQ = ["free", "experience", "laptop", "missed", "certificate"] as const;
 
 const AUDIENCE_ICON: Record<(typeof AUDIENCE)[number], React.ReactNode> = {
   beginners: <path d="M12 3v3m0 12v3M3 12h3m12 0h3M6.3 6.3l2.1 2.1m7.2 7.2l2.1 2.1m0-11.4l-2.1 2.1M8.4 15.6l-2.1 2.1M12 8a4 4 0 110 8 4 4 0 010-8z" />,
@@ -62,7 +62,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
   const course = await api.courseBySlug(locale, slug);
   if (!course) notFound();
 
-  const [t, tc, tb, td, tm, ta, tt, tbr, tr, format, courses, branches, teachers, reviewPage, reviewSummary] = await Promise.all([
+  const [t, tc, tb, td, tm, ta, tt, tbr, tr, tf, format, courses, branches, teachers, reviewPage, reviewSummary] = await Promise.all([
     getTranslations({ locale, namespace: "CoursePage" }),
     getTranslations({ locale, namespace: "Courses" }),
     getTranslations({ locale, namespace: "Breadcrumbs" }),
@@ -72,6 +72,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
     getTranslations({ locale, namespace: "Teachers" }),
     getTranslations({ locale, namespace: "Branches" }),
     getTranslations({ locale, namespace: "Reviews" }),
+    getTranslations({ locale, namespace: "Free" }),
     getFormatter({ locale }),
     api.courses(locale),
     api.branches(locale),
@@ -88,10 +89,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
   const courseTeachers = teachers.filter((x) => course.teacherIds.includes(x.id));
   const related = courses.filter((c) => c.id !== course.id && c.category === course.category).slice(0, 3);
 
-  const money = (v: number) => `${formatNumber(Math.round(v / 1000) * 1000, locale)} ${t("currency")}`;
-  const total = course.priceMonthly * course.durationMonths;
-  const halfTotal = total * 0.95;
-  const fullTotal = total * 0.9;
+  const freeLabel = tf(course.freeFor.includes("unemployed") ? "forSchoolAndUnemployed" : "forSchool");
   const startDate = format.dateTime(new Date(course.nextStart), { day: "numeric", month: "long" });
 
   const facts = [
@@ -118,11 +116,6 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
     ]),
   ];
 
-  const plans = [
-    { key: "monthly", price: `${money(course.priceMonthly)}`, suffix: t("perMonth"), note: t("months", { count: course.durationMonths }), popular: true },
-    { key: "half", price: money(halfTotal / 2), suffix: "× 2", note: t("save", { amount: money(total - halfTotal) }), popular: false },
-    { key: "full", price: money(fullTotal), suffix: "", note: t("save", { amount: money(total - fullTotal) }), popular: false },
-  ] as const;
 
   return (
     <>
@@ -167,8 +160,9 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
                       {t("apply")}
                     </StarBorder>
                   </Magnetic>
-                  <p className="text-chalk/70">
-                    <span className="font-display text-2xl font-bold text-chalk tabular-nums">{money(course.priceMonthly)}</span> {t("perMonth")}
+                  <p className="max-w-xs text-chalk/75">
+                    <span className="block font-display text-2xl font-bold text-amber">{tf("badge")}</span>
+                    <span className="text-sm">{freeLabel}</span>
                   </p>
                 </div>
               </div>
@@ -372,43 +366,8 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
           </section>
         )}
 
-        {/* ---------- Pricing ---------- */}
-        <section aria-labelledby="pricing-title" className="border-t border-chalk/10 py-16 sm:py-24">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6">
-            <FloatHeading id="pricing-title" text={t("pricingTitle")} className="font-display text-4xl font-extrabold tracking-tight sm:text-5xl" />
-            <p className="mt-3 text-chalk/60">{t("total", { amount: money(total) })}</p>
-            <ul className="mt-10 grid gap-5 md:grid-cols-3">
-              {plans.map((p, i) => (
-                <li key={p.key}>
-                  <Reveal delay={i * 0.08} className="h-full">
-                    <div
-                      className={`relative flex h-full flex-col rounded-3xl p-7 ${
-                        p.popular ? "bg-amber text-ink" : "border border-chalk/10 bg-ink-2"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-3">
-                        <h3 className="font-display text-lg font-bold">{t(`plans.${p.key}`)}</h3>
-                        {p.popular && <span className="rounded-full bg-ink px-3 py-1 text-xs font-semibold text-amber">{t("popular")}</span>}
-                      </div>
-                      <p className="mt-6 font-display text-3xl font-extrabold tabular-nums">
-                        {p.price} <span className="text-base font-bold opacity-70">{p.suffix}</span>
-                      </p>
-                      <p className={`mt-2 text-sm ${p.popular ? "text-ink/70" : "text-chalk/60"}`}>{p.note}</p>
-                      <a
-                        href="#apply"
-                        className={`mt-8 rounded-full px-6 py-3.5 text-center font-semibold transition-transform hover:-translate-y-0.5 ${
-                          p.popular ? "bg-ink text-chalk" : "bg-chalk/10"
-                        }`}
-                      >
-                        {t("apply")}
-                      </a>
-                    </div>
-                  </Reveal>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+        {/* ---------- Free study ---------- */}
+        <FreeEligibility freeFor={course.freeFor} ctaHref="#apply" headingId="free-title" />
 
         {/* ---------- FAQ ---------- */}
         <section aria-labelledby="faq-title" className="py-16 sm:py-24">
@@ -476,7 +435,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
           </section>
         )}
       </main>
-      <StickyApply price={`${money(course.priceMonthly)} ${t("perMonth")}`} cta={t("mobileCta")} heroId="course-hero" formId="apply" />
+      <StickyApply price={t("mobileFree")} cta={t("mobileCta")} heroId="course-hero" formId="apply" />
       <Footer />
     </>
   );

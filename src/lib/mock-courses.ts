@@ -3,8 +3,10 @@ import type { Localized, RawCourse } from "./types";
 /**
  * MOCK DATA.
  * Real: ids and Uzbek titles, from the center's course list.
+ * Real: all courses are free for school students; computer literacy is also free
+ * for any age if the person is not officially employed (confirmed by the center).
  * Invented: slugs (final-form English), ru/en titles, descriptions, durations,
- * schedules, sections, tools, prices, start dates, teachers and branches —
+ * schedules, sections, tools, start dates, teachers and branches —
  * replace once the API provides them.
  */
 
@@ -54,7 +56,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-aziz", "t-dilnoza"],
     hoursPerLesson: 2,
     groupSize: 14,
-    priceMonthly: 900000,
+    freeFor: ["school"],
     nextStart: "2026-10-05",
   },
   {
@@ -95,7 +97,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-jasur"],
     hoursPerLesson: 2,
     groupSize: 14,
-    priceMonthly: 900000,
+    freeFor: ["school"],
     nextStart: "2026-10-01",
   },
   {
@@ -134,7 +136,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-aziz"],
     hoursPerLesson: 2,
     groupSize: 12,
-    priceMonthly: 950000,
+    freeFor: ["school"],
     nextStart: "2026-10-12",
   },
   {
@@ -174,7 +176,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-malika"],
     hoursPerLesson: 2,
     groupSize: 12,
-    priceMonthly: 750000,
+    freeFor: ["school"],
     nextStart: "2026-10-03",
   },
   {
@@ -213,7 +215,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-bekzod"],
     hoursPerLesson: 2,
     groupSize: 10,
-    priceMonthly: 700000,
+    freeFor: ["school"],
     nextStart: "2026-10-07",
   },
   {
@@ -252,7 +254,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-bekzod"],
     hoursPerLesson: 2,
     groupSize: 8,
-    priceMonthly: 650000,
+    freeFor: ["school"],
     nextStart: "2026-10-10",
   },
   {
@@ -291,7 +293,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-nigora"],
     hoursPerLesson: 1.5,
     groupSize: 12,
-    priceMonthly: 550000,
+    freeFor: ["school"],
     nextStart: "2026-10-02",
   },
   {
@@ -330,7 +332,7 @@ export const mockCourses: RawCourse[] = [
     teacherIds: ["t-dilnoza"],
     hoursPerLesson: 2,
     groupSize: 12,
-    priceMonthly: 400000,
+    freeFor: ["school", "unemployed"],
     nextStart: "2026-09-29",
   },
 ];
