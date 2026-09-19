@@ -1,16 +1,19 @@
+import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { PHONE, SOCIALS } from "@/lib/site";
+import logo from "../../public/brand/logo-light.png";
 
 export async function Footer() {
   const t = await getTranslations("Footer");
+  const tc = await getTranslations("Common");
   const year = new Date().getFullYear();
 
   return (
     <footer id="contact" className="border-t border-chalk/10 py-16">
       <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:grid-cols-3 sm:px-6">
         <div>
-          <p className="font-display text-xl font-bold">IT Shaharcha</p>
-          <p className="mt-2 text-chalk/60">{t("tagline")}</p>
+          <Image src={logo} alt={tc("logoAlt")} sizes="200px" className="h-20 w-auto" />
+          <p className="mt-4 text-chalk/60">{t("tagline")}</p>
         </div>
         <div>
           <h2 className="font-display text-sm font-bold text-chalk/60">{t("contact")}</h2>

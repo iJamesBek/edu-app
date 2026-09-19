@@ -7,7 +7,8 @@
   },
   "Common": {
     "skip": "Skip to main content",
-    "home": "IT Shaharcha home"
+    "home": "IT Shaharcha home",
+    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
   },
   "Nav": {
     "courses": "Courses",
@@ -18,7 +19,8 @@
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "top": "Back to top"
+    "top": "Back to top",
+    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",

@@ -3,10 +3,12 @@
 import { AnimatePresence } from "framer-motion";
 import * as m from "framer-motion/m";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 import { Link, usePathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { PHONE } from "@/lib/site";
+import logo from "../../public/brand/logo-light.png";
 
 const SECTIONS = [
   { id: "courses", key: "courses" },
@@ -45,15 +47,14 @@ export function Header() {
       }`}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:h-20 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5" aria-label="IT Shaharcha">
-          <svg viewBox="0 0 64 64" className="size-9" aria-hidden>
-            <rect x="10" y="28" width="12" height="26" rx="2" fill="var(--majolica)" />
-            <rect x="26" y="14" width="12" height="40" rx="2" fill="var(--dusk)" />
-            <rect x="42" y="22" width="12" height="32" rx="2" fill="var(--majolica)" />
-            <rect x="29" y="20" width="6" height="5" rx="1" fill="var(--amber)" />
-            <rect x="45" y="28" width="6" height="5" rx="1" fill="var(--amber)" />
-          </svg>
-          <span className="font-display text-[15px] font-bold tracking-tight">IT Shaharcha</span>
+        <Link href="/" className="shrink-0">
+          <Image
+            src={logo}
+            alt={t("logoAlt")}
+            priority
+            sizes="120px"
+            className="h-11 w-auto sm:h-12"
+          />
         </Link>
 
         <nav aria-label={t("menu")} className="ml-4 hidden items-center gap-1 lg:flex">

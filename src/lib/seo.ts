@@ -20,7 +20,7 @@ export function organizationJsonLd(
     name: input.name,
     description: input.description,
     url: absoluteUrl(localePath(locale, "/")),
-    logo: absoluteUrl("/icon.svg"),
+    logo: absoluteUrl("/brand/logo-light.png"),
     telephone: PHONE,
     areaServed: { "@type": "Country", name: "Uzbekistan" },
     availableLanguage: ["uz", "ru", "en"],
