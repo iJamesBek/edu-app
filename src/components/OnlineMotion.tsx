@@ -1,12 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { CATEGORIES } from "@/lib/categories";
 import RotatingText from "@/components/bits/RotatingText";
 import ScrollVelocity from "@/components/bits/ScrollVelocity";
 import { tierAtLeast } from "@/motion/device-tier";
 import { useTier } from "@/motion/MotionProvider";
 
-const DIRS = ["programming", "design", "marketing", "office"] as const;
+const DIRS = CATEGORIES;
 
 /** Two ribbons of direction names; they speed up and reverse with scroll velocity. */
 export function VelocityRibbons() {

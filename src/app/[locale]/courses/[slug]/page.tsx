@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import type { Locale } from "@/i18n/routing";
 import { Link } from "@/i18n/navigation";
 import { api } from "@/lib/api";
+import { CATEGORY_ACCENT } from "@/lib/categories";
 import { pageMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd, courseJsonLd, jsonLdString } from "@/lib/seo";
 import { absoluteUrl, localePath } from "@/lib/site";
@@ -28,13 +29,6 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/courses/
   return pageMetadata({ locale, path: `/courses/${slug}`, title: course.title, description: course.summary });
 }
 
-const ACCENT = {
-  programming: "var(--majolica)",
-  design: "var(--amber)",
-  marketing: "#ff8a9a",
-  office: "#9fb4ff",
-} as const;
-
 export default async function CoursePage({ params }: PageProps<"/[locale]/courses/[slug]">) {
   const { locale: raw, slug } = await params;
   const locale = raw as Locale;
@@ -57,7 +51,7 @@ export default async function CoursePage({ params }: PageProps<"/[locale]/course
   const path = `/courses/${slug}`;
   const courseBranches = branches.filter((b) => course.branchIds.includes(b.id));
   const related = courses.filter((c) => c.id !== course.id).slice(0, 3);
-  const accent = ACCENT[course.category];
+  const accent = CATEGORY_ACCENT[course.category];
 
   const facts = [
     { label: t("duration"), value: tc("months", { count: course.durationMonths }) },

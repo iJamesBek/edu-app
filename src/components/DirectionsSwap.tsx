@@ -14,7 +14,8 @@ export interface DirectionCard {
 const STYLE: Record<Category, { bg: string; fg: string }> = {
   programming: { bg: "var(--majolica)", fg: "var(--ink)" },
   design: { bg: "var(--amber)", fg: "var(--ink)" },
-  marketing: { bg: "#ff8a9a", fg: "var(--ink)" },
+  robotics: { bg: "#ff8a9a", fg: "var(--ink)" },
+  languages: { bg: "#8ee6a8", fg: "var(--ink)" },
   office: { bg: "var(--dusk)", fg: "var(--chalk)" },
 };
 

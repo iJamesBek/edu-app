@@ -7,8 +7,12 @@ import type {
   Branch,
   Course,
   CourseDetail,
+  Block,
   DataSource,
   Locale,
+  Post,
+  PostDetail,
+  RawPost,
   Stats,
   TeamMember,
   Testimonial,
@@ -46,6 +50,7 @@ function httpSource(baseUrl: string): DataSource {
     team: () => get("/team", "team"),
     testimonials: () => get("/testimonials", "testimonials"),
     stats: () => get("/stats", "stats"),
+    posts: () => get("/posts", "posts"),
     async submitApplication(input) {
       const res = await fetch(`${root}/applications`, {
         method: "POST",
@@ -126,6 +131,47 @@ const testimonials = cache(async (locale: Locale): Promise<Testimonial[]> =>
 
 const stats = cache(async (): Promise<Stats> => source.stats());
 
+/* ---------- Blog ---------- */
+
+function wordsIn(blocks: Block[]): number {
+  const text = blocks
+    .map((b) => (b.type === "ul" ? b.items.join(" ") : b.text))
+    .join(" ");
+  return text.split(/\s+/).filter(Boolean).length;
+}
+
+function toPost(p: RawPost, locale: Locale): Post {
+  return {
+    id: p.id,
+    slug: p.slug,
+    category: p.category,
+    title: p.title[locale],
+    excerpt: p.excerpt[locale],
+    author: { name: p.author.name, role: p.author.role[locale] },
+    publishedAt: p.publishedAt,
+    updatedAt: p.updatedAt,
+    // ~180 words a minute, never below 1
+    readingMinutes: Math.max(1, Math.round(wordsIn(p.body[locale]) / 180)),
+    courseSlug: p.courseSlug,
+  };
+}
+
+const byNewest = (a: RawPost, b: RawPost) => b.publishedAt.localeCompare(a.publishedAt);
+
+/** Newest first. */
+const posts = cache(async (locale: Locale): Promise<Post[]> =>
+  [...(await source.posts())].sort(byNewest).map((p) => toPost(p, locale)),
+);
+
+const postBySlug = cache(async (locale: Locale, slug: string): Promise<PostDetail | null> => {
+  const p = (await source.posts()).find((x) => x.slug === slug);
+  return p ? { ...toPost(p, locale), body: p.body[locale] } : null;
+});
+
+const postSlugs = cache(async () =>
+  (await source.posts()).map((p) => ({ slug: p.slug, lastModified: p.updatedAt ?? p.publishedAt })),
+);
+
 /** Not cached: every call is a new submission. */
 function submitApplication(input: ApplicationInput): Promise<ApplicationResult> {
   return source.submitApplication(input);
@@ -139,5 +185,8 @@ export const api = {
   team,
   testimonials,
   stats,
+  posts,
+  postBySlug,
+  postSlugs,
   submitApplication,
 };

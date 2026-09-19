@@ -10,16 +10,9 @@ import { Reveal } from "@/motion/Reveal";
 import { Tilt } from "@/motion/Tilt";
 import { useTier } from "@/motion/MotionProvider";
 import { Link } from "@/i18n/navigation";
+import { CATEGORIES, CATEGORY_ACCENT } from "@/lib/categories";
 import { PICK_DIRECTION_EVENT } from "./CityScene";
 
-const DIRECTIONS: Category[] = ["programming", "design", "marketing", "office"];
-
-const ACCENT: Record<Category, string> = {
-  programming: "var(--majolica)",
-  design: "var(--amber)",
-  marketing: "#ff8a9a",
-  office: "#9fb4ff",
-};
 
 interface CoursesProps {
   courses: Course[];
@@ -67,7 +60,7 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
 
         <Reveal delay={0.1} className="mt-10 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <div role="group" aria-label={t("filterDirection")} className="no-scrollbar -mx-4 flex gap-1 overflow-x-auto px-4">
-            {(["all", ...DIRECTIONS] as const).map((d) => (
+            {(["all", ...CATEGORIES] as const).map((d) => (
               <button
                 key={d}
                 type="button"
@@ -129,7 +122,7 @@ export function Courses({ courses, branches, headingLevel = 2 }: CoursesProps) {
                       <div className="flex items-center justify-between">
                         <span
                           className="rounded-full px-3 py-1 text-xs font-semibold text-ink"
-                          style={{ background: ACCENT[c.category] }}
+                          style={{ background: CATEGORY_ACCENT[c.category] }}
                         >
                           {td(c.category)}
                         </span>

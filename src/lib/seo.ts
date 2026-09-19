@@ -1,5 +1,5 @@
 import type { Locale } from "@/i18n/routing";
-import type { Course, CourseDetail } from "./types";
+import type { Course, CourseDetail, Post, PostDetail } from "./types";
 import { PHONE, SITE_URL, SOCIALS, absoluteUrl, localePath } from "./site";
 
 type JsonLd = Record<string, unknown>;
@@ -105,5 +105,45 @@ export function courseJsonLd(
       courseWorkload: `P${course.durationMonths}M`,
       inLanguage: locale,
     },
+  };
+}
+
+export function blogJsonLd(locale: Locale, input: { name: string; description: string; posts: Post[] }): JsonLd {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${absoluteUrl(localePath(locale, "/blog"))}#blog`,
+    name: input.name,
+    description: input.description,
+    url: absoluteUrl(localePath(locale, "/blog")),
+    inLanguage: locale,
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    blogPost: input.posts.map((p) => ({
+      "@type": "BlogPosting",
+      headline: p.title,
+      url: absoluteUrl(localePath(locale, `/blog/${p.slug}`)),
+      datePublished: p.publishedAt,
+    })),
+  };
+}
+
+export function blogPostingJsonLd(locale: Locale, post: PostDetail, input: { url: string; image: string }): JsonLd {
+  const words = post.body.map((b) => (b.type === "ul" ? b.items.join(" ") : b.text)).join(" ");
+  return {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": `${input.url}#article`,
+    mainEntityOfPage: input.url,
+    headline: post.title,
+    description: post.excerpt,
+    image: input.image,
+    inLanguage: locale,
+    datePublished: post.publishedAt,
+    dateModified: post.updatedAt ?? post.publishedAt,
+    wordCount: words.split(/\s+/).filter(Boolean).length,
+    timeRequired: `PT${post.readingMinutes}M`,
+    author: { "@type": "Person", name: post.author.name, jobTitle: post.author.role },
+    publisher: { "@id": `${SITE_URL}/#organization` },
+    isPartOf: { "@id": `${absoluteUrl(localePath(locale, "/blog"))}#blog` },
   };
 }

@@ -1,10 +1,11 @@
 import { getTranslations } from "next-intl/server";
-import type { Category, Course, Stats } from "@/lib/types";
+import { CATEGORIES } from "@/lib/categories";
+import type { Course, Stats } from "@/lib/types";
 import { CountUp } from "@/motion/CountUp";
 import { Reveal } from "@/motion/Reveal";
 import { DirectionsSwap, type DirectionCard } from "./DirectionsSwap";
 
-const ORDER: Category[] = ["programming", "design", "marketing", "office"];
+const ORDER = CATEGORIES;
 
 export async function About({ stats, courses }: { stats: Stats; courses: Course[] }) {
   const t = await getTranslations("About");

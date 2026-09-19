@@ -11,19 +11,21 @@ import { Team } from "@/components/Team";
 import { Online } from "@/components/Online";
 import { Reviews } from "@/components/Reviews";
 import { Footer } from "@/components/Footer";
+import { LatestPosts } from "@/components/LatestPosts";
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale: raw } = await params;
   const locale = raw as Locale;
   setRequestLocale(locale);
 
-  const [t, courses, branches, stats, team, testimonials] = await Promise.all([
+  const [t, courses, branches, stats, team, testimonials, posts] = await Promise.all([
     getTranslations({ locale, namespace: "Meta" }),
     api.courses(locale),
     api.branches(locale),
     api.stats(),
     api.team(locale),
     api.testimonials(locale),
+    api.posts(locale),
   ]);
 
   const jsonLd = [
@@ -47,6 +49,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
         <Team members={team} />
         <Online />
         <Reviews items={testimonials} />
+        <LatestPosts posts={posts} />
       </main>
       <Footer />
     </>

@@ -4,7 +4,7 @@
 
 it-shaharcha.uz (Vite + React SPA) saytining Next.js'da qayta qurilishi. Maqsad: juda ko‘p, lekin bezovta qilmaydigan animatsiyalar ("wow" effekti), qurilma imkoniyatiga moslashadigan harakat tizimi va kuchli SEO.
 
-Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]` (ariza formasi bilan). Keyingi: jamoa, bitiruvchilar, aloqa, blog, online.
+Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]` (ariza formasi bilan), `/blog`, `/blog/[slug]`. Keyingi: jamoa, bitiruvchilar, aloqa, online.
 
 ## Marshrutlar
 
@@ -47,7 +47,9 @@ messages/             uz.json, ru.json, en.json
 
 - Sahifalar va komponentlar faqat `src/lib/api.ts` dagi `api.*` ni chaqiradi. `mock.ts` yoki `fetch` ni to‘g‘ridan-to‘g‘ri ishlatmang.
 - Hozir ma'lumot `src/lib/mock.ts` dan keladi. Haqiqiy backendga o‘tish: `EDU_API_URL` ni sozlang (`.env.example`ga qarang). Backend JSON'i `Raw*` tiplaridan farq qilsa, faqat `api.ts` ichidagi `httpSource` da moslang.
-- Mock'da faqat `2500` (o‘quvchi) va `350` raqamlari eski saytdan olingan. Filial, kurs, jamoa va fikrlar to‘qilgan placeholder.
+- Real ma'lumot: `2500` va `350` raqamlari (eski sayt), 8 ta kursning id va o‘zbekcha nomi (markaz ro‘yxati). Qolgani (kurs tavsifi, dastur, filial, jamoa, fikrlar, blog maqolalari) — to‘qilgan placeholder.
+- Yo‘nalishlar bitta joyda: `src/lib/categories.ts` (`programming`, `design`, `robotics`, `languages`, `office`) va ularning rangi. Yangi yo‘nalish qo‘shsangiz: `Category` tipi, `categories.ts`, `Directions`/`DirectionsShort` xabarlari, `CityScene` binolari, `DirectionsSwap` ranglari.
+- Blog matni `Block[]` (p, h2, ul, quote) ko‘rinishida keladi — HTML emas, xavfsiz render. `readingMinutes` so‘z soni bo‘yicha hisoblanadi. Muqova rasmlari `PostCover` da slug bo‘yicha generatsiya qilinadi.
 - `api.ts` `server-only`: client komponentga kerakli ma'lumotni props orqali bering.
 - Ariza: `ApplyForm` → Server Action `src/lib/actions.ts` (validatsiya, honeypot, telefonni `+998XXXXXXXXX` ga keltiradi) → `api.submitApplication`. Mock faqat server logiga yozadi (telefon yashirilgan). Real backend: `POST {EDU_API_URL}/applications`.
 

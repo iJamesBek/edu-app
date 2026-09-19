@@ -1,7 +1,7 @@
 {
   "Meta": {
-    "title": "IT Shaharcha — dasturlash, dizayn va marketing o‘quv markazi",
-    "description": "IT Shaharcha — dasturlash, dizayn va marketing kabi zamonaviy kasblar o‘rgatiladigan o‘quv markazi. Kurslar, bepul coworking, sertifikat va ish taklifi kafolati.",
+    "title": "IT Shaharcha — Yoshlar axborot texnologiyalari markazi",
+    "description": "IT Shaharcha — dasturlash, mobil va web, grafik dizayn, robototexnika, 3D printer, ingliz tili va kompyuter savodxonligi kurslari. Bepul coworking, sertifikat va ish taklifi kafolati.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — kelajak kasblari shaharchasi"
   },
@@ -20,11 +20,12 @@
     "close": "Yopish",
     "language": "Til",
     "top": "Yuqoriga qaytish",
-    "logoAlt": "«IT Shaharcha» — Yoshlar axborot texnologiyalari markazi"
+    "logoAlt": "«IT Shaharcha» — Yoshlar axborot texnologiyalari markazi",
+    "blog": "Blog"
   },
   "Hero": {
     "title": "IT Shaharcha: kelajak kasblarini biz bilan o‘rganing",
-    "lead": "Dasturlash, dizayn va marketing — 2500 dan ortiq o‘quvchi bilan bitta shaharchada.",
+    "lead": "Dasturlash, dizayn, robototexnika va ingliz tili — 2500 dan ortiq o‘quvchi bilan bitta shaharchada.",
     "ctaCourses": "Kursni tanlash",
     "ctaConsult": "Bepul maslahat olish",
     "cityHint": "Binoni bosing va yo‘nalishni tanlang",
@@ -33,8 +34,9 @@
   "Directions": {
     "programming": "Dasturlash",
     "design": "Dizayn",
-    "marketing": "Marketing",
-    "office": "Office"
+    "robotics": "Robototexnika",
+    "languages": "Ingliz tili",
+    "office": "Kompyuter savodxonligi"
   },
   "Courses": {
     "title": "Kurslar",
@@ -54,7 +56,7 @@
   },
   "About": {
     "title": "“IT Shaharcha” bu —",
-    "text1": "Dasturlash, dizayn va marketing kabi zamonaviy kasblar o‘rgatiladigan markaz.",
+    "text1": "Dasturlash, dizayn, robototexnika va ingliz tili kabi zamonaviy ko‘nikmalar o‘rgatiladigan markaz.",
     "text2": "Zamonaviy kasblar yordamida insonlar hayotini yaxshilovchi va kelajakka bo‘lgan ishonchni mustahkamlovchi maskan.",
     "stats": {
       "students": "bir vaqtda o‘qiydigan o‘quvchi",
@@ -117,13 +119,14 @@
   },
   "CoursesPage": {
     "title": "Kurslar",
-    "metaTitle": "Kurslar — dasturlash, dizayn, marketing va Office",
-    "description": "IT Shaharcha kurslari: frontend, Python backend, grafik dizayn, SMM va Office. Davomiylik, dastur va filiallar bo‘yicha tanlang."
+    "metaTitle": "Kurslar: dasturlash, dizayn, robototexnika, ingliz tili",
+    "description": "IT Shaharcha kurslari: Python va Django, Frontend, Flutter, grafik dizayn, robototexnika, 3D printer, ingliz tili va kompyuter savodxonligi."
   },
   "Breadcrumbs": {
     "label": "Sahifa yo‘li",
     "home": "Bosh sahifa",
-    "courses": "Kurslar"
+    "courses": "Kurslar",
+    "blog": "Blog"
   },
   "CoursePage": {
     "duration": "Davomiyligi",
@@ -165,5 +168,42 @@
       "server": "Ariza yuborilmadi. Birozdan keyin qayta urinib ko‘ring yoki qo‘ng‘iroq qiling."
     },
     "privacy": "Ma’lumotlaringiz faqat siz bilan bog‘lanish uchun ishlatiladi."
+  },
+  "DirectionsShort": {
+    "programming": "Dasturlash",
+    "design": "Dizayn",
+    "robotics": "Robototexnika",
+    "languages": "Ingliz tili",
+    "office": "Savodxonlik"
+  },
+  "Blog": {
+    "title": "Blog",
+    "metaTitle": "Blog: o‘rganish bo‘yicha maqolalar",
+    "description": "IT Shaharcha blogi: o‘rganish bo‘yicha qo‘llanmalar, o‘quvchilar hikoyalari, yangiliklar va bepul tadbirlar.",
+    "lead": "O‘rganish bo‘yicha amaliy maslahatlar, o‘quvchilarimiz hikoyalari va markaz yangiliklari.",
+    "all": "Barchasi",
+    "categories": {
+      "guides": "Qo‘llanmalar",
+      "news": "Yangiliklar",
+      "stories": "Hikoyalar",
+      "events": "Tadbirlar"
+    },
+    "filter": "Mavzu",
+    "readingTime": "{count, plural, one {# daqiqa o‘qish} other {# daqiqa o‘qish}}",
+    "by": "Muallif",
+    "read": "O‘qish",
+    "featured": "Yangi maqola",
+    "latest": "Blogdan",
+    "allPosts": "Barcha maqolalar",
+    "contents": "Mundarija",
+    "share": "Ulashish",
+    "copy": "Havolani nusxalash",
+    "copied": "Nusxalandi",
+    "related": "Yana o‘qing",
+    "courseCta": "Shu mavzuda kurs",
+    "courseCtaText": "Maqoladagi bilimni mentor bilan amalda sinab ko‘ring.",
+    "courseCtaButton": "Kurs haqida",
+    "empty": "Bu mavzuda hozircha maqola yo‘q.",
+    "updated": "Yangilangan"
   }
 }

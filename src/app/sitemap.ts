@@ -3,22 +3,34 @@ import { routing } from "@/i18n/routing";
 import { api } from "@/lib/api";
 import { absoluteUrl, languageAlternates, localePath } from "@/lib/site";
 
-type Entry = { path: string; priority: number; changeFrequency: "daily" | "weekly" | "monthly" };
+type Entry = {
+  path: string;
+  priority: number;
+  changeFrequency: "daily" | "weekly" | "monthly";
+  lastModified?: string;
+};
 
 /** Every public page goes here. Course pages come from the data source. */
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const slugs = await api.courseSlugs();
+  const [slugs, posts] = await Promise.all([api.courseSlugs(), api.postSlugs()]);
   const pages: Entry[] = [
     { path: "/", priority: 1, changeFrequency: "weekly" },
     { path: "/courses", priority: 0.9, changeFrequency: "weekly" },
     ...slugs.map((slug) => ({ path: `/courses/${slug}`, priority: 0.8, changeFrequency: "monthly" as const })),
+    { path: "/blog", priority: 0.7, changeFrequency: "weekly" },
+    ...posts.map((p) => ({
+      path: `/blog/${p.slug}`,
+      priority: 0.6,
+      changeFrequency: "monthly" as const,
+      lastModified: p.lastModified,
+    })),
   ];
 
-  const lastModified = new Date();
+  const now = new Date();
   return pages.flatMap((page) =>
     routing.locales.map((locale) => ({
       url: absoluteUrl(localePath(locale, page.path)),
-      lastModified,
+      lastModified: page.lastModified ? new Date(page.lastModified) : now,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
       alternates: { languages: languageAlternates(page.path) },

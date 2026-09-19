@@ -1,4 +1,5 @@
 import { mockCourses } from "./mock-courses";
+import { mockPosts } from "./mock-posts";
 import type { DataSource } from "./types";
 
 /**
@@ -33,7 +34,7 @@ export const mockSource: DataSource = {
       {
         id: "r1",
         author: "Bitiruvchi A.",
-        course: { uz: "Frontend dasturlash", ru: "Frontend-разработка", en: "Frontend Development" },
+        course: { uz: "Web dasturlash (Frontend)", ru: "Веб-разработка (Frontend)", en: "Web Development (Frontend)" },
         quote: {
           uz: "Bu yerda nazariya emas, amaliyot ko‘p. Birinchi loyihamni kursning o‘rtasidayoq topshirdim.",
           ru: "Здесь много практики, а не теории. Первый проект я сдал уже в середине курса.",
@@ -53,18 +54,22 @@ export const mockSource: DataSource = {
       {
         id: "r3",
         author: "Bitiruvchi C.",
-        course: { uz: "SMM va marketing", ru: "SMM и маркетинг", en: "SMM & Marketing" },
+        course: { uz: "Robototexnika", ru: "Робототехника", en: "Robotics" },
         quote: {
-          uz: "Bepul coworking juda qo‘l keldi: dars tugagach ham shu yerda ishlayman.",
-          ru: "Бесплатный коворкинг очень выручил: после занятий я продолжаю работать здесь.",
-          en: "The free coworking space helped a lot: I keep working here after class.",
+          uz: "Birinchi robotimiz chiziq bo‘ylab yurganda butun guruh qarsak chaldi. Endi musobaqaga tayyorlanyapmiz.",
+          ru: "Когда наш первый робот поехал по линии, вся группа аплодировала. Теперь готовимся к соревнованиям.",
+          en: "When our first robot followed the line, the whole group applauded. Now we are preparing for a competition.",
         },
       },
     ];
   },
 
   async stats() {
-    return { students: 2500, mentors: 350, directions: 4, branches: 3 };
+    return { students: 2500, mentors: 350, directions: 5, branches: 3 };
+  },
+
+  async posts() {
+    return mockPosts;
   },
 
   async submitApplication(input) {

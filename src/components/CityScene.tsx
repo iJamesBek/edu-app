@@ -30,14 +30,15 @@ interface Building {
 }
 
 const W = 600;
-const H = 520;
+const H = 540;
 const GROUND = 470;
 
 const BUILDINGS: Building[] = [
-  { dir: "office", x: 28, w: 108, h: 210, fill: "#1b2562", roof: "flat" },
-  { dir: "programming", x: 150, w: 132, h: 380, fill: "#2a2f8f", roof: "antenna" },
-  { dir: "design", x: 296, w: 118, h: 300, fill: "#1b2562", roof: "dome" },
-  { dir: "marketing", x: 428, w: 126, h: 250, fill: "#2a2f8f", roof: "flat" },
+  { dir: "office", x: 10, w: 104, h: 200, fill: "#1b2562", roof: "flat" },
+  { dir: "programming", x: 122, w: 112, h: 380, fill: "#2a2f8f", roof: "antenna" },
+  { dir: "design", x: 242, w: 104, h: 290, fill: "#1b2562", roof: "dome" },
+  { dir: "robotics", x: 354, w: 112, h: 330, fill: "#2a2f8f", roof: "antenna" },
+  { dir: "languages", x: 474, w: 116, h: 240, fill: "#1b2562", roof: "flat" },
 ];
 
 const BACKDROP = [
@@ -84,7 +85,7 @@ const STARS = (() => {
 
 export function CityScene() {
   const t = useTranslations("Hero");
-  const td = useTranslations("Directions");
+  const td = useTranslations("DirectionsShort");
   const tier = useTier();
   const ref = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState<Category | null>(null);
@@ -281,11 +282,12 @@ export function CityScene() {
                   ))}
                   <text
                     x={b.x + b.w / 2}
-                    y={GROUND + 30}
+                    // Alternate label rows so long names can be wider than their building
+                    y={GROUND + (i % 2 ? 54 : 30)}
                     textAnchor="middle"
                     className="font-display"
-                    // Shrink long labels (e.g. ru "Программирование") to the building width
-                    fontSize={Math.min(15, (b.w + 12) / (label.length * 0.74))}
+                    // Shrink only labels too long for two building widths
+                    fontSize={Math.min(15, (b.w * 1.8) / (label.length * 0.86))}
                     fontWeight="700"
                     fill={isActive ? "#ffc15e" : "rgba(238,242,250,0.7)"}
                   >

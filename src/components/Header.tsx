@@ -15,6 +15,7 @@ const SECTIONS = [
   { href: "/#team", key: "team" },
   { href: "/#reviews", key: "alumni" },
   { href: "/#online", key: "online" },
+  { href: "/blog", key: "blog" },
 ] as const;
 
 export function Header() {

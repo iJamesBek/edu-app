@@ -1,7 +1,7 @@
 {
   "Meta": {
-    "title": "IT Shaharcha — Coding, Design & Marketing Learning Center",
-    "description": "IT Shaharcha is a learning center for modern professions: programming, design and marketing. Courses, free coworking, certificates and a job-placement guarantee.",
+    "title": "IT Shaharcha — Youth Information Technology Center",
+    "description": "IT Shaharcha offers courses in programming, mobile and web development, graphic design, robotics, 3D printing, English and computer literacy. Free coworking, certificates and a job-placement guarantee.",
     "siteName": "IT Shaharcha",
     "ogAlt": "IT Shaharcha — the little city of future professions"
   },
@@ -20,11 +20,12 @@
     "close": "Close",
     "language": "Language",
     "top": "Back to top",
-    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center"
+    "logoAlt": "“IT Shaharcha” — Youth Information Technology Center",
+    "blog": "Blog"
   },
   "Hero": {
     "title": "IT Shaharcha: learn the professions of the future with us",
-    "lead": "Programming, design and marketing — in one small city with over 2,500 students.",
+    "lead": "Programming, design, robotics and English — in one small city with over 2,500 students.",
     "ctaCourses": "Choose a course",
     "ctaConsult": "Get a free consultation",
     "cityHint": "Tap a building to pick a direction",
@@ -33,8 +34,9 @@
   "Directions": {
     "programming": "Programming",
     "design": "Design",
-    "marketing": "Marketing",
-    "office": "Office"
+    "robotics": "Robotics",
+    "languages": "English",
+    "office": "Computer literacy"
   },
   "Courses": {
     "title": "Courses",
@@ -54,7 +56,7 @@
   },
   "About": {
     "title": "“IT Shaharcha” is",
-    "text1": "A center where modern professions such as programming, design and marketing are taught.",
+    "text1": "A center that teaches modern skills: programming, design, robotics and English.",
     "text2": "A place that improves people’s lives through modern professions and builds confidence in the future.",
     "stats": {
       "students": "students learning at the same time",
@@ -117,13 +119,14 @@
   },
   "CoursesPage": {
     "title": "Courses",
-    "metaTitle": "Courses — programming, design, marketing and Office",
-    "description": "IT Shaharcha courses: frontend, Python backend, graphic design, SMM and Office. Choose by length, program and branch."
+    "metaTitle": "Courses: programming, design, robotics, English",
+    "description": "IT Shaharcha courses: Python and Django, Frontend, Flutter, graphic design, robotics, 3D printing, English and computer literacy."
   },
   "Breadcrumbs": {
     "label": "Breadcrumb",
     "home": "Home",
-    "courses": "Courses"
+    "courses": "Courses",
+    "blog": "Blog"
   },
   "CoursePage": {
     "duration": "Duration",
@@ -165,5 +168,42 @@
       "server": "The application was not sent. Try again in a moment or call us."
     },
     "privacy": "Your details are used only to contact you."
+  },
+  "DirectionsShort": {
+    "programming": "Programming",
+    "design": "Design",
+    "robotics": "Robotics",
+    "languages": "English",
+    "office": "Literacy"
+  },
+  "Blog": {
+    "title": "Blog",
+    "metaTitle": "Blog: articles on learning",
+    "description": "The IT Shaharcha blog: practical learning guides, student stories, news and free events.",
+    "lead": "Practical learning advice, stories from our students and news from the center.",
+    "all": "All",
+    "categories": {
+      "guides": "Guides",
+      "news": "News",
+      "stories": "Stories",
+      "events": "Events"
+    },
+    "filter": "Topic",
+    "readingTime": "{count, plural, one {# min read} other {# min read}}",
+    "by": "By",
+    "read": "Read",
+    "featured": "New article",
+    "latest": "From the blog",
+    "allPosts": "All articles",
+    "contents": "Contents",
+    "share": "Share",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "related": "Read next",
+    "courseCta": "A course on this topic",
+    "courseCtaText": "Put what you read into practice with a mentor.",
+    "courseCtaButton": "About the course",
+    "empty": "No articles on this topic yet.",
+    "updated": "Updated"
   }
 }

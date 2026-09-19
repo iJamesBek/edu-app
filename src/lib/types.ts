@@ -5,7 +5,7 @@ export type { Locale };
 /** A string translated into every supported locale (raw shape from a data source). */
 export type Localized = Record<Locale, string>;
 
-export type Category = "programming" | "design" | "marketing" | "office";
+export type Category = "programming" | "design" | "robotics" | "languages" | "office";
 
 export type Level = "beginner" | "intermediate";
 
@@ -33,6 +33,31 @@ export interface RawCourse {
   branchIds: string[];
   modules: Localized[];
   outcomes: Localized[];
+}
+
+export type BlogCategory = "guides" | "news" | "stories" | "events";
+
+/** Rich text as typed blocks: safe to render (no HTML injection) and easy for a CMS to emit. */
+export type Block =
+  | { type: "p"; text: string }
+  | { type: "h2"; text: string }
+  | { type: "ul"; items: string[] }
+  | { type: "quote"; text: string; cite?: string };
+
+export interface RawPost {
+  id: string;
+  /** English, URL-safe, stable: used in /blog/<slug> for every locale. */
+  slug: string;
+  category: BlogCategory;
+  title: Localized;
+  excerpt: Localized;
+  body: Record<Locale, Block[]>;
+  author: { name: string; role: Localized };
+  /** ISO 8601 */
+  publishedAt: string;
+  updatedAt?: string;
+  /** Optional course the post leads to (its slug). */
+  courseSlug?: string;
 }
 
 export interface RawTeamMember {
@@ -81,6 +106,23 @@ export interface CourseDetail extends Course {
   outcomes: string[];
 }
 
+export interface Post {
+  id: string;
+  slug: string;
+  category: BlogCategory;
+  title: string;
+  excerpt: string;
+  author: { name: string; role: string };
+  publishedAt: string;
+  updatedAt?: string;
+  readingMinutes: number;
+  courseSlug?: string;
+}
+
+export interface PostDetail extends Post {
+  body: Block[];
+}
+
 /** What the enrollment form sends. */
 export interface ApplicationInput {
   name: string;
@@ -117,5 +159,6 @@ export interface DataSource {
   team(): Promise<RawTeamMember[]>;
   testimonials(): Promise<RawTestimonial[]>;
   stats(): Promise<Stats>;
+  posts(): Promise<RawPost[]>;
   submitApplication(input: ApplicationInput): Promise<ApplicationResult>;
 }

@@ -10,6 +10,8 @@ export default getRequestConfig(async ({ requestLocale }) => {
 
   return {
     locale,
+    // Dates are formatted in the center's time zone on server and client alike
+    timeZone: "Asia/Tashkent",
     messages: (await import(`../../messages/${locale}.json`)).default,
   };
 });
