@@ -8,10 +8,11 @@ Tayyor sahifalar: bosh sahifa, `/courses`, `/courses/[slug]`, `/teachers`, `/tea
 
 ## Markaz haqida faktlar (tasdiqlangan)
 
-- “IT-shaharcha” — davlat loyihasi, PQ-178-sonli Prezident qarori (2024-yil 15-may): yoshlarni raqamli texnologiyalar va xorijiy tillarga bepul o‘qitish; 13 ta hududda 15 ta IT-shaharcha (eski sayt matnidan).
-- Ta’lim bepul: maktab o‘quvchilari uchun barcha kurslar bepul; kompyuter savodxonligi rasman ishlamaydiganlar uchun istalgan yoshda bepul (markaz tasdiqlagan). Boshqa hollar — "menejer aniqlaydi" deb yoziladi, taxmin qilinmaydi.
+- Qonun (tekshirilgan, https://lex.uz/docs/-6927663): PQ-178, 15.05.2024. IT-shaharchalar Raqamli texnologiyalar vazirligi huzuridagi Raqamlashtirishni rivojlantirish markazining yuridik shaxs bo‘lmagan bo‘linmalari; 4(b)-band: yoshlarga bepul ta’lim olish uchun sharoit yaratadi; yo‘nalishlar: dasturlash va raqamli xizmatlar, xorijiy tillar (ingliz tili), zamonaviy kasblar; 1-ilovada Farg‘ona viloyati Toshloq tumani ("Yangiyo‘l" MFY) bor.
+- Qonunda YO‘Q: yosh chegarasi, maktab o‘quvchisi/ishsiz toifalari, coworking, sertifikat, ish kafolati. "13 hududda 15 ta" — faqat eski sayt da’vosi, saytda ishlatilmaydi.
+- Markaz qoidasi (foydalanuvchi aytgan, qonun matnida yo‘q): maktab o‘quvchilari uchun barcha kurslar bepul; kompyuter savodxonligi rasman ishlamaydiganlar uchun istalgan yoshda bepul. Saytda "markaz qoidasi" deb belgilanadi. Boshqa hollar — "menejer aniqlaydi".
 - Saytda narx, to‘lov rejasi, "so‘m" ko‘rsatilmaydi. Kurs modelida narx yo‘q, `freeFor: ("school" | "unemployed")[]` bor. JSON-LD: `isAccessibleForFree`, `Offer.price: 0`.
-- 24/7 bepul coworking va wifi, haftalik sovrinli musobaqalar, bepul mahorat darslari, intensiv kurs bitiruvchilariga ish taklifi kafolati, diplom va sertifikat (eski sayt).
+- 24/7 bepul coworking va wifi, haftalik sovrinli musobaqalar, bepul mahorat darslari, intensiv kurs bitiruvchilariga ish taklifi kafolati, diplom va sertifikat — markazning o‘z da’volari (eski sayt), qonunda emas.
 - Tasdiqlanmagan (ishlatmang): yosh chegarasi (14–35), kerakli hujjatlar ro‘yxati, edu.digital.uz orqali ro‘yxatdan o‘tish.
 - Ariza formasida `status` (maktab o‘quvchisi / rasman ishlamayman / boshqa) majburiy — bepul o‘qish sharti shunga bog‘liq.
 

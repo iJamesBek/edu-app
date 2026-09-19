@@ -359,7 +359,7 @@
   "Free": {
     "badge": "100% bepul",
     "title": "Kim bepul o‘qiydi?",
-    "lead": "2024-yil 15-maydagi PQ-178-sonli Prezident qaroriga muvofiq “IT-shaharcha” — yoshlarni raqamli texnologiyalar va xorijiy tillarga bepul o‘qitadigan davlat loyihasi. 13 ta hududda 15 ta IT-shaharcha ishlaydi.",
+    "lead": "2024-yil 15-maydagi PQ-178-sonli Prezident qaroriga ko‘ra “IT-shaharcha”lar hududlardagi yoshlarga raqamli texnologiyalar va xorijiy tillarni bepul o‘rganish uchun sharoit yaratadi. Farg‘ona viloyati Toshloq tumani (“Yangiyo‘l” MFY) ham qaror ro‘yxatida.",
     "school": {
       "title": "Maktab o‘quvchilari",
       "text": "Barcha kurslar to‘liq bepul."
@@ -374,7 +374,7 @@
     },
     "forSchool": "Maktab o‘quvchilari uchun bepul",
     "forSchoolAndUnemployed": "Maktab o‘quvchilari va rasman ishlamaydiganlar uchun (istalgan yoshda) bepul",
-    "source": "Asos: PQ-178-sonli qaror, 2024-yil 15-may",
+    "source": "Qaror matni: lex.uz, PQ-178, 15.05.2024. Guruhlar bo‘yicha shartlar — markaz qoidasi.",
     "cta": "Bepul kursga yozilish"
   }
 }

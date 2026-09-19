@@ -41,7 +41,11 @@ export async function FreeEligibility({
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-lg leading-relaxed text-chalk/75">{t("lead")}</p>
-            <p className="mt-3 text-sm text-chalk/45">{t("source")}</p>
+            <p className="mt-3 text-sm text-chalk/45">
+              <a href="https://lex.uz/docs/-6927663" target="_blank" rel="noopener noreferrer" className="underline decoration-chalk/30 underline-offset-4 hover:text-chalk">
+                {t("source")}
+              </a>
+            </p>
           </Reveal>
         </div>
 

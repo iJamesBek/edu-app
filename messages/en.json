@@ -359,7 +359,7 @@
   "Free": {
     "badge": "100% free",
     "title": "Who studies for free?",
-    "lead": "Under Presidential Decree PQ-178 of 15 May 2024, “IT-shaharcha” is a state project that teaches young people digital technologies and foreign languages for free. There are 15 IT-shaharchas in 13 regions.",
+    "lead": "Under Presidential Decree PQ-178 of 15 May 2024, “IT-shaharcha” centers give young people in the regions the conditions to learn digital technologies and foreign languages for free. Toshloq district of Fergana region (Yangiyo‘l mahalla) is on the decree’s list.",
     "school": {
       "title": "School students",
       "text": "Every course is completely free."
@@ -374,7 +374,7 @@
     },
     "forSchool": "Free for school students",
     "forSchoolAndUnemployed": "Free for school students and anyone not officially employed (any age)",
-    "source": "Basis: Decree PQ-178, 15 May 2024",
+    "source": "Decree text: lex.uz, PQ-178, 15.05.2024. Eligibility by group is the center’s own rule.",
     "cta": "Enroll in a free course"
   }
 }
